@@ -310,6 +310,7 @@ html, body {
     &.active {
       background-color: $lang-select-active-bg;
       color: $lang-select-active-text;
+      border-bottom: 2px solid $lang-select-active-text;
     }
   }
 
