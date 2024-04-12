@@ -289,7 +289,7 @@ body {
   // half of the content always this background color.
   .dark-box {
     width: $examples-width;
-    background-color: $examples-bg;
+    background: $examples-bg;
     position: absolute;
     right: 0;
     top: 0;
@@ -305,7 +305,7 @@ body {
 
 .lang-selector {
   display: flex;
-  background-color: $lang-select-bg;
+  background: $nav-bg;
   width: 100%;
   font-weight: bold;
   overflow-x: auto;
@@ -574,7 +574,7 @@ body {
 
   pre,
   blockquote {
-    background-color: $code-bg;
+    background: $code-bg;
     color: #fff;
 
     margin: 0;
@@ -679,7 +679,7 @@ body {
 
 .highlight,
 .highlight .w {
-  background-color: $code-bg;
+  background: $code-bg;
 }
 
 .copy-clipboard {
