@@ -1,5 +1,5 @@
 ---
-title: Gigapay API Reference
+title: API Documentation | Gigapay
 
 language_tabs:
   - shell
@@ -26,7 +26,9 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Gigapay API
+    content: Find the all the information you need to implement the Gigapay API here. Simple and fast to integrate.
+  - name: og:image
+    content: "https://uploads-ssl.webflow.com/63e63a988110ab2d23f167eb/66193bd79ff1a32e6eaa25ce_api_docs_gigapay_2x.webp"
 ---
 
 
