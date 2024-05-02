@@ -202,12 +202,12 @@ This endpoint registers an Employee.
 ### Body Parameters
 
 | Parameter          | Type   | Required | Default | Notes                                                           |
-|--------------------|--------|----------|---------|-----------------------------------------------------------------|
+| ------------------ | ------ | -------- | ------- | --------------------------------------------------------------- |
 | `id`               | String | False    | uuid4() | Unique per [Integration](#integrations).                        |
 | `name`             | String | True     |         |                                                                 |
-| `email`            | String | False    | null    | Either `email` or `cellphone_number` is required.               |
+| `email`            | String | True     |         |                                                                 |
 | `country`          | String | True     |         | ISO-3166 country code where the employee is living and working. |
-| `cellphone_number` | String | False    | null    | Either `email` or `cellphone_number` is required.               |
+| `cellphone_number` | String | False    | null    |                                                                 |
 | `metadata`         | Object | False    | {}      |                                                                 |
 
 ## Retrieve an Employee
@@ -435,12 +435,12 @@ This endpoint replaces an Employee.
 ### Body Parameters
 
 | Parameter          | Type   | Required | Default | Description                                                     |
-|--------------------|--------|----------|---------|-----------------------------------------------------------------|
+| ------------------ | ------ | -------- | ------- | --------------------------------------------------------------- |
 | `id`               | String | False    | uuid4() | Unique per [Integration](#integrations).                        |
 | `name`             | String | True     |         |                                                                 |
-| `email`            | String | False    | null    | Either `email` or `cellphone_number` is required.               |
+| `email`            | String | True     |         |                                                                 |
 | `country`          | String | True     |         | ISO-3166 country code where the employee is living and working. |
-| `cellphone_number` | String | False    | null    | Either `email` or `cellphone_number` is required.               |
+| `cellphone_number` | String | False    | null    |                                                                 |
 | `metadata`         | Object | False    | {}      |                                                                 |
 
 ## Delete a Employee
