@@ -3,6 +3,8 @@
 Webhooks allows you to receive real-time status updates any time an event happens on your account. For a complete
 description of these notifications, see [Events](#events).
 
+In the case where the receiving server is unavailable, we will retry the webhook notification up to 10 times with an exponential backoff.
+
 ### The Webhook object
 
 > An example Webhook object
