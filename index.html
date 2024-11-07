@@ -5472,6 +5472,8 @@ it is added to the Invoice that is currently open. If there is no open Invoice, 
 <h1 id='webhooks'>Webhooks</h1>
 <p>Webhooks allows you to receive real-time status updates any time an event happens on your account. For a complete
 description of these notifications, see <a href="#events">Events</a>.</p>
+
+<p>In the case where the receiving server is unavailable, we will retry the webhook notification up to 10 times with an exponential backoff.</p>
 <h3 id='the-webhook-object'>The Webhook object</h3>
 <blockquote>
 <p>An example Webhook object</p>
