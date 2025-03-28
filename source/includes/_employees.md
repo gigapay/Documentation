@@ -19,7 +19,8 @@ and working permits.
     "created_at": "2019-05-22T10:32:36.118753Z",
     "notified_at": "2019-05-22T10:32:37.846274Z",
     "claimed_at": "2019-05-23T11:56:41.123721Z",
-    "verified_at": "2019-05-23T11:57:03.742345Z"
+    "verified_at": "2019-05-23T11:57:03.742345Z",
+    "invitation_code": null
 }
 ```
 
@@ -35,6 +36,7 @@ and working permits.
 | `notified_at`      | Time at which the Employee was notified.  Displayed as ISO 8601 string.           |
 | `claimed_at`       | Time at which the Employee consumed the magic link. Displayed as ISO 8601 string. |
 | `verified_at`      | Time when the Employee was verified. Displayed as ISO 8601 string.                |
+| `invitation_code`  | 8-digit alphanumeric uppercase code available when an employee is invited but not yet claimed. Users can use this code to create a magic link to claim the employee. |
 
 
 
@@ -84,7 +86,8 @@ fetch("https://api.gigapay.se/v2/employees/", {
             "created_at": "2019-05-22T10:32:36.118753Z",
             "notified_at": "2019-05-22T10:32:37.846274Z",
             "claimed_at": "2019-05-23T11:56:41.123721Z",
-            "verified_at": "2019-05-23T11:57:03.742345Z"
+            "verified_at": "2019-05-23T11:57:03.742345Z",
+            "invitation_code": null
         }, {
             "id": "1848",
             "name": "Joakim Olovsson",
@@ -94,8 +97,9 @@ fetch("https://api.gigapay.se/v2/employees/", {
             "metadata": {},
             "created_at": "2019-05-23T14:45:12.545271Z",
             "notified_at": "2019-05-23T14:45:13.374627Z",
-            "claimed_at": "2019-05-23T14:45:37.282819Z",
-            "verified_at": "2019-05-24T09:47:02.918264Z"
+            "claimed_at": null,
+            "verified_at": null,
+            "invitation_code": "A1B2C3D4"
         }
     ]
 }
@@ -181,11 +185,13 @@ fetch("https://api.gigapay.se/v2/employees/", {
     "created_at": "2019-05-22T10:32:36.118753Z",
     "notified_at": null,
     "claimed_at": null,
-    "verified_at": null
+    "verified_at": null,
+    "invitation_code": "A1B2C3D4"
 }
 ```
 
-This endpoint registers an Employee.
+This endpoint registers an Employee. The employee will be notified with a invitation code which can be used to create a 
+magic link to claim the employee.
 
 ### HTTP Request
 
@@ -250,7 +256,8 @@ fetch("https://api.gigapay.se/v2/employees/1847/", {
     "created_at": "2019-05-22T10:32:36.118753Z",
     "notified_at": "2019-05-22T10:32:37.846274Z",
     "claimed_at": "2019-05-23T11:56:41.123721Z",
-    "verified_at": "2019-05-23T11:57:03.742345Z"
+    "verified_at": "2019-05-23T11:57:03.742345Z",
+    "invitation_code": null
 }
 ```
 
@@ -319,7 +326,8 @@ fetch("https://api.gigapay.se/v2/employees/1847/", {
     "created_at": "2019-05-22T10:32:36.118753Z",
     "notified_at": "2019-05-22T10:32:37.846274Z",
     "claimed_at": "2019-05-23T11:56:41.123721Z",
-    "verified_at": "2019-05-23T11:57:03.742345Z"
+    "verified_at": "2019-05-23T11:57:03.742345Z",
+    "invitation_code": null
 }
 ```
 
@@ -409,7 +417,8 @@ fetch("https://api.gigapay.se/v2/employees/8472/", {
     "created_at": "2019-05-22T10:32:36.118753Z",
     "notified_at": null,
     "claimed_at": null,
-    "verified_at": null
+    "verified_at": null,
+    "invitation_code": null
 }
 ```
 
@@ -526,7 +535,7 @@ fetch("https://api.gigapay.se/v2/employees/1847/resend/", {
 > The above command returns an empty response.
 
 
-This endpoint resends an invitation. After resending, you need to wait at least 24 hours before resending again.
+This endpoint resends notification with a invitation code. After resending, you need to wait at least 24 hours before resending again.
 
 ### HTTP Request
 

@@ -450,7 +450,8 @@ fetch("https://api.gigapay.se/v2/payouts/?expand=employee", {
         "created_at": "2019-05-22T10:32:36.118753Z",
         "notified_at": null,
         "claimed_at": null,
-        "verified_at": null
+        "verified_at": null,
+        "invitation_code": "ABCD1234"
     },
     "full_salary_specification": true,
     "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",

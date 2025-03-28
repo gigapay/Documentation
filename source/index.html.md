@@ -185,7 +185,8 @@ To change language set the `Accept-Language` header to your preferred language.
   "created_at": "2019-05-20T15:33:08.974624Z",
   "notified_at": "2019-05-20T15:33:12.581720Z",
   "claimed_at": "2019-05-21T09:13:32.575721Z",
-  "verified_at": "2019-05-21T09:13:48.625263Z"
+  "verified_at": "2019-05-21T09:13:48.625263Z",
+  "invitation_code": null
 }
 ```
 
@@ -221,8 +222,9 @@ Gigapay-Signature: t=1583327301,v1=ad583e2b2093c8d6fb3b65e04b99fc5988e98c0c31290
     },
     "created_at": "2019-05-20T15:33:08.974624Z",
     "notified_at": "2019-05-20T15:33:12.581720Z",
-    "claimed_at": "2019-05-21T09:13:32.575721Z"
-    "verified_at": "2019-05-21T09:13:48.625263Z"
+    "claimed_at": "2019-05-21T09:13:32.575721Z",
+    "verified_at": "2019-05-21T09:13:48.625263Z",
+    "invitation_code": null
 }
 ```
 
@@ -312,7 +314,7 @@ The only valid signature scheme is currently `v1`, which is the HMAC algorithm a
 
 To verify signatures using the v1 scheme, extract the timestamp from the Gigapay-Signature header, and the JSON-encoded
 notification from the request body. Join these strings with a period, `.`, as a separator. Compute an HMAC with the
-SHA256 hash function using the Webhook’s secret key as the key. Lastly ensure that the signature in the header and the
+SHA256 hash function using the Webhook's secret key as the key. Lastly ensure that the signature in the header and the
 calculated signature matches.
 
 # Errors
@@ -390,7 +392,8 @@ fetch("https://api.gigapay.se/v2/payouts/9472/?expand=employee", {
     "created_at": "2019-05-22T10:32:36.118753Z",
     "notified_at": null,
     "claimed_at": null,
-    "verified_at": null
+    "verified_at": null,
+    "invitation_code": "ABCD1234"
   },
   "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
   "invoiced_amount": "1000.00",
@@ -460,7 +463,8 @@ fetch("https://api.gigapay.se/v2/employees/?page_size=2&page=2", {
       "created_at": "2019-05-20T15:33:08.974624Z",
       "notified_at": "2019-05-20T15:33:12.581720Z",
       "claimed_at": "2019-05-21T09:13:32.575721Z",
-      "verified_at": "2019-05-21T09:13:48.625263Z"
+      "verified_at": "2019-05-21T09:13:48.625263Z",
+      "invitation_code": null
     },
     {
       "id": "25d2af38-59b9-4f73-9452-51787fed5c84",
@@ -473,7 +477,8 @@ fetch("https://api.gigapay.se/v2/employees/?page_size=2&page=2", {
       "created_at": "2019-05-20T15:33:08.974624Z",
       "notified_at": "2019-05-20T15:33:12.581720Z",
       "claimed_at": null,
-      "verified_at": null
+      "verified_at": null,
+      "invitation_code": "ABCD1234"
     }
   ]
 }
@@ -586,7 +591,8 @@ fetch("https://api.gigapay.se/v2/employees/?search=skoog", {
       "created_at": "2022-04-11T13:05:27.565954Z",
       "notified_at": "2022-04-11T13:05:27.565954Z",
       "claimed_at": "2022-04-11T13:05:27.565954Z",
-      "verified_at": "2022-04-11T14:05:27.565954Z"
+      "verified_at": "2022-04-11T14:05:27.565954Z",
+      "invitation_code": null
     },
     {
       "id": "481c3138-5710-4086-9237-a082e87d624f",
@@ -598,7 +604,8 @@ fetch("https://api.gigapay.se/v2/employees/?search=skoog", {
       "created_at": "2022-04-11T13:05:27.543935Z",
       "notified_at": "2022-04-11T13:05:27.543935Z",
       "claimed_at": "2022-04-11T13:05:27.543935Z",
-      "verified_at": "2022-04-11T14:05:27.543935Z"
+      "verified_at": "2022-04-11T14:05:27.543935Z",
+      "invitation_code": null
     }
   ]
 }
@@ -663,7 +670,8 @@ fetch("https://api.gigapay.se/v2/payouts/?search=skoog", {
         "created_at": "2022-04-14T08:31:11.741713Z",
         "notified_at": "2022-04-14T08:31:11.741713Z",
         "claimed_at": "2022-04-14T08:31:11.741713Z",
-        "verified_at": "2022-04-14T09:31:11.741713Z"
+        "verified_at": "2022-04-14T09:31:11.741713Z",
+        "invitation_code": null
       },
       "invoice": "f4377884-e4c0-4e65-bbd1-24f52973b933",
       "full_salary_specification": false
@@ -691,7 +699,8 @@ fetch("https://api.gigapay.se/v2/payouts/?search=skoog", {
         "created_at": "2022-04-14T08:31:11.741713Z",
         "notified_at": "2022-04-14T08:31:11.741713Z",
         "claimed_at": "2022-04-14T08:31:11.741713Z",
-        "verified_at": "2022-04-14T09:31:11.741713Z"
+        "verified_at": "2022-04-14T09:31:11.741713Z",
+        "invitation_code": null
       },
       "invoice": "b749b0fd-a82a-4644-a7c8-e89ae891cc23",
       "full_salary_specification": false
@@ -719,7 +728,8 @@ fetch("https://api.gigapay.se/v2/payouts/?search=skoog", {
         "created_at": "2022-04-14T08:31:11.707438Z",
         "notified_at": "2022-04-14T08:31:11.707438Z",
         "claimed_at": "2022-04-14T08:31:11.707438Z",
-        "verified_at": "2022-04-14T09:31:11.707438Z"
+        "verified_at": "2022-04-14T09:31:11.707438Z",
+        "invitation_code": null
       },
       "invoice": "e5647953-4df7-4166-9066-f9dea11b66f3",
       "full_salary_specification": false
@@ -896,7 +906,8 @@ fetch("https://api.gigapay.se/v2/employees/", {
   "created_at": "2019-05-22T10:32:36.118753Z",
   "notified_at": null,
   "claimed_at": null,
-  "verified_at": null
+  "verified_at": null,
+  "invitation_code": "ABCD1234"
 }
 ```
 
