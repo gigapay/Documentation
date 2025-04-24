@@ -190,8 +190,7 @@ fetch("https://api.gigapay.se/v2/employees/", {
 }
 ```
 
-This endpoint registers an Employee. The employee will be notified with a invitation code which can be used to create a 
-magic link to claim the employee.
+This endpoint registers an Employee. The Employee will be notified with the `invitation_code` that can be used to sign up in Gigapay and accept your invitation.
 
 ### HTTP Request
 
@@ -535,7 +534,7 @@ fetch("https://api.gigapay.se/v2/employees/1847/resend/", {
 > The above command returns an empty response.
 
 
-This endpoint resends notification with a invitation code. After resending, you need to wait at least 24 hours before resending again.
+This endpoint resends a notification with an invitation code. After resending, you need to wait at least 24 hours before resending again.
 
 ### HTTP Request
 
