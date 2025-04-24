@@ -682,7 +682,8 @@ To change language set the <code>Accept-Language</code> header to your preferred
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20T15:33:08.974624Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20T15:33:12.581720Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:32.575721Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:48.625263Z"</span><span class="w">
+  </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:48.625263Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>The Gigapay API is driven by actions taken by the parties involved in each Payout; the Client making the Payout,
@@ -715,8 +716,9 @@ with <code>_at</code>.</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20T15:33:08.974624Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20T15:33:12.581720Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:32.575721Z"</span><span class="w">
-    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:48.625263Z"</span><span class="w">
+    </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:32.575721Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:48.625263Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>The Gigapay API allows you to register <a href="#webhooks">Webhooks</a> in order to receive real-time updates on events related
@@ -798,7 +800,7 @@ by a third party.</p>
 
 <p>To verify signatures using the v1 scheme, extract the timestamp from the Gigapay-Signature header, and the JSON-encoded
 notification from the request body. Join these strings with a period, <code>.</code>, as a separator. Compute an HMAC with the
-SHA256 hash function using the Webhook’s secret key as the key. Lastly ensure that the signature in the header and the
+SHA256 hash function using the Webhook&#39;s secret key as the key. Lastly ensure that the signature in the header and the
 calculated signature matches.</p>
 <h1 id='errors'>Errors</h1><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">405</span> <span class="ne">Method Not Allowed</span>
 <span class="na">Allow</span><span class="p">:</span> <span class="s">GET, HEAD, OPTIONS</span>
@@ -859,7 +861,8 @@ to a particular field then the <code>non_field_errors</code> key will be used.</
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:36.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCD1234"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"invoiced_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
@@ -919,7 +922,8 @@ You can expand multiple objects at once by repeating the <code>expand</code> req
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20T15:33:08.974624Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20T15:33:12.581720Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:32.575721Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:48.625263Z"</span><span class="w">
+      </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-21T09:13:48.625263Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25d2af38-59b9-4f73-9452-51787fed5c84"</span><span class="p">,</span><span class="w">
@@ -932,7 +936,8 @@ You can expand multiple objects at once by repeating the <code>expand</code> req
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20T15:33:08.974624Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20T15:33:12.581720Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCD1234"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1027,7 +1032,8 @@ of objects per page. The objects returned are contained within the <code>result<
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T13:05:27.565954Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T13:05:27.565954Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T13:05:27.565954Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T14:05:27.565954Z"</span><span class="w">
+      </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T14:05:27.565954Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"481c3138-5710-4086-9237-a082e87d624f"</span><span class="p">,</span><span class="w">
@@ -1039,7 +1045,8 @@ of objects per page. The objects returned are contained within the <code>result<
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T13:05:27.543935Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T13:05:27.543935Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T13:05:27.543935Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T14:05:27.543935Z"</span><span class="w">
+      </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-11T14:05:27.543935Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1096,7 +1103,8 @@ of objects per page. The objects returned are contained within the <code>result<
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T08:31:11.741713Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T08:31:11.741713Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T08:31:11.741713Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T09:31:11.741713Z"</span><span class="w">
+        </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T09:31:11.741713Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4377884-e4c0-4e65-bbd1-24f52973b933"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"full_salary_specification"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
@@ -1124,7 +1132,8 @@ of objects per page. The objects returned are contained within the <code>result<
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T08:31:11.741713Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T08:31:11.741713Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T08:31:11.741713Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T09:31:11.741713Z"</span><span class="w">
+        </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T09:31:11.741713Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b749b0fd-a82a-4644-a7c8-e89ae891cc23"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"full_salary_specification"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
@@ -1152,7 +1161,8 @@ of objects per page. The objects returned are contained within the <code>result<
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T08:31:11.707438Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T08:31:11.707438Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T08:31:11.707438Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T09:31:11.707438Z"</span><span class="w">
+        </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-14T09:31:11.707438Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e5647953-4df7-4166-9066-f9dea11b66f3"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"full_salary_specification"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
@@ -1303,7 +1313,8 @@ an error. The uniqueness of an id is guaranteed for the lifetime of the object.<
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:36.118753Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCD1234"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>All objects in the Gigapay API have a <code>metadata</code> attribute. You can use this attribute to attach any
@@ -2104,7 +2115,8 @@ and working permits.</p>
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:36.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:37.846274Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:56:41.123721Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:57:03.742345Z"</span><span class="w">
+    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:57:03.742345Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -2153,6 +2165,10 @@ and working permits.</p>
 <td><code>verified_at</code></td>
 <td>Time when the Employee was verified. Displayed as ISO 8601 string.</td>
 </tr>
+<tr>
+<td><code>invitation_code</code></td>
+<td>8-digit alphanumeric uppercase code available when an employee is invited but not yet claimed. Users can use this code to create a magic link to claim the employee.</td>
+</tr>
 </tbody></table>
 <h2 id='list-all-employees'>List All Employees</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
@@ -2189,7 +2205,8 @@ and working permits.</p>
             </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:36.118753Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:37.846274Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:56:41.123721Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:57:03.742345Z"</span><span class="w">
+            </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:57:03.742345Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
         </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1848"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joakim Olovsson"</span><span class="p">,</span><span class="w">
@@ -2199,8 +2216,9 @@ and working permits.</p>
             </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
             </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T14:45:12.545271Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T14:45:13.374627Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T14:45:37.282819Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-24T09:47:02.918264Z"</span><span class="w">
+            </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1B2C3D4"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2316,10 +2334,11 @@ and working permits.</p>
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:36.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1B2C3D4"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint registers an Employee.</p>
+<p>This endpoint registers an Employee. The Employee will be notified with the <code>invitation_code</code> that can be used to sign up in Gigapay and accept your invitation.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://api.gigapay.se/v2/employees/</code></p>
 <h3 id='headers-2'>Headers</h3>
@@ -2429,7 +2448,8 @@ and working permits.</p>
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:36.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:37.846274Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:56:41.123721Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:57:03.742345Z"</span><span class="w">
+    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:57:03.742345Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves an employee.</p>
@@ -2504,7 +2524,8 @@ and working permits.</p>
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:36.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:37.846274Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:56:41.123721Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:57:03.742345Z"</span><span class="w">
+    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:57:03.742345Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint updates an Employee.</p>
@@ -2642,7 +2663,8 @@ and working permits.</p>
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:36.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint replaces an Employee.</p>
@@ -2816,7 +2838,7 @@ and working permits.</p>
 <p>The above command returns an empty response.</p>
 </blockquote>
 
-<p>This endpoint resends an invitation. After resending, you need to wait at least 24 hours before resending again.</p>
+<p>This endpoint resends a notification with an invitation code. After resending, you need to wait at least 24 hours before resending again.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>PATCH https://api.gigapay.se/v2/employees/:id/resend/</code></p>
 <h3 id='headers-7'>Headers</h3>
@@ -3998,7 +4020,8 @@ align everyone&#39;s expectation.</p>
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:36.118753Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nl">"verified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"invitation_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCD1234"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"full_salary_specification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
