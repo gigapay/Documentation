@@ -276,6 +276,60 @@ Parameter | Type | Required | Default | Notes
 `metadata` | Object | False | Previous value | 
 
 
+## Finalize an Invoice
+
+```python
+import requests
+
+response = requests.post(
+    'https://api.gigapay.se/v2/invoices/846271/close/',
+    headers={
+        'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
+        'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
+    }
+)
+```
+
+```shell
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/invoices/846271/close/
+```
+
+```javascript
+fetch("https://api.gigapay.se/v2/invoices/846271/close/", {
+    method: "POST",
+    headers: {
+        "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
+        "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
+    }
+})
+```
+
+> The above command returns an empty response.
+
+
+In a general setup, invoices get created in an open state (pro-forma) without being finalized and thus enforced as invoices. This is to allow users to edit their invoices before they feel lik submitting it.
+Once the editing phace of the pro-forma is done, we convert it to an invoice by finalizing it.
+
+An invoice being finalized will result in the payouts being visible to the receivers. It will also result in the invoice being sent to the invoice email saved in the integration.
+
+### HTTP Request
+
+`POST https://api.gigapay.se/v2/invoices/:id/close/`
+
+### Headers
+
+Parameter | Required | Description
+--------- | ------- | -----------
+`Authorization` | True | Your Authorization Token.
+`Integration-ID` | True | Integration id.
+
+
+### URL Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+`id` | True | Unique identifier for the object.
+
 
 
 ## Delete an Invoice
@@ -328,3 +382,4 @@ Parameter | Required | Description
 Parameter | Required | Description
 --------- | ------- | -----------
 `id` | True | Unique identifier for the object.
+
