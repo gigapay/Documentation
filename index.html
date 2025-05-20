@@ -522,6 +522,9 @@
                     <a href="#update-an-invoice" class="toc-h2 toc-link" data-title="Update an Invoice">Update an Invoice</a>
                   </li>
                   <li>
+                    <a href="#finalize-an-invoice" class="toc-h2 toc-link" data-title="Finalize an Invoice">Finalize an Invoice</a>
+                  </li>
+                  <li>
                     <a href="#delete-an-invoice" class="toc-h2 toc-link" data-title="Delete an Invoice">Delete an Invoice</a>
                   </li>
               </ul>
@@ -5434,6 +5437,68 @@ it is added to the Invoice that is currently open. If there is no open Invoice, 
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='finalize-an-invoice'>Finalize an Invoice</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s">'https://api.gigapay.se/v2/invoices/846271/close/'</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+        <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> https://api.gigapay.se/v2/invoices/846271/close/
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/invoices/846271/close/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">Integration-Id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns an empty response.</p>
+</blockquote>
+
+<p>Invoices are initially created in an open state (pro-forma) and are not immediately finalized. This allows users to review and edit their invoices before submission.</p>
+
+<p>Once the invoice is ready, it can be finalized using this endpoint. Finalization has two important effects:
+1. The payouts become visible to the employees
+2. The invoice is sent to the email address configured in the integration settings</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://api.gigapay.se/v2/invoices/:id/close/</code></p>
+<h3 id='headers-4'>Headers</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td>True</td>
+<td>Your Authorization Token.</td>
+</tr>
+<tr>
+<td><code>Integration-ID</code></td>
+<td>True</td>
+<td>Integration id.</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>True</td>
+<td>Unique identifier for the object.</td>
+</tr>
+</tbody></table>
 <h2 id='delete-an-invoice'>Delete an Invoice</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span>
@@ -5457,9 +5522,9 @@ it is added to the Invoice that is currently open. If there is no open Invoice, 
 </blockquote>
 
 <p>This endpoint deletes an Invoice. Note that you can not delete a paid Invoice or an Invoice on credit.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>DELETE https://api.gigapay.se/v2/invoices/:id/</code></p>
-<h3 id='headers-4'>Headers</h3>
+<h3 id='headers-5'>Headers</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5478,7 +5543,7 @@ it is added to the Invoice that is currently open. If there is no open Invoice, 
 <td>Integration id.</td>
 </tr>
 </tbody></table>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
