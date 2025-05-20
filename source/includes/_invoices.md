@@ -307,7 +307,7 @@ fetch("https://api.gigapay.se/v2/invoices/846271/close/", {
 > The above command returns an empty response.
 
 
-In a general setup, invoices are initially created in an open state (pro-forma) and are not immediately finalized. This allows users to review and edit their invoices before submission.
+Invoices are initially created in an open state (pro-forma) and are not immediately finalized. This allows users to review and edit their invoices before submission.
 
 Once the invoice is ready, it can be finalized using this endpoint. Finalization has two important effects:
 1. The payouts become visible to the employees
