@@ -530,6 +530,17 @@
               </ul>
           </li>
           <li>
+            <a href="#payment-terms" class="toc-h1 toc-link" data-title="Payment Terms">Payment Terms</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-payment-terms-object" class="toc-h2 toc-link" data-title="The Payment Terms object">The Payment Terms object</a>
+                  </li>
+                  <li>
+                    <a href="#list-payment-terms" class="toc-h2 toc-link" data-title="List Payment Terms">List Payment Terms</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
@@ -5555,6 +5566,123 @@ it is added to the Invoice that is currently open. If there is no open Invoice, 
 <td><code>id</code></td>
 <td>True</td>
 <td>Unique identifier for the object.</td>
+</tr>
+</tbody></table>
+<h1 id='payment-terms'>Payment Terms</h1>
+<p>This endpoint allows you to retrieve the payment terms associated with your integration. The response includes information about credit limits for each currency. To enable InstantPay, a prepayment matching the <code>credit_limit</code> is required. <code>credit_used</code> denotes the sum of the <code>invoiced_amount</code> of all payouts created but not yet funded, broken down by currency.</p>
+<h3 id='the-payment-terms-object'>The Payment Terms object</h3>
+<blockquote>
+<p>An example Payment Terms object:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"credit_terms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"credit_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70.00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"credit_used"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"credit_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70.00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"credit_used"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"credit_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70.00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"credit_used"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>credit_terms</code></td>
+<td>A list of credit term objects.</td>
+</tr>
+<tr>
+<td><code>credit_limit</code></td>
+<td>The maximum credit amount available in the specified currency.</td>
+</tr>
+<tr>
+<td><code>credit_used</code></td>
+<td>Sum of invoiced_amount of all unfunded payouts.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>The currency code for the credit terms (e.g., SEK, NOK, EUR).</td>
+</tr>
+</tbody></table>
+<h2 id='list-payment-terms'>List Payment Terms</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s">'https://api.gigapay.se/v2/payment_terms/'</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+        <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> https://api.gigapay.se/v2/payment_terms/
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/payment_terms/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">Authorization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">Integration-Id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"credit_terms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"credit_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70.00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"credit_used"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"credit_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70.00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"credit_used"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"credit_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70.00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"credit_used"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.00</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves Payment Terms for an integration.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.gigapay.se/v2/payment_terms/</code></p>
+<h3 id='headers'>Headers</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td>True</td>
+<td>Your Authorization Token.</td>
+</tr>
+<tr>
+<td><code>Integration-ID</code></td>
+<td>True</td>
+<td>Integration id.</td>
 </tr>
 </tbody></table>
 <h1 id='webhooks'>Webhooks</h1>
