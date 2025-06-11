@@ -36,7 +36,7 @@ This endpoint allows you to retrieve the payment terms associated with your inte
 | ------------ | ----------------------------------------------------------------------- |
 | `credit_terms` | A list of credit term objects.                                        |
 | `credit_limit` | The maximum credit amount available in the specified currency.        |
-| `credit_used`  | The amount of credit currently being used in the specified currency.  |
+| `credit_used`  | Sum of invoiced_amount of all unfunded payouts. |
 | `currency`     | The currency code for the credit terms (e.g., SEK, NOK, EUR).         |
 
 ## List Payment Terms
