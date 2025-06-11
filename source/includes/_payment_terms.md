@@ -1,6 +1,6 @@
 # Payment Terms
 
-This endpoint allows you to retrieve the payment terms associated with your integration. The response includes information about security deposits for each currency. For integrations with a security deposit at Gigapay, the endpoint displays the total deposit amount (`credit_limit`) and how much of that deposit has been utilized (`credit_used`), broken down by currency.
+This endpoint allows you to retrieve the payment terms associated with your integration. The response includes information about credit limits for each currency. To enable InstantPay, a prepayment matching the `credit_limit` is required. `credit_used` denotes the sum of the `invoiced_amount` of all payouts created but not yet funded, broken down by currency.
 
 ### The Payment Terms object
 
