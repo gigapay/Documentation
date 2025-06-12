@@ -17,7 +17,6 @@ includes:
   - payouts
   - pricing
   - invoices
-  - payment_terms
   - webhooks
 
 search: true
