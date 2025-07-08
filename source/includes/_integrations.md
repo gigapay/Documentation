@@ -4,12 +4,6 @@ Integrations are the parent object of all other objects in the Gigapay API. All 
 Integration, when operating on these objects you thus need to specify which integration you are acting as by providing
 the `Integration-ID` header.
 
-There are three types of integrations:
-
-- Web App Integration; `type 1`: The integration used for the web app at `app.gigapay.se`. There is only one, it can not be deleted.
-- Invoice Integrations; `type 2`: Integrations used to manage Invoices sent to you from Freelancers. There is one per Freelancer, they are read-only.
-- Custom Integrations; `type 3`: Integrations created and managed by you through the api.
-
 
 
 
