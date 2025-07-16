@@ -26,7 +26,8 @@ align everyone's expectation.
     "end_at": null,
     "created_at": "2019-05-22T10:32:38.118753Z",
     "notified_at": "2019-05-22T10:38:19.874623Z",
-    "accepted_at": null
+    "accepted_at": null,
+    "canceled_at": null
 }
 ```
 
@@ -47,6 +48,7 @@ align everyone's expectation.
 | `created_at`                | The time at which the Payout was created at. Displayed as ISO 8601 string.                                                                                          |
 | `notified_at`               | The time at which the Employee was notified of the Payout. Displayed as ISO 8601 string.                                                                            |
 | `accepted_at`               | The time at which the Employee accepted the Payout. Displayed as ISO 8601 string.                                                                                   |
+| `canceled_at`               | The time at which the Payout was canceled. Displayed as ISO 8601 string.                                                                                            |
 
 
 
@@ -101,7 +103,8 @@ fetch("https://api.gigapay.se/v2/payouts/", {
             "end_at": null,
             "created_at": "2019-05-22T10:32:38.118753Z",
             "notified_at": "2019-05-22T10:38:19.874623Z",
-            "accepted_at": null
+            "accepted_at": null,
+            "canceled_at": null
         }, {
             "id": "8a726186-a4e4-42e0-b56e-20fd17dc67ba",
             "amount": "10.00",
@@ -117,7 +120,8 @@ fetch("https://api.gigapay.se/v2/payouts/", {
             "end_at": "2019-05-22T17:00:00.000000Z",
             "created_at": "2019-05-23T10:32:38.118753Z",
             "notified_at": "2019-05-23T11:46:29.298742Z",
-            "accepted_at": "2019-05-23T12:02:16.472846Z"
+            "accepted_at": "2019-05-23T12:02:16.472846Z",
+            "canceled_at": null
         }
     ]
 }
@@ -149,6 +153,7 @@ This endpoint retrieves all Payouts.
 | `created_at`  |         | Timestamp filter.                                                                                   |
 | `notified_at` |         | Timestamp filter.                                                                                   |
 | `accepted_at` |         | Timestamp filter.                                                                                   |
+| `canceled_at` |         | Timestamp filter.                                                                                   |
 | `search`      |         | Find payout by searching for part of payout description or employee: name, cellphone number, email. |
 
 ## Register a Payout
@@ -212,7 +217,8 @@ fetch("https://api.gigapay.se/v2/payouts/", {
     "end_at": null,
     "created_at": "2019-05-23T10:32:38.118753Z",
     "notified_at": null,
-    "accepted_at": null
+    "accepted_at": null,
+    "canceled_at": null
 }
 ```
 
@@ -330,7 +336,8 @@ fetch("https://api.gigapay.se/v2/payouts/", {
         "end_at": null,
         "created_at": "2019-05-23T10:32:38.118753Z",
         "notified_at": null,
-        "accepted_at": null
+        "accepted_at": null,
+        "canceled_at": null
     }, {
         "id": "9473",
         "amount": "1902.31",
@@ -346,7 +353,8 @@ fetch("https://api.gigapay.se/v2/payouts/", {
         "end_at": null,
         "created_at": "2019-05-23T10:32:38.118812Z",
         "notified_at": null,
-        "accepted_at": null
+        "accepted_at": null,
+        "canceled_at": null
     }
 ]
 ```
@@ -463,7 +471,8 @@ fetch("https://api.gigapay.se/v2/payouts/?expand=employee", {
     "end_at": null,
     "created_at": "2019-05-23T10:32:38.118753Z",
     "notified_at": null,
-    "accepted_at": null
+    "accepted_at": null,
+    "canceled_at": null
 }
 ```
 
@@ -548,7 +557,8 @@ fetch("https://api.gigapay.se/v2/payouts/9472/", {
     "end_at": "2019-05-22T17:00:00.000000Z",
     "created_at": "2019-05-23T10:32:38.118753Z",
     "notified_at": "2019-05-23T11:46:29.298742Z",
-    "accepted_at": "2019-05-23T12:02:16.472846Z"
+    "accepted_at": "2019-05-23T12:02:16.472846Z",
+    "canceled_at": null
 }
 ```
 
