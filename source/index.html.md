@@ -16,7 +16,7 @@ includes:
   - messages
   - payouts
   - pricing
-  - invoices
+  - payruns
   - webhooks
 
 search: true
@@ -239,8 +239,8 @@ on the following events:
 - `Payout.created`
 - `Payout.notified`
 - `Payout.accepted`
-- `Invoice.created`
-- `Invoice.paid`
+- `Payrun.created`
+- `Payrun.paid`
 
 The notifications simply contain the object that triggered the event, as represented in the API.
 

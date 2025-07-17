@@ -1,13 +1,13 @@
-# Invoices
+# Payruns
 
-An Invoice groups Payouts together. It is a managed object, you can not create them directly. When a Payout is created 
-it is added to the Invoice that is currently open. If there is no open Invoice, a new will be created.
+A Payrun groups Payouts together. It is a managed object, you can not create them directly. When a Payout is created 
+it is added to the Payrun that is currently open. If there is no open Payrun, a new will be created.
 
-You can keep invoices open for a certain time period by enabling batching of payouts. Contact [support@gigapay.se](mailto:support@gigapay.se) if you are interested in this.
+You can keep payruns open for a certain time period by enabling batching of payouts. Contact [support@gigapay.se](mailto:support@gigapay.se) if you are interested in this.
 
-### The Invoice object
+### The Payrun object
 
-> An example Invoice object:
+> An example Payrun object:
 
 ```json
 {
@@ -32,22 +32,22 @@ You can keep invoices open for a certain time period by enabling batching of pay
 | `id`         | A unique identifier for the object.                                  |
 | `metadata`   | JSON-encoded metadata.                                               |
 | `ocr_number` | Bank reference.                                                      |
-| `open`       | Whether the Invoice is the currently open one.                       |
-| `paid_at`    | Time at which the Invoice was paid. Displayed as ISO 8601 string.    |
-| `pdf`        | Link to download a pdf version of the Invoice.                       |
+| `open`       | Whether the Payrun is the currently open one.                       |
+| `paid_at`    | Time at which the Payrun was paid. Displayed as ISO 8601 string.    |
+| `pdf`        | Link to download a pdf version of the Payrun.                       |
 | `price`      | Decimal formatted string of the price.                               |
 
 
 
 
 
-## List All Invoices
+## List All Payruns
 
 ```python
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/invoices/',
+    'https://api.gigapay.se/v2/payruns/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -56,11 +56,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/invoices/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/payruns/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/invoices/", {
+fetch("https://api.gigapay.se/v2/payruns/", {
   headers: {
     "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
     "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
@@ -74,7 +74,7 @@ fetch("https://api.gigapay.se/v2/invoices/", {
 {
     "count": 4,
     "next": null,
-    "previous": "https://api.gigapay.se/v2/invoices/?page=1",
+    "previous": "https://api.gigapay.se/v2/payruns/?page=1",
     "results": [
         {
             "app": "https://app.gigapay.se/i/2859272/?token=Ii9pbnZvaWNpbmcvb3Blbl9pbnZvaWNlcy9jMTMzYzIwMi0xMDUwLTQ5NTktODMwNi05NWQ3Y2IzZjNiMjgvIg",
@@ -102,11 +102,11 @@ fetch("https://api.gigapay.se/v2/invoices/", {
 }
 ```
 
-This endpoint retrieves all Invoices.
+This endpoint retrieves all Payruns.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/invoices/`
+`GET https://api.gigapay.se/v2/payruns/`
 
 ### Headers
 
@@ -120,7 +120,7 @@ Parameter | Required | Description
 Parameter | Default | Description
 --------- | ------- | -----------
 `page` | 1 | Which page to return.
-`page_size` | 25 | The number of Invoices per page.
+`page_size` | 25 | The number of Payruns per page.
 `created_at` | | Timestamp filter.
 `paid_at` | | Timestamp filter.
 
@@ -128,13 +128,13 @@ Parameter | Default | Description
 
 
 
-## Retrieve an Invoice
+## Retrieve a Payrun
 
 ```python
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/invoices/2859272/',
+    'https://api.gigapay.se/v2/payruns/2859272/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -143,11 +143,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/invoices/2859272/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/payruns/2859272/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/invoices/2859272/", {
+fetch("https://api.gigapay.se/v2/payruns/2859272/", {
   headers: {
     "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
     "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
@@ -172,11 +172,11 @@ fetch("https://api.gigapay.se/v2/invoices/2859272/", {
 }
 ```
 
-This endpoint retrieves an Invoice.
+This endpoint retrieves a Payrun.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/invoices/:id/`
+`GET https://api.gigapay.se/v2/payruns/:id/`
 
 ### Headers
 
@@ -196,13 +196,13 @@ Parameter | Required | Description
 
 
 
-## Update an Invoice
+## Update a Payrun
 
 ```python
 import requests
 
 response = requests.patch(
-    'https://api.gigapay.se/v2/invoices/2859272/',
+    'https://api.gigapay.se/v2/payruns/2859272/',
     json={
       'id': '846271',
       'metadata': {'original_id': '2859272'}
@@ -215,11 +215,11 @@ response = requests.patch(
 ```
 
 ```shell
-curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": "846271", "metadata": {"original_id": "2859272"}}' https://api.gigapay.se/v2/invoices/2859272/
+curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": "846271", "metadata": {"original_id": "2859272"}}' https://api.gigapay.se/v2/payruns/2859272/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/invoices/2859272/", {
+fetch("https://api.gigapay.se/v2/payruns/2859272/", {
     method: "PATCH",
     body: JSON.stringify({'id': '846271', 'metadata': {'original_id': '2859272'}}),
     headers: {
@@ -249,11 +249,11 @@ fetch("https://api.gigapay.se/v2/invoices/2859272/", {
 }
 ```
 
-This endpoint updates an Invoice.
+This endpoint updates a Payrun.
 
 ### HTTP Request
 
-`PATCH https://api.gigapay.se/v2/invoices/:id/`
+`PATCH https://api.gigapay.se/v2/payruns/:id/`
 
 ### Headers
 
@@ -276,13 +276,13 @@ Parameter | Type | Required | Default | Notes
 `metadata` | Object | False | Previous value | 
 
 
-## Finalize an Invoice
+## Finalize a Payrun
 
 ```python
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/invoices/846271/close/',
+    'https://api.gigapay.se/v2/payruns/846271/close/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -291,11 +291,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/invoices/846271/close/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/payruns/846271/close/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/invoices/846271/close/", {
+fetch("https://api.gigapay.se/v2/payruns/846271/close/", {
     method: "POST",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -307,15 +307,15 @@ fetch("https://api.gigapay.se/v2/invoices/846271/close/", {
 > The above command returns an empty response.
 
 
-Invoices are initially created in an open state (pro-forma) and are not immediately finalized. This allows users to review and edit their invoices before submission.
+Payruns are initially created in an open state (pro-forma) and are not immediately finalized. This allows users to review and edit their payruns before submission.
 
-Once the invoice is ready, it can be finalized using this endpoint. Finalization has two important effects:
+Once the payrun is ready, it can be finalized using this endpoint. Finalization has two important effects:
 1. The payouts become visible to the employees
-2. The invoice is sent to the email address configured in the integration settings
+2. The payrun is sent to the email address configured in the integration settings
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/invoices/:id/close/`
+`POST https://api.gigapay.se/v2/payruns/:id/close/`
 
 ### Headers
 
@@ -333,13 +333,13 @@ Parameter | Required | Description
 
 
 
-## Delete an Invoice
+## Delete a Payrun
 
 ```python
 import requests
 
 response = requests.delete(
-    'https://api.gigapay.se/v2/invoices/846271/',
+    'https://api.gigapay.se/v2/payruns/846271/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -348,11 +348,11 @@ response = requests.delete(
 ```
 
 ```shell
-curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/invoices/846271/
+curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/payruns/846271/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/invoices/846271/", {
+fetch("https://api.gigapay.se/v2/payruns/846271/", {
     method: "DELETE",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -364,11 +364,11 @@ fetch("https://api.gigapay.se/v2/invoices/846271/", {
 > The above command returns an empty response.
 
 
-This endpoint deletes an Invoice. Note that you can not delete a paid Invoice or an Invoice on credit.
+This endpoint deletes a Payrun. Note that you can not delete a paid Payrun or a Payrun on credit.
 
 ### HTTP Request
 
-`DELETE https://api.gigapay.se/v2/invoices/:id/`
+`DELETE https://api.gigapay.se/v2/payruns/:id/`
 
 ### Headers
 

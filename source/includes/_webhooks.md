@@ -328,8 +328,8 @@ import requests
 response = requests.put(
     'https://api.gigapay.se/v2/webhooks/481272/',
     json={
-        'url': 'https://jobmatchr.se/webhooks/invoiced/', 
-        'events': ['Invoice.created']
+        'url': 'https://jobmatchr.se/webhooks/payruns/', 
+        'events': ['Payrun.created']
     },
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -339,13 +339,13 @@ response = requests.put(
 ```
 
 ```shell
-curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"url": "https://jobmatchr.se/webhooks/invoiced/", "events": ["Invoice.created"]}' https://api.gigapay.se/v2/webhooks/481272/
+curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"url": "https://jobmatchr.se/webhooks/payruns/", "events": ["Payrun.created"]}' https://api.gigapay.se/v2/webhooks/481272/
 ```
 
 ```javascript
 fetch("https://api.gigapay.se/v2/webhooks/481272/", {
     method: "PUT",
-    body: JSON.stringify({url: "https://jobmatchr.se/webhooks/invoiced/", events: ["Invoice.created"]}),
+    body: JSON.stringify({url: "https://jobmatchr.se/webhooks/payruns/", events: ["Payrun.created"]}),
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
         "Content-Type": "application/json",
@@ -359,8 +359,8 @@ fetch("https://api.gigapay.se/v2/webhooks/481272/", {
 ```json
 {
     "id": "481272",
-    "url": "https://jobmatchr.se/webhooks/invoices/",
-    "events": ["Invoice.created"],
+    "url": "https://jobmatchr.se/webhooks/payruns/",
+    "events": ["Payrun.created"],
     "secret_key": "vksnrsc6tamq73tc26rzrnzf33a4pgdv",
     "metadata": {}
 }
@@ -369,8 +369,8 @@ fetch("https://api.gigapay.se/v2/webhooks/481272/", {
 ```json
 {
     "id": "481272",
-    "url": "https://jobmatchr.se/webhooks/invoices/",
-    "events": ["Invoice.created"],
+    "url": "https://jobmatchr.se/webhooks/payruns/",
+    "events": ["Payrun.created"],
     "secret_key": "vksnrsc6tamq73tc26rzrnzf33a4pgdv",
     "metadata": {}
 }
