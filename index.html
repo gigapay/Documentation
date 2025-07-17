@@ -3450,7 +3450,8 @@ align everyone&#39;s expectation.</p>
     </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:38.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:38:19.874623Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"canceled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -3519,6 +3520,10 @@ align everyone&#39;s expectation.</p>
 <td><code>accepted_at</code></td>
 <td>The time at which the Employee accepted the Payout. Displayed as ISO 8601 string.</td>
 </tr>
+<tr>
+<td><code>canceled_at</code></td>
+<td>The time at which the Payout was canceled. Displayed as ISO 8601 string.</td>
+</tr>
 </tbody></table>
 <h2 id='list-all-payouts'>List All Payouts</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
@@ -3560,7 +3565,8 @@ align everyone&#39;s expectation.</p>
             </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:32:38.118753Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T10:38:19.874623Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"canceled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
         </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8a726186-a4e4-42e0-b56e-20fd17dc67ba"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
@@ -3576,7 +3582,8 @@ align everyone&#39;s expectation.</p>
             </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T17:00:00.000000Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T10:32:38.118753Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:46:29.298742Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T12:02:16.472846Z"</span><span class="w">
+            </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T12:02:16.472846Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"canceled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3657,6 +3664,11 @@ align everyone&#39;s expectation.</p>
 <td>Timestamp filter.</td>
 </tr>
 <tr>
+<td><code>canceled_at</code></td>
+<td></td>
+<td>Timestamp filter.</td>
+</tr>
+<tr>
 <td><code>search</code></td>
 <td></td>
 <td>Find payout by searching for part of payout description or employee: name, cellphone number, email.</td>
@@ -3713,7 +3725,8 @@ align everyone&#39;s expectation.</p>
     </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T10:32:38.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"canceled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint registers a payout.</p>
@@ -3896,7 +3909,8 @@ align everyone&#39;s expectation.</p>
         </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T10:32:38.118753Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canceled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9473"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1902.31"</span><span class="p">,</span><span class="w">
@@ -3912,7 +3926,8 @@ align everyone&#39;s expectation.</p>
         </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T10:32:38.118812Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canceled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
@@ -4036,7 +4051,8 @@ align everyone&#39;s expectation.</p>
     </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T10:32:38.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"canceled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint registers a Payout and an Employee at the same time. If an Employee with matching information is already
@@ -4185,7 +4201,8 @@ registered that object will be reused.</p>
     </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-22T17:00:00.000000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T10:32:38.118753Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T11:46:29.298742Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T12:02:16.472846Z"</span><span class="w">
+    </span><span class="nl">"accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23T12:02:16.472846Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"canceled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a payout.</p>
