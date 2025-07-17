@@ -383,9 +383,6 @@
                     <a href="#list-all-integrations" class="toc-h2 toc-link" data-title="List All Integrations">List All Integrations</a>
                   </li>
                   <li>
-                    <a href="#create-an-integration" class="toc-h2 toc-link" data-title="Create an Integration">Create an Integration</a>
-                  </li>
-                  <li>
                     <a href="#retrieve-an-integration" class="toc-h2 toc-link" data-title="Retrieve an Integration">Retrieve an Integration</a>
                   </li>
                   <li>
@@ -1331,14 +1328,6 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
 <p>Integrations are the parent object of all other objects in the Gigapay API. All other objects are separated per
 Integration, when operating on these objects you thus need to specify which integration you are acting as by providing
 the <code>Integration-ID</code> header.</p>
-
-<p>There are three types of integrations:</p>
-
-<ul>
-<li>Web App Integration; <code>type 1</code>: The integration used for the web app at <code>app.gigapay.se</code>. There is only one, it can not be deleted.</li>
-<li>Invoice Integrations; <code>type 2</code>: Integrations used to manage Invoices sent to you from Freelancers. There is one per Freelancer, they are read-only.</li>
-<li>Custom Integrations; <code>type 3</code>: Integrations created and managed by you through the api.</li>
-</ul>
 <h3 id='the-integration-object'>The Integration object</h3>
 <blockquote>
 <p>An example Integration object:</p>
@@ -1497,166 +1486,6 @@ the <code>Integration-ID</code> header.</p>
 <td>Filter based on type.</td>
 </tr>
 </tbody></table>
-<h2 id='create-an-integration'>Create an Integration</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
-    <span class="s">'https://api.gigapay.se/v2/integrations/'</span><span class="p">,</span>
-    <span class="n">json</span><span class="o">=</span><span class="p">{</span>
-        <span class="s">"address_line_1"</span><span class="p">:</span> <span class="s">"Malmvägen 8"</span><span class="p">,</span>
-        <span class="s">"city"</span><span class="p">:</span> <span class="s">"Segeltorp"</span><span class="p">,</span>
-        <span class="s">"email"</span><span class="p">:</span> <span class="s">"albin@pinestreet.tech"</span><span class="p">,</span>
-        <span class="s">"id"</span><span class="p">:</span> <span class="s">"846291712"</span><span class="p">,</span>
-        <span class="s">"logo"</span><span class="p">:</span> <span class="s">"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII="</span><span class="p">,</span>
-        <span class="s">"name"</span><span class="p">:</span> <span class="s">"Pinestreet Tech"</span><span class="p">,</span>
-        <span class="s">"recipient"</span><span class="p">:</span> <span class="s">"Pinestreet Technology AB"</span><span class="p">,</span>
-        <span class="s">"zip_code"</span><span class="p">:</span> <span class="s">"14171"</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
-        <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
-    <span class="p">}</span>
-<span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-d</span> <span class="s1">'{"address_line_1": "Malmv\u00e4gen 8", "city": "Segeltorp", "email": "albin@pinestreet.tech", "id": "846291712", "logo": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=", "name": "Pinestreet Tech", "recipient": "Pinestreet Technology AB", "zip_code": "14171"}'</span> https://api.gigapay.se/v2/integrations/<span class="sb">```</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/integrations/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-        <span class="na">address_line_1</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Malmvägen 8</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">city</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Segeltorp</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">email</span><span class="p">:</span> <span class="dl">"</span><span class="s2">albin@pinestreet.tech</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">846291712</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">logo</span><span class="p">:</span> <span class="dl">"</span><span class="s2">iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Pinestreet Tech</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">recipient</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Pinestreet Technology AB</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">zip_code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">14171</span><span class="dl">"</span><span class="p">,</span>
-    <span class="p">}),</span>
-    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">Authorization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
-    <span class="p">},</span>
-<span class="p">})</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14585989-9a6c-4f05-b251-69e38e85d324"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pinestreet Tech"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gigapay.ams3.digitaloceanspaces.com/gigapay/pinestreet_logo.png"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"albin@pinestreet.tech"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pinestreet Technology AB"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Malmvägen 8"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14171"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Segeltorp"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint creates an Integration. </p>
-
-<p>This endpoints supports both JSON and multipart/form-data encoded requests, to facilitate uploading a logo file.</p>
-
-<p>Only examples with JSON-encoded payload and base64-encoded images are provided, though.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://api.gigapay.se/v2/integrations/</code></p>
-<h3 id='headers-2'>Headers</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>Authorization</code></td>
-<td>True</td>
-<td>Your Authorization Token.</td>
-</tr>
-<tr>
-<td><code>Idempotency-key</code></td>
-<td>False</td>
-<td>Idempotency key.</td>
-</tr>
-</tbody></table>
-<h3 id='body-parameters'>Body Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Notes</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>String</td>
-<td>False</td>
-<td>uuid4()</td>
-<td>Globally unique.</td>
-</tr>
-<tr>
-<td><code>name</code></td>
-<td>String</td>
-<td>True</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>logo</code></td>
-<td>Image</td>
-<td>False</td>
-<td>null</td>
-<td>base64 or multipart/form-data encoded image file.</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td>Object</td>
-<td>False</td>
-<td>{}</td>
-<td></td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>String</td>
-<td>True</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>recipient</code></td>
-<td>String</td>
-<td>True</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>address_line_1</code></td>
-<td>Object</td>
-<td>True</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>address_line_2</code></td>
-<td>String</td>
-<td>False</td>
-<td>null</td>
-<td></td>
-</tr>
-<tr>
-<td><code>zip_code</code></td>
-<td>String</td>
-<td>True</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>city</code></td>
-<td>String</td>
-<td>True</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
 <h2 id='retrieve-an-integration'>Retrieve an Integration</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span>
@@ -1690,9 +1519,9 @@ the <code>Integration-ID</code> header.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves an Integration.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.gigapay.se/v2/integrations/:id/</code></p>
-<h3 id='headers-3'>Headers</h3>
+<h3 id='headers-2'>Headers</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1759,13 +1588,13 @@ the <code>Integration-ID</code> header.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint updates an integration. You may not update Integrations of type 2.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>PATCH https://api.gigapay.se/v2/integrations/:id/</code></p>
 
 <p>This endpoints supports both JSON and multipart/form-data encoded requests, to facilitate uploading a logo file.</p>
 
 <p>Only examples with JSON-encoded payload and base64-encoded images are provided, though.</p>
-<h3 id='headers-4'>Headers</h3>
+<h3 id='headers-3'>Headers</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1793,7 +1622,7 @@ the <code>Integration-ID</code> header.</p>
 <td>Unique identifier for the object.</td>
 </tr>
 </tbody></table>
-<h3 id='body-parameters-2'>Body Parameters</h3>
+<h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1928,13 +1757,13 @@ the <code>Integration-ID</code> header.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint replaces an Integration. You may not replace Integrations of type 2.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PUT https://api.gigapay.se/v2/integrations/:id/</code></p>
 
 <p>This endpoints supports both JSON and multipart/form-data encoded requests, to facilitate uploading a logo file.</p>
 
 <p>Only examples with JSON-encoded payload and base64-encoded images are provided, though.</p>
-<h3 id='headers-5'>Headers</h3>
+<h3 id='headers-4'>Headers</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2070,9 +1899,9 @@ the <code>Integration-ID</code> header.</p>
 
 <p>This endpoint deletes an Integration. Note that you can not delete Integrations of type 1 or 2, nor Integrations
 that have objects associated with them.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>DELETE https://api.gigapay.se/v2/integrations/:id/</code></p>
-<h3 id='headers-6'>Headers</h3>
+<h3 id='headers-5'>Headers</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
