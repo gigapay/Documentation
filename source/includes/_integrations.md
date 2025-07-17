@@ -4,12 +4,6 @@ Integrations are the parent object of all other objects in the Gigapay API. All 
 Integration, when operating on these objects you thus need to specify which integration you are acting as by providing
 the `Integration-ID` header.
 
-There are three types of integrations:
-
-- Web App Integration; `type 1`: The integration used for the web app at `app.gigapay.se`. There is only one, it can not be deleted.
-- Invoice Integrations; `type 2`: Integrations used to manage Invoices sent to you from Freelancers. There is one per Freelancer, they are read-only.
-- Custom Integrations; `type 3`: Integrations created and managed by you through the api.
-
 
 
 
@@ -128,104 +122,6 @@ Parameter | Default | Description
 `type` | | Filter based on type.
 
 
-
-
-
-## Create an Integration
-
-```python
-import requests
-
-response = requests.post(
-    'https://api.gigapay.se/v2/integrations/',
-    json={
-        "address_line_1": "Malmvägen 8",
-        "city": "Segeltorp",
-        "email": "albin@pinestreet.tech",
-        "id": "846291712",
-        "logo": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=",
-        "name": "Pinestreet Tech",
-        "recipient": "Pinestreet Technology AB",
-        "zip_code": "14171",
-    },
-    headers={
-        'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
-    }
-)
-```
-
-```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -d '{"address_line_1": "Malmv\u00e4gen 8", "city": "Segeltorp", "email": "albin@pinestreet.tech", "id": "846291712", "logo": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=", "name": "Pinestreet Tech", "recipient": "Pinestreet Technology AB", "zip_code": "14171"}' https://api.gigapay.se/v2/integrations/```
-```
-
-```javascript
-fetch("https://api.gigapay.se/v2/integrations/", {
-    method: "POST",
-    body: JSON.stringify({
-        address_line_1: "Malmvägen 8",
-        city: "Segeltorp",
-        email: "albin@pinestreet.tech",
-        id: "846291712",
-        logo: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=",
-        name: "Pinestreet Tech",
-        recipient: "Pinestreet Technology AB",
-        zip_code: "14171",
-    }),
-    headers: {
-        Authorization: "Token cd7a4537a231356d404b553f465b6af2fa035821",
-    },
-})
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "id": "14585989-9a6c-4f05-b251-69e38e85d324",
-    "name": "Pinestreet Tech",
-    "type": 3,
-    "logo": "https://gigapay.ams3.digitaloceanspaces.com/gigapay/pinestreet_logo.png",
-    "metadata": {},
-    "email": "albin@pinestreet.tech",
-    "recipient": "Pinestreet Technology AB",
-    "address_line_1": "Malmvägen 8",
-    "address_line_2": null,
-    "zip_code": "14171",
-    "city": "Segeltorp"
-}
-```
-
-This endpoint creates an Integration. 
-
-This endpoints supports both JSON and multipart/form-data encoded requests, to facilitate uploading a logo file.
-
-Only examples with JSON-encoded payload and base64-encoded images are provided, though.
-
-### HTTP Request
-
-`POST https://api.gigapay.se/v2/integrations/`
-
-### Headers
-
-Parameter | Required | Description
---------- | ------- | -----------
-`Authorization` | True | Your Authorization Token.
-`Idempotency-key` | False | Idempotency key.
-
-### Body Parameters
-
-Parameter | Type | Required | Default | Notes
---------- | ---- | -------- | ------- |------------
-`id` | String | False | uuid4() | Globally unique.
-`name` | String | True |  |
-`logo` | Image | False | null | base64 or multipart/form-data encoded image file.
-`metadata` | Object | False | {} |
-`email` | String | True | |
-`recipient` | String | True | |
-`address_line_1` | Object | True | |
-`address_line_2` | String | False | null |
-`zip_code` | String | True | |
-`city` | String | True | | 
 
 
 
