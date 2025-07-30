@@ -5,6 +5,8 @@ description of these notifications, see [Events](#events).
 
 In the case where the receiving server is unavailable, we will retry the webhook notification up to 10 times with an exponential backoff.
 
+
+
 ### The Webhook object
 
 > An example Webhook object
@@ -94,7 +96,7 @@ This endpoint retrieves all webhooks.
 Parameter | Required | Description
 --------- | ------- | -----------
 `Authorization` | True | Your Authorization Token.
-`Integration-ID` | True | Integration id.
+`Integration-ID` | True for integration-scoped webhooks | Having integration id in the header will list integration-scoped webhook along with user-scoped webhooks. If it ommited then only user-scoped webhooks will be listed.
 
 ### Query Parameters
 
@@ -163,14 +165,14 @@ This endpoint creates a webhook.
 Parameter | Required | Description
 --------- | ------- | -----------
 `Authorization` | True | Your Authorization Token.
-`Integration-ID` | True | Integration id.
+`Integration-ID` | True for integration-scoped events | The integration id is requied if any of the events that is being registered is integration-scoped event.
 `Idempotency-key` | False | Idempotency key.
 
 ### Body Parameters
 
 Parameter | Type | Required | Default | Notes
 --------- | ---- | -------- | ------- |------------
-`id` | String | False | uuid4() | Unique per [Integration](#integrations).
+`id` | String | False | uuid4() | Unique per user account or integration.
 `url` | URL | True |  | 
 `events` | String[] | True | | 
 `secret_key` | String | False | 32 char random string | 
@@ -230,7 +232,7 @@ This endpoint retrieves a webhook.
 Parameter | Required | Description
 --------- | ------- | -----------
 `Authorization` | True | Your Authorization Token.
-`Integration-ID` | True | Integration id.
+`Integration-ID` | True for integration-scoped events | The integration id is requied if the webhook that's being retrieved contains one or more integration-scoped events.
 
 ### URL Parameters
 
@@ -299,7 +301,7 @@ This endpoint updates a webhook.
 Parameter | Required | Description
 --------- | ------- | -----------
 `Authorization` | True | Your Authorization Token.
-`Integration-ID` | True | Integration id.
+`Integration-ID` | True for integration-scoped events | The integration id is requied if any of the events that is being updated is integration-scoped event.
 
 ### URL Parameters
 
@@ -311,7 +313,7 @@ Parameter | Required | Description
 
 Parameter | Type | Required | Default | Notes
 --------- | ---- | -------- | ------- |------------
-`id` | String | False | Previous value | Unique per [Integration](#integrations).
+`id` | String | False | Previous value | Unique per user account or integration.
 `url` | URL | False | Previous value |
 `events` | String[] | False | Previous value | 
 `secret_key` | String | False |Previous value | 
@@ -387,7 +389,7 @@ This endpoint replaces a webhook.
 Parameter | Required | Description
 --------- | ------- | -----------
 `Authorization` | True | Your Authorization Token.
-`Integration-ID` | True | Integration id.
+`Integration-ID` | True for integration-scoped events | The integration id is requied if any of the events that is being replaced is integration-scoped event.
 
 ### URL Parameters
 
@@ -439,7 +441,6 @@ fetch("https://api.gigapay.se/v2/webhooks/481272/", {
 
 > The above command returns an empty response.
 
-
 This endpoint deletes a webhook.
 
 ### HTTP Request
@@ -451,8 +452,7 @@ This endpoint deletes a webhook.
 Parameter | Required | Description
 --------- | ------- | -----------
 `Authorization` | True | Your Authorization Token.
-`Integration-ID` | True | Integration id.
-
+`Integration-ID` | True for integration-scoped events | The integration id is requied if the webhook that is being deleted contains one or more integration-scoped events.
 
 ### URL Parameters
 

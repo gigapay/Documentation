@@ -242,8 +242,22 @@ on the following events:
 - `Payout.accepted`
 - `Payrun.created`
 - `Payrun.paid`
+- `Registration.verified`
 
-The notifications simply contain the object that triggered the event, as represented in the API.
+The notifications simply contain the object that triggered the event, as represented in the API. 
+
+### Webhook Types
+
+**Integration-Scoped Webhooks**
+<br>
+These webhooks are tied to a specific integration and require an `Integration-ID` header for all operations.
+This includes events that start with `Employee`, `Payout`, or `Payrun`.
+
+**User-Scoped Webhooks**
+<br>
+These webhooks are tied to your user account and do **not** require an `Integration-ID` header for any operations.
+This includes events that start with `Registration`.
+
 
 ### Gigapay Signature
 
