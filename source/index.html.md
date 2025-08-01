@@ -18,6 +18,7 @@ includes:
   - payouts
   - pricing
   - payruns
+  - prepayments
   - payment_terms
   - webhooks
 
