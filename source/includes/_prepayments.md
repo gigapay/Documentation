@@ -1,6 +1,6 @@
 # Prepayments
 
-Prepayments allow clients to pre-fund anticipated payments, enabling InstantPay.
+Prepayments allow clients to pre-fund anticipated payments, enabling InstantPay. Once paid, prepayments are automatically used to cover payruns in a first-in-first-out (FIFO) manner. The deduction will be shown in the monthly payrun receipt.
 
 ## The Prepayment Object
 
