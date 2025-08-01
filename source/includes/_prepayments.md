@@ -93,3 +93,72 @@ curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' 
 | `invoice_marking` | False    | Customer reference/PO number.            |
 | `metadata`        | False    | JSON metadata object for arbitrary data. |
 
+## Update a Prepayment
+
+```python
+import requests
+
+response = requests.patch(
+  'https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
+  headers={
+    'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
+    'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
+  },
+  json={
+    "description": "Updated Q1 2024 Influencer Campaign Budget",
+    "invoice_marking": "PO-2024-001-UPDATED", 
+    "metadata": {"campaign_type": "influencer"}
+  }
+)
+```
+
+```shell
+curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' \
+     -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
+     -H 'Content-Type: application/json' \
+     -d '{"description":"Updated Q1 2024 Influencer Campaign Budget","invoice_marking":"PO-2024-001-UPDATED","metadata":{"campaign_type":"influencer"}}' \
+     https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+```
+
+**Note**: Prepayments can only be updated while in `DRAFT` status. Once invoiced or paid, they become read-only.
+
+### HTTP Request
+
+`PATCH https://api.gigapay.se/v2/prepayments/:id/`
+
+### Parameters
+
+| Parameter         | Required | Description                              |
+|-------------------|----------|------------------------------------------|
+| `description`     | False    | Description of the prepayment purpose.   |
+| `net_amount`      | False    | Prepayment amount (positive decimal).    |
+| `currency`        | False    | ISO-4217 currency code (3 letters).      |
+| `invoice_marking` | False    | Customer reference/PO number.            |
+| `metadata`        | False    | JSON metadata object for arbitrary data. |
+
+## Delete a Prepayment
+
+```python
+import requests
+
+response = requests.delete(
+  'https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
+  headers={
+    'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
+    'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
+  }
+)
+```
+
+```shell
+curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' \
+     -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
+     https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+```
+
+**Note**: Prepayments can only be deleted while in `DRAFT` status. Once invoiced or paid, deletion is not permitted.
+
+### HTTP Request
+
+`DELETE https://api.gigapay.se/v2/prepayments/:id/`
+
