@@ -47,7 +47,7 @@ subscription, credit).
 import requests
 
 response = requests.get(
-  'https://api.gigapay.se/v2/invoices-new/',
+  'https://api.gigapay.se/v2/invoices/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -56,11 +56,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/invoices-new/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/invoices/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/invoices-new/", {
+fetch("https://api.gigapay.se/v2/invoices/", {
   headers: {
     "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
     "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
@@ -72,7 +72,7 @@ This endpoint retrieves all invoices across all invoice types.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/invoices-new/`
+`GET https://api.gigapay.se/v2/invoices/`
 
 ### Query Parameters
 
@@ -90,7 +90,7 @@ This endpoint retrieves all invoices across all invoice types.
 import requests
 
 response = requests.post(
-  'https://api.gigapay.se/v2/invoices-new/a9d59fad-4e74-4471-a081-1d8a8a107ab5/issue_invoice/',
+  'https://api.gigapay.se/v2/invoices/a9d59fad-4e74-4471-a081-1d8a8a107ab5/issue_invoice/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -106,7 +106,7 @@ curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' 
      -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
      -H 'Content-Type: application/json' \
      -d '{"due_date":"2024-02-15"}' \
-     https://api.gigapay.se/v2/invoices-new/a0c72032-8e02-4d5d-be09-274dc67dbe2d/issue_invoice/
+     https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/issue_invoice/
 ```
 
 This action issues any invoice type (including prepayment proformas) as a payable invoice. The operation is idempotent -
@@ -114,7 +114,7 @@ if already issued, returns existing invoiced_at and due_date.
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/invoices-new/:id/issue_invoice/`
+`POST https://api.gigapay.se/v2/invoices/:id/issue_invoice/`
 
 ### Parameters
 

@@ -25,7 +25,7 @@ Prepayments allow clients to pre-fund anticipated payments, enabling InstantPay.
 
 | Attribute           | Description                                                          |
 |---------------------|----------------------------------------------------------------------|
-| `id`                | Unique identifier for the prepayment (Prepayment.external_id).       |
+| `id`                | Unique identifier for the prepayment.                                |
 | `description`       | Description of the prepayment purpose.                               |
 | `net_amount`        | Total prepayment amount as decimal string.                           |
 | `currency`          | ISO-4217 currency code.                                              |
