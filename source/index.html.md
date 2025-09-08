@@ -11,6 +11,7 @@ toc_footers:
   - <a href='mailto:support@gigapay.se'>support@gigapay.se</a>
 
 includes:
+  - registrations
   - integrations
   - employees
   - messages
