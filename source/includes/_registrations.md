@@ -589,3 +589,72 @@ Parameter | Required | Description
 Parameter | Required | Description
 --------- | ------- | -----------
 `id` | True | Unique identifier for the object.
+
+
+## Approve a Registration (Demo Only)
+
+```python
+import requests
+
+response = requests.post(
+    'https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/approve/',
+    headers={
+        'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821'
+    }
+)
+```
+
+```shell
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/approve/
+```
+
+```javascript
+fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/approve/", {
+    method: "POST",
+    headers: {
+        "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821"
+    }
+})
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "8347fdd5-688d-4267-ae42-864b34a4220b",
+    "integration_id": "cc7e24d0-5e43-4bd5-806a-27b0df5f419a",
+    "needs_review": false,
+    "tin_number": "18785161",
+    "vat_number": "DK18785161",
+    "registered_name": "Zebrebra AB",
+    "friendly_name": "Zebrebra AB",
+    "address_line_1": "Malmövägen 8",
+    "address_line_2": "",
+    "state": null,
+    "zip_code": "14172",
+    "city": "Segeltorps",
+    "email": "faktura@zebrebra.com",
+    "phone_number": "+46703000001",
+    "country": "DNK"
+}
+```
+
+This endpoint approves a Registration and is **only available in demo environments**. In production, registrations are reviewed and approved by the Gigapay team.
+
+When a registration is approved using this endpoint, the `needs_review` field is set to `false` and an `Integration` is automatically created with the same id as the `integration_id` specified in the registration.
+
+### HTTP Request
+
+`POST https://api.gigapay.se/v2/registrations/:id/approve/`
+
+### Headers
+
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `Authorization` | True | Your Authorization Token. |
+
+### URL Parameters
+
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `id` | True | Unique identifier for the registration to approve. |
