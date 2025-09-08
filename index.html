@@ -764,9 +764,20 @@ on the following events:</p>
 <li><code>Payout.accepted</code></li>
 <li><code>Payrun.created</code></li>
 <li><code>Payrun.paid</code></li>
+<li><code>Registration.verified</code></li>
 </ul>
 
-<p>The notifications simply contain the object that triggered the event, as represented in the API.</p>
+<p>The notifications simply contain the object that triggered the event, as represented in the API. </p>
+<h3 id='webhook-types'>Webhook Types</h3>
+<p><strong>Integration-Scoped Webhooks</strong>
+<br>
+These webhooks are tied to a specific integration and require an <code>Integration-ID</code> header for all operations.
+This includes events that start with <code>Employee</code>, <code>Payout</code>, or <code>Payrun</code>.</p>
+
+<p><strong>User-Scoped Webhooks</strong>
+<br>
+These webhooks are tied to your user account and do <strong>not</strong> require an <code>Integration-ID</code> header for any operations.
+This includes events that start with <code>Registration</code>.</p>
 <h3 id='gigapay-signature'>Gigapay Signature</h3>
 <blockquote>
 <p>Example code to verify a Gigapay Signature:</p>
@@ -6495,8 +6506,8 @@ description of these notifications, see <a href="#events">Events</a>.</p>
 </tr>
 <tr>
 <td><code>Integration-ID</code></td>
-<td>True</td>
-<td>Integration id.</td>
+<td>True for integration-scoped webhooks</td>
+<td>Having integration id in the header will list integration-scoped webhook along with user-scoped webhooks. If it ommited then only user-scoped webhooks will be listed.</td>
 </tr>
 </tbody></table>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -6570,8 +6581,8 @@ description of these notifications, see <a href="#events">Events</a>.</p>
 </tr>
 <tr>
 <td><code>Integration-ID</code></td>
-<td>True</td>
-<td>Integration id.</td>
+<td>True for integration-scoped events</td>
+<td>The integration id is requied if any of the events that is being registered is integration-scoped event.</td>
 </tr>
 <tr>
 <td><code>Idempotency-key</code></td>
@@ -6594,7 +6605,7 @@ description of these notifications, see <a href="#events">Events</a>.</p>
 <td>String</td>
 <td>False</td>
 <td>uuid4()</td>
-<td>Unique per <a href="#integrations">Integration</a>.</td>
+<td>Unique per user account or integration.</td>
 </tr>
 <tr>
 <td><code>url</code></td>
@@ -6671,8 +6682,8 @@ description of these notifications, see <a href="#events">Events</a>.</p>
 </tr>
 <tr>
 <td><code>Integration-ID</code></td>
-<td>True</td>
-<td>Integration id.</td>
+<td>True for integration-scoped events</td>
+<td>The integration id is requied if the webhook that&#39;s being retrieved contains one or more integration-scoped events.</td>
 </tr>
 </tbody></table>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -6741,8 +6752,8 @@ description of these notifications, see <a href="#events">Events</a>.</p>
 </tr>
 <tr>
 <td><code>Integration-ID</code></td>
-<td>True</td>
-<td>Integration id.</td>
+<td>True for integration-scoped events</td>
+<td>The integration id is requied if any of the events that is being updated is integration-scoped event.</td>
 </tr>
 </tbody></table>
 <h3 id='url-parameters-2'>URL Parameters</h3>
@@ -6774,7 +6785,7 @@ description of these notifications, see <a href="#events">Events</a>.</p>
 <td>String</td>
 <td>False</td>
 <td>Previous value</td>
-<td>Unique per <a href="#integrations">Integration</a>.</td>
+<td>Unique per user account or integration.</td>
 </tr>
 <tr>
 <td><code>url</code></td>
@@ -6865,8 +6876,8 @@ description of these notifications, see <a href="#events">Events</a>.</p>
 </tr>
 <tr>
 <td><code>Integration-ID</code></td>
-<td>True</td>
-<td>Integration id.</td>
+<td>True for integration-scoped events</td>
+<td>The integration id is requied if any of the events that is being replaced is integration-scoped event.</td>
 </tr>
 </tbody></table>
 <h3 id='url-parameters-3'>URL Parameters</h3>
@@ -6969,8 +6980,8 @@ description of these notifications, see <a href="#events">Events</a>.</p>
 </tr>
 <tr>
 <td><code>Integration-ID</code></td>
-<td>True</td>
-<td>Integration id.</td>
+<td>True for integration-scoped events</td>
+<td>The integration id is requied if the webhook that is being deleted contains one or more integration-scoped events.</td>
 </tr>
 </tbody></table>
 <h3 id='url-parameters-4'>URL Parameters</h3>
