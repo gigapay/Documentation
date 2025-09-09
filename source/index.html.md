@@ -18,6 +18,7 @@ includes:
   - payouts
   - pricing
   - payruns
+  - payment_terms
   - webhooks
 
 search: true
