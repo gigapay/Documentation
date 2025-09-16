@@ -2,6 +2,8 @@
 
 Payment Term defines the financial conditions under which your Gigapay integration operates, including credit limits, payment schedules, and batching intervals for processing payouts.
 
+Prepayments affect your credit limit dynamically: when a prepayment is paid, your available credit limit increases by that amount. When a payrun is settled against your prepayment credit, your available credit limit decreases accordingly.
+
 ### The Payment Term object
 
 > An example Payment Term object:
@@ -58,7 +60,7 @@ curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -
 fetch("https://api.gigapay.se/v2/payment_term/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
-        "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
+        "Integration-ID": "79606358-97af-4196-b64c-5f719433d56b"
     }
 })
 ```
