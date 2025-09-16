@@ -556,6 +556,46 @@
               </ul>
           </li>
           <li>
+            <a href="#invoices" class="toc-h1 toc-link" data-title="Invoices">Invoices</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-invoice-object" class="toc-h2 toc-link" data-title="The Invoice Object">The Invoice Object</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-invoices" class="toc-h2 toc-link" data-title="List All Invoices">List All Invoices</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-an-invoice" class="toc-h2 toc-link" data-title="Retrieve an Invoice">Retrieve an Invoice</a>
+                  </li>
+                  <li>
+                    <a href="#issue-invoice" class="toc-h2 toc-link" data-title="Issue Invoice">Issue Invoice</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#prepayments" class="toc-h1 toc-link" data-title="Prepayments">Prepayments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-prepayment-object" class="toc-h2 toc-link" data-title="The Prepayment Object">The Prepayment Object</a>
+                  </li>
+                  <li>
+                    <a href="#list-prepayments" class="toc-h2 toc-link" data-title="List Prepayments">List Prepayments</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-prepayment" class="toc-h2 toc-link" data-title="Create a Prepayment">Create a Prepayment</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-prepayment" class="toc-h2 toc-link" data-title="Retrieve a Prepayment">Retrieve a Prepayment</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-prepayment" class="toc-h2 toc-link" data-title="Update a Prepayment">Update a Prepayment</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-prepayment" class="toc-h2 toc-link" data-title="Delete a Prepayment">Delete a Prepayment</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#payment-term" class="toc-h1 toc-link" data-title="Payment Term">Payment Term</a>
               <ul class="toc-list-h2">
                   <li>
@@ -6414,8 +6454,702 @@ it is added to the Payrun that is currently open. If there is no open Payrun, a 
 <td>Unique identifier for the object.</td>
 </tr>
 </tbody></table>
+<h1 id='invoices'>Invoices</h1>
+<p>The invoice API provides a standardized interface for accessing all invoice types (payrun, prepayment,
+subscription, credit).</p>
+<h2 id='the-invoice-object'>The Invoice Object</h2>
+<blockquote>
+<p>An example invoice object:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0c72032-8e02-4d5d-be09-274dc67dbe2d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issued_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-23T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-24T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1250.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1250.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"986911160380"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customer_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billing_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prepayment"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pdf_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Unique identifier for the invoice (UUID4).</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>Time at which the invoice was created. ISO 8601 string.</td>
+</tr>
+<tr>
+<td><code>issued_at</code></td>
+<td>Time at which proforma was converted to invoice. Null for proformas.</td>
+</tr>
+<tr>
+<td><code>paid_at</code></td>
+<td>Time at which the invoice was paid. ISO 8601 string.</td>
+</tr>
+<tr>
+<td><code>due_date</code></td>
+<td>Due date for payment. ISO 8601 date string.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>ISO-4217 currency code.</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>Total invoice amount as decimal string.</td>
+</tr>
+<tr>
+<td><code>amount_due</code></td>
+<td>Amount still due (0 if paid, total minus prepayment usage).</td>
+</tr>
+<tr>
+<td><code>amount_paid</code></td>
+<td>Amount paid (full total if paid_at is set).</td>
+</tr>
+<tr>
+<td><code>invoice_number</code></td>
+<td>OCR/reference number for the invoice.</td>
+</tr>
+<tr>
+<td><code>customer_reference</code></td>
+<td>Customer reference (invoice_marking).</td>
+</tr>
+<tr>
+<td><code>billing_type</code></td>
+<td>Type of invoice: <code>prepayment</code>, <code>payrun</code>, <code>subscription</code>, <code>credit</code>.</td>
+</tr>
+<tr>
+<td><code>pdf_url</code></td>
+<td>URL to download invoice PDF (currently returns <code>null</code> - feature not yet implemented).</td>
+</tr>
+</tbody></table>
+<h2 id='list-all-invoices'>List All Invoices</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span>
+  <span class="s">'https://api.gigapay.se/v2/invoices/'</span><span class="p">,</span>
+  <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+    <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> https://api.gigapay.se/v2/invoices/
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/invoices/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">Integration-ID</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This endpoint retrieves all invoices across all invoice types.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0c72032-8e02-4d5d-be09-274dc67dbe2d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issued_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-23T10:28:21.847474Z"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1250.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1250.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"986911160380"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"customer_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billing_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payrun"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pdf_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.gigapay.se/invoice/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?token=some-token&amp;language=en"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.gigapay.se/v2/invoices/</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>1</td>
+<td>Which page to return.</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td>25</td>
+<td>The number of invoices per page.</td>
+</tr>
+<tr>
+<td><code>billing_type</code></td>
+<td></td>
+<td>Filter by type: <code>prepayment</code>, <code>payrun</code>, <code>subscription</code>, <code>credit</code>.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td></td>
+<td>Filter by status: <code>proforma</code>, <code>invoice</code>, <code>paid</code>.</td>
+</tr>
+<tr>
+<td><code>ordering</code></td>
+<td></td>
+<td>Sort by: <code>created_at</code>, <code>paid_at</code>, <code>due_date</code> (prefix with <code>-</code> for desc).</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-an-invoice'>Retrieve an Invoice</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span>
+  <span class="s">'https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/'</span><span class="p">,</span>
+  <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+    <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">Integration-ID</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This endpoint retrieves a specific invoice.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0c72032-8e02-4d5d-be09-274dc67dbe2d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issued_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-23T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1250.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1250.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"986911160380"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customer_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billing_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payrun"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pdf_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.gigapay.se/invoice/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?token=some-token&amp;language=en"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.gigapay.se/v2/invoices/:id/</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>The ID of the invoice to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='issue-invoice'>Issue Invoice</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
+  <span class="s">'https://api.gigapay.se/v2/invoices/a9d59fad-4e74-4471-a081-1d8a8a107ab5/issue/'</span><span class="p">,</span>
+  <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+    <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+  <span class="p">},</span>
+  <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">"due_date"</span><span class="p">:</span> <span class="s">"2024-02-15"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s1">'{"due_date":"2024-02-15"}'</span> <span class="se">\</span>
+     https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/issue/
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/issue/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">Integration-ID</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="dl">"</span><span class="s2">due_date</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2024-02-15</span><span class="dl">"</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This action issues any invoice type (including prepayment proformas) as a payable invoice. The operation returns a conflict error if the invoice is already issued. Requires the integration to have <code>invoice_enabled=True</code> permission.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://api.gigapay.se/v2/invoices/:id/issue/</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>due_date</code></td>
+<td>False</td>
+<td>Due date (ISO date format). Uses integration&#39;s payment terms or 14-day fallback if omitted. Must be today or future date, maximum 365 days in future.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0c72032-8e02-4d5d-be09-274dc67dbe2d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issued_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-15"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1250.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_due"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1250.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"986911160380"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customer_reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billing_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payrun"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pdf_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.gigapay.se/invoice/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?token=hej&amp;language=en"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns the updated invoice object with <code>issued_at</code> timestamp and <code>due_date</code> set.</p>
+<h3 id='errors'>Errors</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Error</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>403</td>
+<td>Integration does not have permission</td>
+<td>Integration has <code>invoice_enabled=False</code></td>
+</tr>
+<tr>
+<td>409</td>
+<td>Invoice already issued</td>
+<td>Invoice was previously issued (idempotent operation)</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Validation error</td>
+<td>Invalid <code>due_date</code> (past date or &gt;365 days future)</td>
+</tr>
+</tbody></table>
+<h1 id='prepayments'>Prepayments</h1>
+<p>Prepayments allow clients to pre-fund anticipated payments, enabling InstantPay. Once paid, prepayments are automatically used to cover payruns in a first-in-first-out (FIFO) manner. The deduction will be shown in the monthly payrun settlement.</p>
+<h2 id='the-prepayment-object'>The Prepayment Object</h2>
+<blockquote>
+<p>An example prepayment object:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0c72032-8e02-4d5d-be09-274dc67dbe2d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q1 2024 Influencer Campaign Budget"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice_marking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoiced_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-23T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-24T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9d59fad-4e74-4471-a081-1d8a8a107ab5"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Unique identifier for the prepayment.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Description of the prepayment purpose.</td>
+</tr>
+<tr>
+<td><code>net_amount</code></td>
+<td>Total prepayment amount as decimal string.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>ISO-4217 currency code.</td>
+</tr>
+<tr>
+<td><code>available_balance</code></td>
+<td>Remaining balance after usage (0 if not paid).</td>
+</tr>
+<tr>
+<td><code>invoice_marking</code></td>
+<td>Customer reference/PO number.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>Status: <code>DRAFT</code>, <code>INVOICED</code>, <code>PAID</code>, <code>PARTIALLY_USED</code>, <code>FULLY_USED</code>.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>Time at which prepayment was created. ISO 8601 string.</td>
+</tr>
+<tr>
+<td><code>invoiced_at</code></td>
+<td>Time at which proforma was converted to invoice.</td>
+</tr>
+<tr>
+<td><code>paid_at</code></td>
+<td>Time at which prepayment was paid.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>JSON metadata object for storing arbitrary data.</td>
+</tr>
+<tr>
+<td><code>invoice</code></td>
+<td>Invoice reference (expandable).</td>
+</tr>
+</tbody></table>
+<h3 id='expandable-invoice-reference'>Expandable Invoice Reference</h3>
+<p>The <code>invoice</code> field can be expanded to show full invoice details by using the <code>expand</code> query parameter:</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Collapsed (default) - returns invoice ID only</span>
+curl <span class="nt">-X</span> GET https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+
+<span class="c"># Expanded - returns full invoice object</span>
+curl <span class="nt">-X</span> GET https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?expand<span class="o">=</span>invoice
+</code></pre></div><h2 id='list-prepayments'>List Prepayments</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.gigapay.se/v2/prepayments/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Integration-ID</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span>
+  <span class="s">'https://api.gigapay.se/v2/prepayments/'</span><span class="p">,</span>
+  <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+    <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="se">\</span>
+     https://api.gigapay.se/v2/prepayments/
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"previous"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.gigapay.se/v2/prepayments/?page=1&amp;page_size=2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0c72032-8e02-4d5d-be09-274dc67dbe2d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q1 2024 Influencer Campaign Budget"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice_marking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoiced_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-23T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-24T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9d59fad-4e74-4471-a081-1d8a8a107ab5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1d73143-9f13-5e6e-cf1a-385ed68ecf3e"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q2 2024 Marketing Budget"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice_marking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-002"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAFT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-01T08:15:30.123456Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoiced_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8e74152-0a24-5f7f-d092-296fe79fdf6b"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marketing"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"summer_2024"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.gigapay.se/v2/prepayments/</code></p>
+<h2 id='create-a-prepayment'>Create a Prepayment</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.gigapay.se/v2/prepayments/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Integration-ID</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Q1 2024 Influencer Campaign Budget</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">net_amount</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">10000.00</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">EUR</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">invoice_marking</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PO-2024-001</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">metadata</span><span class="dl">"</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
+  <span class="s">'https://api.gigapay.se/v2/prepayments/'</span><span class="p">,</span>
+  <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+    <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+  <span class="p">},</span>
+  <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">"description"</span><span class="p">:</span> <span class="s">"Q1 2024 Influencer Campaign Budget"</span><span class="p">,</span>
+    <span class="s">"net_amount"</span><span class="p">:</span> <span class="s">"10000.00"</span><span class="p">,</span>
+    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"EUR"</span><span class="p">,</span>
+    <span class="s">"invoice_marking"</span><span class="p">:</span> <span class="s">"PO-2024-001"</span><span class="p">,</span>
+    <span class="s">"metadata"</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s1">'{"description":"Q1 2024 Influencer Campaign Budget","net_amount":"10000.00","currency":"EUR","invoice_marking":"PO-2024-001","metadata":{}}'</span> <span class="se">\</span>
+     https://api.gigapay.se/v2/prepayments/
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0c72032-8e02-4d5d-be09-274dc67dbe2d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q1 2024 Influencer Campaign Budget"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice_marking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAFT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoiced_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9d59fad-4e74-4471-a081-1d8a8a107ab5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://api.gigapay.se/v2/prepayments/</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code></td>
+<td>True</td>
+<td>Description of the prepayment purpose.</td>
+</tr>
+<tr>
+<td><code>net_amount</code></td>
+<td>True</td>
+<td>Prepayment amount (positive decimal).</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>True</td>
+<td>ISO-4217 currency code (3 letters).</td>
+</tr>
+<tr>
+<td><code>invoice_marking</code></td>
+<td>False</td>
+<td>Customer reference/PO number.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>False</td>
+<td>JSON metadata object for arbitrary data.</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-a-prepayment'>Retrieve a Prepayment</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Integration-ID</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span>
+  <span class="s">'https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/'</span><span class="p">,</span>
+  <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+    <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="se">\</span>
+     https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0c72032-8e02-4d5d-be09-274dc67dbe2d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q1 2024 Influencer Campaign Budget"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice_marking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoiced_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-23T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-24T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9d59fad-4e74-4471-a081-1d8a8a107ab5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.gigapay.se/v2/prepayments/:id/</code></p>
+<h2 id='update-a-prepayment'>Update a Prepayment</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PATCH</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Integration-ID</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Updated Q1 2024 Influencer Campaign Budget</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">invoice_marking</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PO-2024-001-UPDATED</span><span class="dl">"</span><span class="p">,</span> 
+    <span class="dl">"</span><span class="s2">metadata</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">campaign_type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">influencer</span><span class="dl">"</span><span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">patch</span><span class="p">(</span>
+  <span class="s">'https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/'</span><span class="p">,</span>
+  <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+    <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+  <span class="p">},</span>
+  <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">"description"</span><span class="p">:</span> <span class="s">"Updated Q1 2024 Influencer Campaign Budget"</span><span class="p">,</span>
+    <span class="s">"invoice_marking"</span><span class="p">:</span> <span class="s">"PO-2024-001-UPDATED"</span><span class="p">,</span> 
+    <span class="s">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s">"campaign_type"</span><span class="p">:</span> <span class="s">"influencer"</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s1">'{"description":"Updated Q1 2024 Influencer Campaign Budget","invoice_marking":"PO-2024-001-UPDATED","metadata":{"campaign_type":"influencer"}}'</span> <span class="se">\</span>
+     https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+</code></pre></div>
+<p><strong>Note</strong>: Prepayments can only be updated while in <code>DRAFT</code> status. Once invoiced or paid, they become read-only.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0c72032-8e02-4d5d-be09-274dc67dbe2d"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Q1 2024 Influencer Campaign Budget"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"available_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice_marking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO-2024-001-UPDATED"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAFT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T10:28:21.847474Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoiced_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9d59fad-4e74-4471-a081-1d8a8a107ab5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"campaign_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"influencer"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PATCH https://api.gigapay.se/v2/prepayments/:id/</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code></td>
+<td>False</td>
+<td>Description of the prepayment purpose.</td>
+</tr>
+<tr>
+<td><code>net_amount</code></td>
+<td>False</td>
+<td>Prepayment amount (positive decimal).</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>False</td>
+<td>ISO-4217 currency code (3 letters).</td>
+</tr>
+<tr>
+<td><code>invoice_marking</code></td>
+<td>False</td>
+<td>Customer reference/PO number.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>False</td>
+<td>JSON metadata object for arbitrary data.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-prepayment'>Delete a Prepayment</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Integration-ID</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span>
+  <span class="s">'https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/'</span><span class="p">,</span>
+  <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
+    <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="se">\</span>
+     https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+</code></pre></div>
+<p><strong>Note</strong>: Prepayments can only be deleted while in <code>DRAFT</code> status. Once invoiced or paid, deletion is not permitted.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE https://api.gigapay.se/v2/prepayments/:id/</code></p>
 <h1 id='payment-term'>Payment Term</h1>
 <p>Payment Term defines the financial conditions under which your Gigapay integration operates, including credit limits, payment schedules, and batching intervals for processing payouts.</p>
+
+<p>Prepayments affect your credit limit dynamically: when a prepayment is paid, your available credit limit increases by that amount. When a payrun is settled against your prepayment credit, your available credit limit decreases accordingly.</p>
 <h3 id='the-payment-term-object'>The Payment Term object</h3>
 <blockquote>
 <p>An example Payment Term object:</p>
@@ -6486,7 +7220,7 @@ it is added to the Payrun that is currently open. If there is no open Payrun, a 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/payment_term/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
         <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">Integration-Id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">"</span>
+        <span class="dl">"</span><span class="s2">Integration-ID</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">79606358-97af-4196-b64c-5f719433d56b</span><span class="dl">"</span>
     <span class="p">}</span>
 <span class="p">})</span>
 </code></pre></div>
