@@ -60,7 +60,7 @@ curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -
 fetch("https://api.gigapay.se/v2/payment_term/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
-        "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
+        "Integration-ID": "79606358-97af-4196-b64c-5f719433d56b"
     }
 })
 ```
