@@ -247,6 +247,14 @@ on the following events:
 - `Payrun.paid`
 - `Registration.verified`
 
+**Status Change Events**
+<br>
+These events serve as alternatives to the individual specific events above. A callback is sent every time the `latest_status` field of an object changes, helping to track all status transitions with a single event type.
+
+- `Employee.status`
+- `Payout.status`
+- `Payrun.status`
+
 The notifications simply contain the object that triggered the event, as represented in the API. 
 
 ### Webhook Types
