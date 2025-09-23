@@ -31,6 +31,7 @@ and working permits.
 | `email`            | Email address of the Employee.                                                    |
 | `country`          | Employee's country of residence. ISO-3166 country code.                           |
 | `cellphone_number` | The Employees cellphone number, including country code.                           |
+| `latest_status`    | `created` - employee record has been created<br>`invited` - invitation has been sent to the employee<br>`onboarding` - employee has accepted the invitation and is completing the onboarding process<br>`active` - employee has completed onboarding and is ready to receive payouts |
 | `metadata`         | JSON-encoded metadata.                                                            |
 | `created_at`       | Time at which the Employee was created at. Displayed as ISO 8601 string.          |
 | `notified_at`      | Time at which the Employee was notified.  Displayed as ISO 8601 string.           |

@@ -30,6 +30,7 @@ You can keep payruns open for a certain time period by enabling batching of payo
 | `created_at` | Time at which the Invoice was created. Displayed as ISO 8601 string. |
 | `currency`   | ISO-4217 currency code.                                              |
 | `id`         | A unique identifier for the object.                                  |
+| `latest_status` | `open` - payrun can be modified and new payouts can be added<br>`invoiced` - an invoice has been created for the payrun<br>`paid` - the payrun has been paid |
 | `metadata`   | JSON-encoded metadata.                                               |
 | `ocr_number` | Bank reference.                                                      |
 | `open`       | Whether the Payrun is the currently open one.                       |
