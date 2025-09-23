@@ -44,6 +44,7 @@ align everyone's expectation.
 | `employee`                  | Unique identifier for the Employee object, that is the recipient of the Payout. This is an [expandable object.](#expanding-objects)                                 |
 | `invoice`                   | **Deprecated.** Use `payrun` instead. Unique identifier for the Payrun object the Payout object belongs to. This is an [expandable object.](#expanding-objects) |
 | `payrun`                    | Unique identifier for the Payrun object the Payout object belongs to. This is an [expandable object.](#expanding-objects)                                        |
+| `latest_status`             | `created` - The payout has been created.<br>`not_funded` - The payout is not funded and not available to the recipient<br>`onboarding_incomplete` - The recipient has not completed their onboarding process in the Gigapay system.<br>`notification_sent` - The recipient has been notified about the payout and can now view it on their dashboard.<br>`available` - The payout is ready to be accepted by the recipient.<br>`complete` - The payment process has been finalized. Gigapay will handle any remaining administrative tasks related to this payment. |
 | `metadata`                  | JSON-encoded metadata.                                                                                                                                              |
 | `start_at`                  | The time at which the gig will start. Displayed as ISO 8601 string.                                                                                                 |
 | `end_at`                    | The time at which the gig will end. Displayed as ISO 8601 string.                                                                                                   |
@@ -51,7 +52,6 @@ align everyone's expectation.
 | `notified_at`               | The time at which the Employee was notified of the Payout. Displayed as ISO 8601 string.                                                                            |
 | `accepted_at`               | The time at which the Employee accepted the Payout. Displayed as ISO 8601 string.                                                                                   |
 | `canceled_at`               | The time at which the Payout was canceled. Displayed as ISO 8601 string.                                                                                            |
-
 
 
 
