@@ -20,6 +20,7 @@ align everyone's expectation.
     "currency": "SEK",
     "description": "Lön genom Gigapay",
     "employee": "1f1d1263-0e79-4787-b573-6df81b44bfc2",
+    "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
     "payrun": "bab4b830-47d6-4a24-a460-3289897f6e8e",
     "metadata": {},
     "start_at": null,
@@ -41,6 +42,7 @@ align everyone's expectation.
 | `description`               | String describing the work done, displayed to the recipient. Max 255 characters.                                                                                    |
 | `full_salary_specification` | Controls whether to present the payroll taxes and Gigapay's fee on the payslip. It is set to false when `amount` is used as a basis for the Payout, true otherwise. |
 | `employee`                  | Unique identifier for the Employee object, that is the recipient of the Payout. This is an [expandable object.](#expanding-objects)                                 |
+| `invoice`                   | **Deprecated.** Use `payrun` instead. Unique identifier for the Payrun object the Payout object belongs to. This is an [expandable object.](#expanding-objects) |
 | `payrun`                    | Unique identifier for the Payrun object the Payout object belongs to. This is an [expandable object.](#expanding-objects)                                        |
 | `metadata`                  | JSON-encoded metadata.                                                                                                                                              |
 | `start_at`                  | The time at which the gig will start. Displayed as ISO 8601 string.                                                                                                 |
@@ -95,6 +97,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
             "currency": "SEK",
             "description": "Lön genom Gigapay",
             "employee": "1f1d1263-0e79-4787-b573-6df81b44bfc2",
+            "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
             "payrun": "bab4b830-47d6-4a24-a460-3289897f6e8e",
             "metadata": {
                 "job_id": 127
@@ -112,6 +115,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
             "currency": "SEK",
             "description": "Lön genom Gigapay",
             "employee": "1f1d1263-0e79-4787-b573-6df81b44bfc2",
+            "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
             "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
             "metadata": {
               "job_id": 128
@@ -146,6 +150,7 @@ This endpoint retrieves all Payouts.
 |---------------|---------|-----------------------------------------------------------------------------------------------------|
 | `page`        | 1       | Which page to return.                                                                               |
 | `page_size`   | 25      | The number of Employees per page.                                                                   |
+| `invoice`     |         | **Deprecated.** Relational Filter. Use `payrun` instead.                                           |
 | `payrun`      |         | Relational Filter.                                                                                  |
 | `employee`    |         | Relational Filter.                                                                                  |
 | `start_at`    |         | Timestamp filter.                                                                                   |
@@ -329,6 +334,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
         "description": "Instagram samarbete 2021-11-13.",
         "employee": "1847",
         "full_salary_specification": true,
+        "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
         "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
         "invoiced_amount": "1000.00",
         "metadata": {},
@@ -346,6 +352,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
         "description": "Instagram samarbete 2021-11-13.",
         "employee": "1736",
         "full_salary_specification": true,
+        "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
         "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
         "invoiced_amount": "2500.00",
         "metadata": {},
@@ -462,6 +469,7 @@ fetch("https://api.gigapay.se/v2/payouts/?expand=employee", {
         "invitation_code": "ABCD1234"
     },
     "full_salary_specification": true,
+    "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
     "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
     "invoiced_amount": "1000.00",
     "metadata": {
@@ -548,6 +556,7 @@ fetch("https://api.gigapay.se/v2/payouts/9472/", {
     "description": "Lön genom Gigapay",
     "employee": "1847",
     "full_salary_specification": true,
+    "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
     "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
     "invoiced_amount": "1000.00",
     "metadata": {
