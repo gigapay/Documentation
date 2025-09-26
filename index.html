@@ -4325,6 +4325,7 @@ align everyone&#39;s expectation.</p>
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lön genom Gigapay"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"employee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f1d1263-0e79-4787-b573-6df81b44bfc2"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bab4b830-47d6-4a24-a460-3289897f6e8e"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payrun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bab4b830-47d6-4a24-a460-3289897f6e8e"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -4374,7 +4375,11 @@ align everyone&#39;s expectation.</p>
 </tr>
 <tr>
 <td><code>invoice</code></td>
-<td>Unique identifier for the Invoice object the Payout object belongs to. This is an <a href="#expanding-objects">expandable object.</a></td>
+<td><strong>Deprecated.</strong> Use <code>payrun</code> instead. Unique identifier for the Payrun object the Payout object belongs to. This is an <a href="#expanding-objects">expandable object.</a></td>
+</tr>
+<tr>
+<td><code>payrun</code></td>
+<td>Unique identifier for the Payrun object the Payout object belongs to. This is an <a href="#expanding-objects">expandable object.</a></td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -4438,6 +4443,7 @@ align everyone&#39;s expectation.</p>
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lön genom Gigapay"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"employee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f1d1263-0e79-4787-b573-6df81b44bfc2"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bab4b830-47d6-4a24-a460-3289897f6e8e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payrun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bab4b830-47d6-4a24-a460-3289897f6e8e"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">127</span><span class="w">
             </span><span class="p">},</span><span class="w">
@@ -4455,6 +4461,7 @@ align everyone&#39;s expectation.</p>
             </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lön genom Gigapay"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"employee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f1d1263-0e79-4787-b573-6df81b44bfc2"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payrun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
               </span><span class="nl">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="w">
             </span><span class="p">},</span><span class="w">
@@ -4510,6 +4517,11 @@ align everyone&#39;s expectation.</p>
 </tr>
 <tr>
 <td><code>invoice</code></td>
+<td></td>
+<td><strong>Deprecated.</strong> Relational Filter. Use <code>payrun</code> instead.</td>
+</tr>
+<tr>
+<td><code>payrun</code></td>
 <td></td>
 <td>Relational Filter.</td>
 </tr>
@@ -4783,6 +4795,7 @@ align everyone&#39;s expectation.</p>
         </span><span class="nl">"employee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1847"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"full_salary_specification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payrun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"invoiced_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
         </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -4800,6 +4813,7 @@ align everyone&#39;s expectation.</p>
         </span><span class="nl">"employee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1736"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"full_salary_specification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payrun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"invoiced_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500.00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
         </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -4811,7 +4825,7 @@ align everyone&#39;s expectation.</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint registers multiple Payouts at once. All payouts will be added to the same Invoice object.</p>
+<p>This endpoint registers multiple Payouts at once. All payouts will be added to the same Payrun object.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://api.gigapay.se/v2/payouts/</code></p>
 <h3 id='headers-3'>Headers</h3>
@@ -4923,6 +4937,7 @@ align everyone&#39;s expectation.</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"full_salary_specification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payrun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"invoiced_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"campaign_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12394</span><span class="w">
@@ -5073,6 +5088,7 @@ registered that object will be reused.</p>
     </span><span class="nl">"employee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1847"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"full_salary_specification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payrun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1554d88-b74f-4d6a-bfa6-049c14905dc7"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"invoiced_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"campaign_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12394</span><span class="w">
