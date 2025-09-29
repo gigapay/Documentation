@@ -123,6 +123,7 @@ Parameter | Default | Description
 `page_size` | 25 | The number of Payruns per page.
 `created_at` | | Timestamp filter.
 `paid_at` | | Timestamp filter.
+`open` | | Boolean filter to get only open payruns (`true`) or closed payruns (`false`). Omit to get all payruns.
 
 
 
