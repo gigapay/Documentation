@@ -15,6 +15,7 @@ You can keep payruns open for a certain time period by enabling batching of payo
     "created_at": "2019-05-22T10:32:36.118753Z",
     "currency": "SEK",
     "id": "2859272",
+    "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
     "metadata": {},
     "ocr_number": "986911160380",
     "open": false,
@@ -30,6 +31,7 @@ You can keep payruns open for a certain time period by enabling batching of payo
 | `created_at` | Time at which the Invoice was created. Displayed as ISO 8601 string. |
 | `currency`   | ISO-4217 currency code.                                              |
 | `id`         | A unique identifier for the object.                                  |
+| `invoice`    | Unique identifier for the Invoice object. This is an [expandable object.](#expanding-objects) |
 | `metadata`   | JSON-encoded metadata.                                               |
 | `ocr_number` | Bank reference.                                                      |
 | `open`       | Whether the Payrun is the currently open one.                       |
@@ -81,6 +83,7 @@ fetch("https://api.gigapay.se/v2/payruns/", {
             "created_at": "2019-05-22T10:32:36.118753Z",
             "currency": "SEK",
             "id": "2859272",
+            "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
             "metadata": {},
             "ocr_number": "986911160380",
             "open": false,
@@ -92,6 +95,7 @@ fetch("https://api.gigapay.se/v2/payruns/", {
             "created_at": "2019-06-22T10:28:21.847474Z",
             "currency": "SEK",
             "id": "2859273",
+            "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
             "metadata": {},
             "ocr_number": "986911160349",
             "open": false,
@@ -164,6 +168,66 @@ fetch("https://api.gigapay.se/v2/payruns/2859272/", {
     "created_at": "2019-05-22T10:32:36.118753Z",
     "currency": "SEK",
     "id": "2859272",
+    "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
+    "metadata": {},
+    "ocr_number": "986911160380",
+    "open": false,
+    "paid_at": "2019-05-25T9:02:16.8462735Z",
+    "pdf": "https://api.gigapay.se/invoice/cad7d4d7-cdc7-4f70-8246-c061e041e9e/?token=Ii9pbnZvaWNpbmcvb3Blbl9pbnZvaWNlcy8zYjcyNTYyOS05MTE4LTQ5YTctYTFiYS0yMTU4NTZhMzYwOTgvIg&language=en",
+    "price": "1340.48"
+}
+```
+
+> To retrieve a Payrun with the invoice expanded:
+
+```python
+import requests
+
+response = requests.get(
+    'https://api.gigapay.se/v2/payruns/2859272/?expand=invoice',
+    headers={
+        'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
+        'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
+    }
+)
+```
+
+```shell
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/payruns/2859272/?expand=invoice
+```
+
+```javascript
+fetch("https://api.gigapay.se/v2/payruns/2859272/?expand=invoice", {
+  headers: {
+    "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
+    "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
+  }
+})
+```
+
+> When the invoice is expanded, the response includes the full invoice object:
+
+```json
+{
+    "app": "https://app.gigapay.se/i/2859272/?token=Ii9pbnZvaWNpbmcvb3Blbl9pbnZvaWNlcy9jMTMzYzIwMi0xMDUwLTQ5NTktODMwNi05NWQ3Y2IzZjNiMjgvIg",
+    "created_at": "2019-05-22T10:32:36.118753Z",
+    "currency": "SEK",
+    "id": "2859272",
+    "invoice": {
+        "id": "bab4b830-47d6-4a24-a460-3289897f6e8e",
+        "amount_due": "1745.40",
+        "amount_paid": "0.00",
+        "billing_type": "payrun",
+        "created_at": "2019-05-22T10:32:36.118753Z",
+        "currency": "SEK",
+        "customer_reference": null,
+        "due_date": null,
+        "invoice_number": "986911160380",
+        "issued_at": null,
+        "paid_at": null,
+        "pdf_url": "https://api.gigapay.se/invoice/bab4b830-47d6-4a24-a460-3289897f6e8e/?token=hej&language=en",
+        "total": "1745.40"
+    },
     "metadata": {},
     "ocr_number": "986911160380",
     "open": false,
@@ -192,8 +256,11 @@ Parameter | Required | Description
 --------- | ------- | -----------
 `id` | True | Unique identifier for the object.
 
+### Query Parameters
 
-
+Parameter | Default | Description
+--------- | ------- | -----------
+`expand` | | Expand related objects. Use `invoice` to expand the invoice object.
 
 
 
@@ -239,6 +306,7 @@ fetch("https://api.gigapay.se/v2/payruns/2859272/", {
     "created_at": "2019-05-22T10:32:36.118753Z",
     "currency": "SEK",
     "id": "846271",
+    "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
     "metadata": {
         "original_id": "2859272"
     },
