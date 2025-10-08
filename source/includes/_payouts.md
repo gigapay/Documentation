@@ -22,6 +22,7 @@ align everyone's expectation.
     "employee": "1f1d1263-0e79-4787-b573-6df81b44bfc2",
     "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
     "payrun": "bab4b830-47d6-4a24-a460-3289897f6e8e",
+    "latest_status": "notification_sent",
     "metadata": {},
     "start_at": null,
     "end_at": null,
@@ -99,6 +100,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
             "employee": "1f1d1263-0e79-4787-b573-6df81b44bfc2",
             "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
             "payrun": "bab4b830-47d6-4a24-a460-3289897f6e8e",
+            "latest_status": "notification_sent",
             "metadata": {
                 "job_id": 127
             },
@@ -117,6 +119,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
             "employee": "1f1d1263-0e79-4787-b573-6df81b44bfc2",
             "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
             "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
+            "latest_status": "complete",
             "metadata": {
               "job_id": 128
             },
@@ -217,6 +220,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
     "full_salary_specification": true,
     "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
     "invoiced_amount": "1000.00",
+    "latest_status": "created",
     "metadata": {},
     "start_at": null,
     "end_at": null,
@@ -337,6 +341,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
         "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
         "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
         "invoiced_amount": "1000.00",
+        "latest_status": "created",
         "metadata": {},
         "start_at": null,
         "end_at": null,
@@ -355,6 +360,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
         "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
         "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
         "invoiced_amount": "2500.00",
+        "latest_status": "created",
         "metadata": {},
         "start_at": null,
         "end_at": null,
@@ -461,6 +467,7 @@ fetch("https://api.gigapay.se/v2/payouts/?expand=employee", {
         "email": "albin@mail.com",
         "cellphone_number": "+46700000001",
         "country": "SWE",
+        "latest_status": "invited",
         "metadata": {},
         "created_at": "2019-05-22T10:32:36.118753Z",
         "notified_at": null,
@@ -472,6 +479,7 @@ fetch("https://api.gigapay.se/v2/payouts/?expand=employee", {
     "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
     "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
     "invoiced_amount": "1000.00",
+    "latest_status": "created",
     "metadata": {
         "campaign_id": 12394
     },
@@ -559,6 +567,7 @@ fetch("https://api.gigapay.se/v2/payouts/9472/", {
     "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
     "payrun": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
     "invoiced_amount": "1000.00",
+    "latest_status": "complete",
     "metadata": {
         "campaign_id": 12394
     },

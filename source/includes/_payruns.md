@@ -16,6 +16,7 @@ You can keep payruns open for a certain time period by enabling batching of payo
     "currency": "SEK",
     "id": "2859272",
     "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
+    "latest_status": "paid",
     "metadata": {},
     "ocr_number": "986911160380",
     "open": false,
@@ -85,6 +86,7 @@ fetch("https://api.gigapay.se/v2/payruns/", {
             "currency": "SEK",
             "id": "2859272",
             "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
+            "latest_status": "paid",
             "metadata": {},
             "ocr_number": "986911160380",
             "open": false,
@@ -97,6 +99,7 @@ fetch("https://api.gigapay.se/v2/payruns/", {
             "currency": "SEK",
             "id": "2859273",
             "invoice": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
+            "latest_status": "paid",
             "metadata": {},
             "ocr_number": "986911160349",
             "open": false,
@@ -170,6 +173,7 @@ fetch("https://api.gigapay.se/v2/payruns/2859272/", {
     "currency": "SEK",
     "id": "2859272",
     "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
+    "latest_status": "paid",
     "metadata": {},
     "ocr_number": "986911160380",
     "open": false,
@@ -229,6 +233,7 @@ fetch("https://api.gigapay.se/v2/payruns/2859272/?expand=invoice", {
         "pdf_url": "https://api.gigapay.se/invoice/bab4b830-47d6-4a24-a460-3289897f6e8e/?token=hej&language=en",
         "total": "1745.40"
     },
+    "latest_status": "paid",
     "metadata": {},
     "ocr_number": "986911160380",
     "open": false,
@@ -308,6 +313,7 @@ fetch("https://api.gigapay.se/v2/payruns/2859272/", {
     "currency": "SEK",
     "id": "846271",
     "invoice": "bab4b830-47d6-4a24-a460-3289897f6e8e",
+    "latest_status": "paid",
     "metadata": {
         "original_id": "2859272"
     },
