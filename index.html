@@ -4321,9 +4321,11 @@ include a list of employees that should receive it.</p>
 corresponding Invoice is paid. The Employee will need to sign and accept the Payout before it is disbursed to their
 account.</p>
 
-<p>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is used as a basis for the Payout. For their definition and how they are
-related see <a href="#pricing">Pricing</a>. Ensure that you are using the same definition when communicating with the recipient to
-align everyone&#39;s expectation.</p>
+<p>The <code>invoiced_amount</code> is used as a basis for the Payout. For its definition see <a href="#pricing">Pricing</a>.</p>
+
+<aside class="warning">
+<strong>Deprecated fields:</strong> The <code>amount</code>, <code>cost</code>, and <code>full_salary_specification</code> fields are deprecated and should not be used in new integrations. Use <code>invoiced_amount</code> instead. These fields remain in API responses for backward compatibility only.
+</aside>
 <h3 id='the-payout-object'>The Payout object</h3>
 <blockquote>
 <p>An example Payout object:</p>
@@ -4358,16 +4360,16 @@ align everyone&#39;s expectation.</p>
 <td>Unique identifier for the object.</td>
 </tr>
 <tr>
-<td><code>amount</code></td>
-<td>Decimal formatted string of the gross salary amount.</td>
+<td><del><code>amount</code></del></td>
+<td><strong>Deprecated.</strong> Decimal formatted string of the gross salary amount. Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
 <td><code>invoiced_amount</code></td>
 <td>Decimal formatted string of the invoiced amount.</td>
 </tr>
 <tr>
-<td><code>cost</code></td>
-<td>Decimal formatted string of the total salary cost.</td>
+<td><del><code>cost</code></del></td>
+<td><strong>Deprecated.</strong> Decimal formatted string of the total salary cost. Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
 <td><code>currency</code></td>
@@ -4378,15 +4380,15 @@ align everyone&#39;s expectation.</p>
 <td>String describing the work done, displayed to the recipient. Max 255 characters.</td>
 </tr>
 <tr>
-<td><code>full_salary_specification</code></td>
-<td>Controls whether to present the payroll taxes and Gigapay&#39;s fee on the payslip. It is set to false when <code>amount</code> is used as a basis for the Payout, true otherwise.</td>
+<td><del><code>full_salary_specification</code></del></td>
+<td><strong>Deprecated.</strong> Controls whether to present the payroll taxes and Gigapay&#39;s fee on the payslip.</td>
 </tr>
 <tr>
 <td><code>employee</code></td>
 <td>Unique identifier for the Employee object, that is the recipient of the Payout. This is an <a href="#expanding-objects">expandable object.</a></td>
 </tr>
 <tr>
-<td><code>invoice</code></td>
+<td><del><code>invoice</code></del></td>
 <td><strong>Deprecated.</strong> Use <code>payrun</code> instead. Unique identifier for the Payrun object the Payout object belongs to. This is an <a href="#expanding-objects">expandable object.</a></td>
 </tr>
 <tr>
@@ -4685,18 +4687,18 @@ align everyone&#39;s expectation.</p>
 <td>Unique per <a href="#integrations">Integration</a>.</td>
 </tr>
 <tr>
-<td><code>amount</code></td>
+<td><del><code>amount</code></del></td>
 <td>String</td>
 <td>False</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td><strong>Deprecated.</strong> Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
-<td><code>cost</code></td>
+<td><del><code>cost</code></del></td>
 <td>String</td>
 <td>False</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td><strong>Deprecated.</strong> Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
 <td><code>currency</code></td>
@@ -4724,7 +4726,7 @@ align everyone&#39;s expectation.</p>
 <td>String</td>
 <td>True</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td>The invoiced amount for this payout.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -5019,18 +5021,18 @@ registered that object will be reused.</p>
 <td>Unique per <a href="#integrations">Integration</a>.</td>
 </tr>
 <tr>
-<td><code>amount</code></td>
+<td><del><code>amount</code></del></td>
 <td>String</td>
 <td>False</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td><strong>Deprecated.</strong> Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
-<td><code>cost</code></td>
+<td><del><code>cost</code></del></td>
 <td>String</td>
 <td>False</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td><strong>Deprecated.</strong> Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
 <td><code>currency</code></td>
@@ -5058,7 +5060,7 @@ registered that object will be reused.</p>
 <td>String</td>
 <td>True</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td>The invoiced amount for this payout.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -5290,6 +5292,10 @@ on credit.</p>
 information about previously made payouts. The endpoint is designed to mirror the Payouts endpoint as closely as
 possible, e.g. the same request can be used to retrieve the price information of a Payout you&#39;d like to make and to
 actually make it.</p>
+
+<aside class="warning">
+<strong>Deprecated fields:</strong> The <code>amount</code>, <code>cost</code>, and <code>full_salary_specification</code> fields are deprecated and should not be used in new integrations. Use <code>invoiced_amount</code> instead. These fields are calculated and returned for backward compatibility only.
+</aside>
 <h3 id='the-pricing-breakdown'>The Pricing breakdown</h3>
 <blockquote>
 <p>An example Pricing breakdown for a Payout:</p>
@@ -5314,16 +5320,16 @@ actually make it.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>amount</td>
-<td>Decimal formatted string of the gross salary amount.</td>
+<td><del>amount</del></td>
+<td><strong>Deprecated.</strong> Decimal formatted string of the gross salary amount. Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
 <td>invoiced_amount</td>
 <td>Decimal formatted string of the invoiced amount.</td>
 </tr>
 <tr>
-<td>cost</td>
-<td>Decimal formatted string of the total salary cost.</td>
+<td><del>cost</del></td>
+<td><strong>Deprecated.</strong> Decimal formatted string of the total salary cost. Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -5355,14 +5361,16 @@ actually make it.</p>
 </tr>
 </tbody></table>
 
-<p>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is used as a basis for calculating the Pricing breakdown. One is provided
-and the other are calculated based on that. Their definitions are:</p>
+<p>The <code>invoiced_amount</code> is the recommended basis for calculating the Pricing breakdown. This is normally the net amount you agreed with the recipient (employee).</p>
 
-<ul>
-<li><code>amount</code>: net amount paid out plus obligations paid by the recipient.</li>
-<li><code>invoiced_amount</code>: <code>amount</code> plus obligations paid by the employer.</li>
-<li><code>cost</code>: <code>invoiced_amount</code> plus Gigapay&#39;s fee. This is the final amount you end up paying.</li>
-</ul>
+<p>For backward compatibility, you can also provide the deprecated <code>amount</code> or <code>cost</code> fields, and the other values will be calculated.</p>
+
+<p><strong>For new integrations:</strong> Use <code>invoiced_amount</code> only.</p>
+
+<p><strong>Legacy field definitions (for existing integrations):</strong>
+- <del><code>amount</code></del>: net amount paid out plus obligations paid by the recipient.
+- <code>invoiced_amount</code>: The invoiced amount (recommended).
+- <del><code>cost</code></del>: <code>invoiced_amount</code> plus Gigapay&#39;s fee.</p>
 
 <p>Which of the attributes that are included and in what step varies between countries. Examples of what the pricing looks
 like in each country are provided.</p>
@@ -5501,25 +5509,23 @@ like in each country are provided.</p>
         <span class="s">'id'</span><span class="p">:</span> <span class="mi">9472</span><span class="p">,</span>
         <span class="s">'currency'</span><span class="p">:</span> <span class="s">'SEK'</span><span class="p">,</span>
         <span class="s">'description'</span><span class="p">:</span> <span class="s">'Instagram samarbete 2021-11-13.'</span><span class="p">,</span>
-        <span class="s">'full_salary_specification'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
         <span class="s">'employee'</span><span class="p">:</span> <span class="mi">1847</span><span class="p">,</span>
-        <span class="s">'invoiced_amount'</span><span class="p">:</span> <span class="s">'1000.00'</span><span class="p">,</span>          
+        <span class="s">'invoiced_amount'</span><span class="p">:</span> <span class="s">'1000.00'</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
         <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
         <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
     <span class="p">}</span>
 <span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span>  <span class="nt">-d</span> <span class="s1">'{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "full_salary_specification": true, "employee": 1847, "invoiced_amount": "1000.00"}'</span> https://api.gigapay.se/v2/pricing/
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span>  <span class="nt">-d</span> <span class="s1">'{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1847, "invoiced_amount": "1000.00"}'</span> https://api.gigapay.se/v2/pricing/
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/pricing/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
         <span class="na">id</span><span class="p">:</span> <span class="mi">9472</span><span class="p">,</span>
         <span class="na">currency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SEK</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Instagram samarbete 2021-11-13.</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">full_salary_specification</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="na">employee</span><span class="p">:</span> <span class="mi">1847</span><span class="p">,</span>
-        <span class="na">invoiced_amount</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1000.00</span><span class="dl">'</span><span class="p">,</span>       
+        <span class="na">invoiced_amount</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1000.00</span><span class="dl">'</span><span class="p">,</span>
     <span class="p">}),</span>
     <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
         <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
@@ -5589,18 +5595,18 @@ like in each country are provided.</p>
 <td>Unique per <a href="#integrations">Integration</a>.</td>
 </tr>
 <tr>
-<td><code>amount</code></td>
+<td><del><code>amount</code></del></td>
 <td>String</td>
 <td>False</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td><strong>Deprecated.</strong> Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
-<td><code>cost</code></td>
+<td><del><code>cost</code></del></td>
 <td>String</td>
 <td>False</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td><strong>Deprecated.</strong> Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
 <td><code>currency</code></td>
@@ -5624,18 +5630,18 @@ like in each country are provided.</p>
 <td></td>
 </tr>
 <tr>
-<td><code>full_salary_specification</code></td>
+<td><del><code>full_salary_specification</code></del></td>
 <td>Bool</td>
 <td>False</td>
 <td>False</td>
-<td></td>
+<td><strong>Deprecated.</strong></td>
 </tr>
 <tr>
 <td><code>invoiced_amount</code></td>
 <td>String</td>
 <td>True</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td>The invoiced amount for this payout.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -5668,16 +5674,14 @@ like in each country are provided.</p>
             <span class="s">'id'</span><span class="p">:</span> <span class="mi">9472</span><span class="p">,</span>
             <span class="s">'currency'</span><span class="p">:</span> <span class="s">'SEK'</span><span class="p">,</span>
             <span class="s">'description'</span><span class="p">:</span> <span class="s">'Instagram samarbete 2021-11-13.'</span><span class="p">,</span>
-            <span class="s">'full_salary_specification'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
             <span class="s">'employee'</span><span class="p">:</span> <span class="mi">1847</span><span class="p">,</span>
-            <span class="s">'invoiced_amount'</span><span class="p">:</span> <span class="s">'1000.00'</span><span class="p">,</span>       
+            <span class="s">'invoiced_amount'</span><span class="p">:</span> <span class="s">'1000.00'</span><span class="p">,</span>
         <span class="p">},</span> <span class="p">{</span>
             <span class="s">'id'</span><span class="p">:</span> <span class="mi">9473</span><span class="p">,</span>
             <span class="s">'currency'</span><span class="p">:</span> <span class="s">'SEK'</span><span class="p">,</span>
             <span class="s">'description'</span><span class="p">:</span> <span class="s">'Instagram samarbete 2021-11-13.'</span><span class="p">,</span>
-            <span class="s">'full_salary_specification'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
             <span class="s">'employee'</span><span class="p">:</span> <span class="mi">1736</span><span class="p">,</span>
-            <span class="s">'invoiced_amount'</span><span class="p">:</span> <span class="s">'2500.00'</span><span class="p">,</span>       
+            <span class="s">'invoiced_amount'</span><span class="p">:</span> <span class="s">'2500.00'</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">],</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
@@ -5685,7 +5689,7 @@ like in each country are provided.</p>
         <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
     <span class="p">}</span>
 <span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="nt">-d</span> <span class="s1">'[{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "full_salary_specification": true, "employee": 1847, "invoiced_amount": "1000.00"}, {"id": 9473, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "full_salary_specification": true, "employee": 1736, "invoiced_amount": "2500.00"}]'</span> https://api.gigapay.se/v2/payouts/
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="nt">-d</span> <span class="s1">'[{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1847, "invoiced_amount": "1000.00"}, {"id": 9473, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1736, "invoiced_amount": "2500.00"}]'</span> https://api.gigapay.se/v2/payouts/
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/payouts/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">([</span>
@@ -5693,14 +5697,12 @@ like in each country are provided.</p>
             <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="mi">9472</span><span class="p">,</span>
             <span class="dl">'</span><span class="s1">currency</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SEK</span><span class="dl">'</span><span class="p">,</span>
             <span class="dl">'</span><span class="s1">description</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Instagram samarbete 2021-11-13.</span><span class="dl">'</span><span class="p">,</span>
-            <span class="dl">'</span><span class="s1">full_salary_specification</span><span class="dl">'</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
             <span class="dl">'</span><span class="s1">employee</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1847</span><span class="p">,</span>
             <span class="dl">'</span><span class="s1">invoiced_amount</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1000.00</span><span class="dl">'</span><span class="p">,</span>
         <span class="p">},</span> <span class="p">{</span>
             <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="mi">9473</span><span class="p">,</span>
             <span class="dl">'</span><span class="s1">currency</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SEK</span><span class="dl">'</span><span class="p">,</span>
             <span class="dl">'</span><span class="s1">description</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Instagram samarbete 2021-11-13.</span><span class="dl">'</span><span class="p">,</span>
-            <span class="dl">'</span><span class="s1">full_salary_specification</span><span class="dl">'</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
             <span class="dl">'</span><span class="s1">employee</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1736</span><span class="p">,</span>
             <span class="dl">'</span><span class="s1">invoiced_amount</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2500.00</span><span class="dl">'</span><span class="p">,</span>
         <span class="p">},</span>
@@ -5792,7 +5794,6 @@ like in each country are provided.</p>
         <span class="s">'id'</span><span class="p">:</span> <span class="mi">9472</span><span class="p">,</span>
         <span class="s">'currency'</span><span class="p">:</span> <span class="s">'SEK'</span><span class="p">,</span>
         <span class="s">'description'</span><span class="p">:</span> <span class="s">'Instagram samarbete 2021-11-13.'</span><span class="p">,</span>
-        <span class="s">'full_salary_specification'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
         <span class="s">'employee'</span><span class="p">:</span> <span class="p">{</span>
             <span class="s">'id'</span><span class="p">:</span> <span class="mi">1847</span><span class="p">,</span>
             <span class="s">'name'</span><span class="p">:</span> <span class="s">'Albin Lindskog'</span><span class="p">,</span>
@@ -5800,21 +5801,20 @@ like in each country are provided.</p>
             <span class="s">'email'</span><span class="p">:</span> <span class="s">'albin@mail.com'</span><span class="p">,</span>
             <span class="s">'country'</span><span class="p">:</span> <span class="s">'SWE'</span>
         <span class="p">},</span>
-        <span class="s">'invoiced_amount'</span><span class="p">:</span> <span class="s">'1000.00'</span><span class="p">,</span>        
+        <span class="s">'invoiced_amount'</span><span class="p">:</span> <span class="s">'1000.00'</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
         <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
         <span class="s">'Integration-ID'</span><span class="p">:</span> <span class="s">'79606358-97af-4196-b64c-5f719433d56b'</span>
     <span class="p">}</span>
 <span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="nt">-d</span> <span class="s1">'{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "full_salary_specification": true, "employee": {"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}, "invoiced_amount": "1000.00"}'</span> <span class="s1">'https://api.gigapay.se/v2/pricing/?expand=employee'</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s1">'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-H</span> <span class="s1">'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'</span> <span class="nt">-d</span> <span class="s1">'{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": {"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}, "invoiced_amount": "1000.00"}'</span> <span class="s1">'https://api.gigapay.se/v2/pricing/?expand=employee'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/pricing/?expand=employee</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
         <span class="na">id</span><span class="p">:</span> <span class="mi">9472</span><span class="p">,</span>
         <span class="na">currency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SEK</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Instagram samarbete 2021-11-13.</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">full_salary_specification</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="na">employee</span><span class="p">:</span> <span class="p">{</span>
             <span class="na">id</span><span class="p">:</span> <span class="mi">1847</span><span class="p">,</span>
             <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Albin Lindskog</span><span class="dl">'</span><span class="p">,</span>
@@ -5822,7 +5822,7 @@ like in each country are provided.</p>
             <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">albin@mail.com</span><span class="dl">'</span><span class="p">,</span>
             <span class="na">country</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SWE</span><span class="dl">'</span>
         <span class="p">},</span>
-        <span class="na">invoiced_amount</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1000.00</span><span class="dl">'</span><span class="p">,</span>       
+        <span class="na">invoiced_amount</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1000.00</span><span class="dl">'</span><span class="p">,</span>
     <span class="p">}),</span>
     <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
         <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
@@ -5893,18 +5893,18 @@ registered will the object be reused.</p>
 <td>Unique per <a href="#integrations">Integration</a>.</td>
 </tr>
 <tr>
-<td><code>amount</code></td>
+<td><del><code>amount</code></del></td>
 <td>String</td>
 <td>False</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td><strong>Deprecated.</strong> Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
-<td><code>cost</code></td>
+<td><del><code>cost</code></del></td>
 <td>String</td>
 <td>False</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td><strong>Deprecated.</strong> Use <code>invoiced_amount</code> instead.</td>
 </tr>
 <tr>
 <td><code>currency</code></td>
@@ -5928,18 +5928,18 @@ registered will the object be reused.</p>
 <td>Structured as an <a href="#register-an-employee">Employee</a>.</td>
 </tr>
 <tr>
-<td><code>full_salary_specification</code></td>
+<td><del><code>full_salary_specification</code></del></td>
 <td>Bool</td>
 <td>False</td>
 <td>False</td>
-<td></td>
+<td><strong>Deprecated.</strong></td>
 </tr>
 <tr>
 <td><code>invoiced_amount</code></td>
 <td>String</td>
 <td>True</td>
 <td></td>
-<td>Either <code>amount</code>, <code>invoiced_amount</code> or <code>cost</code> is required.</td>
+<td>The invoiced amount for this payout.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
