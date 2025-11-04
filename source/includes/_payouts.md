@@ -4,9 +4,11 @@ To make a payout to an Employee you need to create a Payout object. The Employee
 corresponding Invoice is paid. The Employee will need to sign and accept the Payout before it is disbursed to their
 account.
 
-Either `amount`, `invoiced_amount` or `cost` is used as a basis for the Payout. For their definition and how they are
-related see [Pricing](#pricing). Ensure that you are using the same definition when communicating with the recipient to
-align everyone's expectation.
+The `invoiced_amount` is used as a basis for the Payout. For its definition see [Pricing](#pricing).
+
+<aside class="warning">
+<strong>Deprecated fields:</strong> The <code>amount</code>, <code>cost</code>, and <code>full_salary_specification</code> fields are deprecated and should not be used in new integrations. Use <code>invoiced_amount</code> instead. These fields remain in API responses for backward compatibility only.
+</aside>
 
 ### The Payout object
 
@@ -36,14 +38,14 @@ align everyone's expectation.
 | Attribute          | Description                                                                                                                                                         |
 | --------------------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`                        | Unique identifier for the object.                                                                                                                                   |
-| `amount`                    | Decimal formatted string of the gross salary amount.                                                                                                                |
+| ~~`amount`~~                | **Deprecated.** Decimal formatted string of the gross salary amount. Use `invoiced_amount` instead.                                                                 |
 | `invoiced_amount`           | Decimal formatted string of the invoiced amount.                                                                                                                    |
-| `cost`                      | Decimal formatted string of the total salary cost.                                                                                                                  |
+| ~~`cost`~~                  | **Deprecated.** Decimal formatted string of the total salary cost. Use `invoiced_amount` instead.                                                                   |
 | `currency`                  | ISO-4217 currency code.                                                                                                                                             |
 | `description`               | String describing the work done, displayed to the recipient. Max 255 characters.                                                                                    |
-| `full_salary_specification` | Controls whether to present the payroll taxes and Gigapay's fee on the payslip. It is set to false when `amount` is used as a basis for the Payout, true otherwise. |
+| ~~`full_salary_specification`~~ | **Deprecated.** Controls whether to present the payroll taxes and Gigapay's fee on the payslip. |
 | `employee`                  | Unique identifier for the Employee object, that is the recipient of the Payout. This is an [expandable object.](#expanding-objects)                                 |
-| `invoice`                   | **Deprecated.** Use `payrun` instead. Unique identifier for the Payrun object the Payout object belongs to. This is an [expandable object.](#expanding-objects) |
+| ~~`invoice`~~                   | **Deprecated.** Use `payrun` instead. Unique identifier for the Payrun object the Payout object belongs to. This is an [expandable object.](#expanding-objects) |
 | `payrun`                    | Unique identifier for the Payrun object the Payout object belongs to. This is an [expandable object.](#expanding-objects)                                        |
 | `latest_status`             | `created` - The payout has been created.<br>`not_funded` - The payout is not funded and not available to the recipient<br>`onboarding_incomplete` - The recipient has not completed their onboarding process in the Gigapay system.<br>`notification_sent` - The recipient has been notified about the payout and can now view it on their dashboard.<br>`available` - The payout is ready to be accepted by the recipient.<br>`complete` - The payment process has been finalized. Gigapay will handle any remaining administrative tasks related to this payment. |
 | `metadata`                  | JSON-encoded metadata.                                                                                                                                              |
@@ -250,12 +252,12 @@ Parameter | Required | Description
 Parameter | Type | Required | Default | Notes
 --------- | ---- | -------- | ------- |------------
 `id` | String | False | uuid4() | Unique per [Integration](#integrations).
-`amount` | String | False | | Either `amount`, `invoiced_amount` or `cost` is required.
-`cost` | String | False | | Either `amount`, `invoiced_amount` or `cost` is required.
-`currency` | String | True | | 
-`description` | String | True | | 
-`employee` | String | True | | 
-`invoiced_amount` | String | True | | Either `amount`, `invoiced_amount` or `cost` is required.
+~~`amount`~~ | String | False | | **Deprecated.** Use `invoiced_amount` instead.
+~~`cost`~~ | String | False | | **Deprecated.** Use `invoiced_amount` instead.
+`currency` | String | True | |
+`description` | String | True | |
+`employee` | String | True | |
+`invoiced_amount` | String | True | | The invoiced amount for this payout.
 `metadata` | Object | False | |
 `start_at` | String | False | |
 `end_at` | String | False | null |
@@ -512,14 +514,14 @@ Parameter | Required | Description
 Parameter | Type | Required | Default | Notes
 --------- | ---- | -------- | ------- |------------
 `id` | String | False | uuid4() | Unique per [Integration](#integrations).
-`amount` | String | False | | Either `amount`, `invoiced_amount` or `cost` is required.
-`cost` | String | False | | Either `amount`, `invoiced_amount` or `cost` is required.
-`currency` | String | True | | 
-`description` | String | True | | 
-`employee` | Object | True | | Structured as an [Employee](#register-an-employee). | 
-`invoiced_amount` | String | True | | Either `amount`, `invoiced_amount` or `cost` is required.
-`metadata` | Object | False | | 
-`start_at` | String | False | | 
+~~`amount`~~ | String | False | | **Deprecated.** Use `invoiced_amount` instead.
+~~`cost`~~ | String | False | | **Deprecated.** Use `invoiced_amount` instead.
+`currency` | String | True | |
+`description` | String | True | |
+`employee` | Object | True | | Structured as an [Employee](#register-an-employee). |
+`invoiced_amount` | String | True | | The invoiced amount for this payout.
+`metadata` | Object | False | |
+`start_at` | String | False | |
 `end_at` | String | False | null | 
 
 

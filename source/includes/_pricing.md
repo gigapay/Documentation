@@ -5,6 +5,10 @@ information about previously made payouts. The endpoint is designed to mirror th
 possible, e.g. the same request can be used to retrieve the price information of a Payout you'd like to make and to
 actually make it.
 
+<aside class="warning">
+<strong>Deprecated fields:</strong> The <code>amount</code>, <code>cost</code>, and <code>full_salary_specification</code> fields are deprecated and should not be used in new integrations. Use <code>invoiced_amount</code> instead. These fields are calculated and returned for backward compatibility only.
+</aside>
+
 ### The Pricing breakdown
 
 > An example Pricing breakdown for a Payout:
@@ -27,9 +31,9 @@ actually make it.
 
 | Attribute         | Description                                                                       |
 | ----------------- | --------------------------------------------------------------------------------- |
-| amount            | Decimal formatted string of the gross salary amount.                                                                        |
+| ~~amount~~        | **Deprecated.** Decimal formatted string of the gross salary amount. Use `invoiced_amount` instead.                         |
 | invoiced_amount   | Decimal formatted string of the invoiced amount.                                                                         |
-| cost              | Decimal formatted string of the total salary cost.                                                                         |
+| ~~cost~~          | **Deprecated.** Decimal formatted string of the total salary cost. Use `invoiced_amount` instead.                           |
 | currency          | ISO-4217 currency code.                                                                                              |
 | fee               | Decimal formatted string of Gigapay's fee for this Payout.                                                           |
 | health_insurance  | Decimal formatted string of the cost of mandated health insurance. Will be none if health insurance is not mandated. |
@@ -39,12 +43,16 @@ actually make it.
 | vat               | Decimal formatted string of the VAT for the Payout. 
 
 
-Either `amount`, `invoiced_amount` or `cost` is used as a basis for calculating the Pricing breakdown. One is provided
-and the other are calculated based on that. Their definitions are:
+The `invoiced_amount` is the recommended basis for calculating the Pricing breakdown. This is normally the net amount you agreed with the recipient (employee).
 
-- `amount`: net amount paid out plus obligations paid by the recipient.
-- `invoiced_amount`: `amount` plus obligations paid by the employer.
-- `cost`: `invoiced_amount` plus Gigapay's fee. This is the final amount you end up paying.
+For backward compatibility, you can also provide the deprecated `amount` or `cost` fields, and the other values will be calculated.
+
+**For new integrations:** Use `invoiced_amount` only.
+
+**Legacy field definitions (for existing integrations):**
+- ~~`amount`~~: net amount paid out plus obligations paid by the recipient.
+- `invoiced_amount`: The invoiced amount (recommended).
+- ~~`cost`~~: `invoiced_amount` plus Gigapay's fee.
 
 Which of the attributes that are included and in what step varies between countries. Examples of what the pricing looks
 like in each country are provided.
@@ -154,9 +162,8 @@ response = requests.post(
         'id': 9472,
         'currency': 'SEK',
         'description': 'Instagram samarbete 2021-11-13.',
-        'full_salary_specification': True,
         'employee': 1847,
-        'invoiced_amount': '1000.00',          
+        'invoiced_amount': '1000.00',
     },
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -166,7 +173,7 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'  -d '{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "full_salary_specification": true, "employee": 1847, "invoiced_amount": "1000.00"}' https://api.gigapay.se/v2/pricing/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'  -d '{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1847, "invoiced_amount": "1000.00"}' https://api.gigapay.se/v2/pricing/
 ```
 
 ```javascript
@@ -176,9 +183,8 @@ fetch("https://api.gigapay.se/v2/pricing/", {
         id: 9472,
         currency: 'SEK',
         description: 'Instagram samarbete 2021-11-13.',
-        full_salary_specification: true,
         employee: 1847,
-        invoiced_amount: '1000.00',       
+        invoiced_amount: '1000.00',
     }),
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -224,13 +230,13 @@ Parameter | Required | Description
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- |------------
 `id` | String | False | uuid4() | Unique per [Integration](#integrations).
-`amount` | String | False | | Either `amount`, `invoiced_amount` or `cost` is required.
-`cost` | String | False | | Either `amount`, `invoiced_amount` or `cost` is required.
-`currency` | String | True | | 
-`description` | String | True | | 
-`employee` | String | True | | 
-`full_salary_specification` | Bool | False | False |
-`invoiced_amount` | String | True | | Either `amount`, `invoiced_amount` or `cost` is required.
+~~`amount`~~ | String | False | | **Deprecated.** Use `invoiced_amount` instead.
+~~`cost`~~ | String | False | | **Deprecated.** Use `invoiced_amount` instead.
+`currency` | String | True | |
+`description` | String | True | |
+`employee` | String | True | |
+~~`full_salary_specification`~~ | Bool | False | False | **Deprecated.**
+`invoiced_amount` | String | True | | The invoiced amount for this payout.
 `metadata` | Object | False | |
 `start_at` | String | False | |
 `end_at` | String | False | null |
@@ -250,16 +256,14 @@ response = requests.post(
             'id': 9472,
             'currency': 'SEK',
             'description': 'Instagram samarbete 2021-11-13.',
-            'full_salary_specification': True,
             'employee': 1847,
-            'invoiced_amount': '1000.00',       
+            'invoiced_amount': '1000.00',
         }, {
             'id': 9473,
             'currency': 'SEK',
             'description': 'Instagram samarbete 2021-11-13.',
-            'full_salary_specification': True,
             'employee': 1736,
-            'invoiced_amount': '2500.00',       
+            'invoiced_amount': '2500.00',
         },
     ],
     headers={
@@ -270,7 +274,7 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '[{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "full_salary_specification": true, "employee": 1847, "invoiced_amount": "1000.00"}, {"id": 9473, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "full_salary_specification": true, "employee": 1736, "invoiced_amount": "2500.00"}]' https://api.gigapay.se/v2/payouts/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '[{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1847, "invoiced_amount": "1000.00"}, {"id": 9473, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1736, "invoiced_amount": "2500.00"}]' https://api.gigapay.se/v2/payouts/
 ```
 
 ```javascript
@@ -281,14 +285,12 @@ fetch("https://api.gigapay.se/v2/payouts/", {
             'id': 9472,
             'currency': 'SEK',
             'description': 'Instagram samarbete 2021-11-13.',
-            'full_salary_specification': true,
             'employee': 1847,
             'invoiced_amount': '1000.00',
         }, {
             'id': 9473,
             'currency': 'SEK',
             'description': 'Instagram samarbete 2021-11-13.',
-            'full_salary_specification': true,
             'employee': 1736,
             'invoiced_amount': '2500.00',
         },
@@ -367,7 +369,6 @@ response = requests.post(
         'id': 9472,
         'currency': 'SEK',
         'description': 'Instagram samarbete 2021-11-13.',
-        'full_salary_specification': True,
         'employee': {
             'id': 1847,
             'name': 'Albin Lindskog',
@@ -375,7 +376,7 @@ response = requests.post(
             'email': 'albin@mail.com',
             'country': 'SWE'
         },
-        'invoiced_amount': '1000.00',        
+        'invoiced_amount': '1000.00',
     },
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -385,7 +386,7 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "full_salary_specification": true, "employee": {"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}, "invoiced_amount": "1000.00"}' 'https://api.gigapay.se/v2/pricing/?expand=employee'
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": {"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}, "invoiced_amount": "1000.00"}' 'https://api.gigapay.se/v2/pricing/?expand=employee'
 ```
 
 ```javascript
@@ -395,7 +396,6 @@ fetch("https://api.gigapay.se/v2/pricing/?expand=employee", {
         id: 9472,
         currency: 'SEK',
         description: 'Instagram samarbete 2021-11-13.',
-        full_salary_specification: true,
         employee: {
             id: 1847,
             name: 'Albin Lindskog',
@@ -403,7 +403,7 @@ fetch("https://api.gigapay.se/v2/pricing/?expand=employee", {
             email: 'albin@mail.com',
             country: 'SWE'
         },
-        invoiced_amount: '1000.00',       
+        invoiced_amount: '1000.00',
     }),
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -450,13 +450,13 @@ Parameter | Required | Description
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- |------------
 `id` | String | False | uuid4() | Unique per [Integration](#integrations).
-`amount` | String | False | | Either `amount`, `invoiced_amount` or `cost` is required.
-`cost` | String | False | | Either `amount`, `invoiced_amount` or `cost` is required.
-`currency` | String | True | | 
-`description` | String | True | | 
-`employee` | Object | True | | Structured as an [Employee](#register-an-employee). | 
-`full_salary_specification` | Bool | False | False |
-`invoiced_amount` | String | True | | Either `amount`, `invoiced_amount` or `cost` is required.
+~~`amount`~~ | String | False | | **Deprecated.** Use `invoiced_amount` instead.
+~~`cost`~~ | String | False | | **Deprecated.** Use `invoiced_amount` instead.
+`currency` | String | True | |
+`description` | String | True | |
+`employee` | Object | True | | Structured as an [Employee](#register-an-employee). |
+~~`full_salary_specification`~~ | Bool | False | False | **Deprecated.**
+`invoiced_amount` | String | True | | The invoiced amount for this payout.
 `metadata` | Object | False | | 
 `start_at` | String | False | | 
 `end_at` | String | False | null | 
