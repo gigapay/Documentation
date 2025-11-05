@@ -1,7 +1,8 @@
 # Payruns
 
-A Payrun groups Payouts together. It is a managed object, you can not create them directly. When a Payout is created 
-it is added to the Payrun that is currently open. If there is no open Payrun, a new will be created.
+A Payrun groups Payouts together. Payruns are typically managed automatically - when a Payout is created, it is added to the currently active Payrun, or a new Payrun is created if none exists.
+
+However, you can also create Payruns explicitly to organize payouts by campaigns or other criteria. This allows you to maintain multiple open payruns per currency simultaneously, each representing a different campaign, project, or business unit.
 
 You can keep payruns open for a certain time period by enabling batching of payouts. Contact [support@gigapay.se](mailto:support@gigapay.se) if you are interested in this.
 
@@ -33,6 +34,7 @@ You can keep payruns open for a certain time period by enabling batching of payo
 | `currency`   | ISO-4217 currency code.                                              |
 | `id`         | A unique identifier for the object.                                  |
 | `invoice`    | Unique identifier for the Invoice object. This is an [expandable object.](#expanding-objects) |
+| `invoice_marking` | Optional text field for identifying the payrun (e.g., PO number or campaign name). Max 255 characters. |
 | `latest_status` | `open` - The payrun is created and new payouts can be added<br>`invoiced` - An invoice has been created for the payrun<br>`paid` - The payrun has been paid |
 | `metadata`   | JSON-encoded metadata.                                               |
 | `ocr_number` | Bank reference.                                                      |
@@ -40,6 +42,98 @@ You can keep payruns open for a certain time period by enabling batching of payo
 | `paid_at`    | Time at which the Payrun was paid. Displayed as ISO 8601 string.    |
 | `pdf`        | Link to download a pdf version of the Payrun.                       |
 | `price`      | Decimal formatted string of the price.                               |
+
+
+
+
+
+## Create a Payrun
+
+```python
+import requests
+
+response = requests.post(
+    'https://api.gigapay.se/v2/payruns/',
+    json={
+        'currency': 'SEK',
+        'invoice_marking': 'Summer-Campaign-2025',
+        'metadata': {'campaign_id': 'summer-2025'}
+    },
+    headers={
+        'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
+        'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
+    }
+)
+```
+
+```shell
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"currency": "SEK", "invoice_marking": "Summer-Campaign-2025", "metadata": {"campaign_id": "summer-2025"}}' https://api.gigapay.se/v2/payruns/
+```
+
+```javascript
+fetch("https://api.gigapay.se/v2/payruns/", {
+    method: "POST",
+    body: JSON.stringify({
+        'currency': 'SEK',
+        'invoice_marking': 'Summer-Campaign-2025',
+        'metadata': {'campaign_id': 'summer-2025'}
+    }),
+    headers: {
+        "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
+        "Content-Type": "application/json",
+        "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
+    }
+})
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "app": null,
+    "created_at": "2025-11-05T10:32:36.118753Z",
+    "currency": "SEK",
+    "id": "summer-2025-payrun",
+    "invoice": null,
+    "invoice_marking": "Summer-Campaign-2025",
+    "latest_status": "open",
+    "metadata": {
+        "campaign_id": "summer-2025"
+    },
+    "ocr_number": null,
+    "open": true,
+    "paid_at": null,
+    "pdf": null,
+    "price": "0.00"
+}
+```
+
+This endpoint creates a new Payrun explicitly. This is useful for organizing payouts by campaigns, projects, or other business criteria.
+
+Once created, you can add payouts to this specific payrun by including the payrun's `id` when creating payouts.
+
+### HTTP Request
+
+`POST https://api.gigapay.se/v2/payruns/`
+
+### Headers
+
+Parameter | Required | Description
+--------- | ------- | -----------
+`Authorization` | True | Your Authorization Token.
+`Integration-ID` | True | Integration id.
+
+### Body Parameters
+
+Parameter | Type | Required | Default | Notes
+--------- | ---- | -------- | ------- |------------
+`currency` | String | False | Organization's default currency | ISO-4217 currency code.
+`invoice_marking` | String | False | | Optional text for identifying the payrun (e.g., campaign name). Max 255 characters.
+`metadata` | Object | False | {} | JSON-encoded metadata.
+
+<aside class="notice">
+You can maintain multiple open payruns per currency simultaneously. This allows you to organize payouts by different campaigns or projects.
+</aside>
 
 
 
@@ -349,7 +443,12 @@ Parameter | Required | Description
 Parameter | Type | Required | Default | Notes
 --------- | ---- | -------- | ------- |------------
 `id` | String | False | Previous value | Unique per [Integration](#integrations).
-`metadata` | Object | False | Previous value | 
+`invoice_marking` | String | False | Previous value | Optional text for identifying the payrun. Max 255 characters. Can only be updated on open payruns.
+`metadata` | Object | False | Previous value |
+
+<aside class="warning">
+Closed payruns cannot be edited. You can only update open payruns.
+</aside> 
 
 
 ## Finalize a Payrun
