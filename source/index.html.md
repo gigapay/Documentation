@@ -108,7 +108,7 @@ include your key in the `Authorization` HTTP header. Note that the API key shoul
 
 To specify which [Integration](#integrations) you are acting as you need to provide the `Integration-ID` header.
 
-### Tokens
+## Tokens
 
 <div class="tokenSelect">
   <label for="auth">Authentication Token:
@@ -117,7 +117,7 @@ To specify which [Integration](#integrations) you are acting as you need to prov
       <input type="text" id="auth" name="auth" placeholder="cd7a4537a231356d404b553f465b6af2fa035821">
     </div>
   </label>
-  
+
   <label for="integration">Integration ID:
     <div class="integrationInput">
       <input type="text" id="integration" name="integration" placeholder="79606358-97af-4196-b64c-5f719433d56b">
@@ -128,7 +128,7 @@ To specify which [Integration](#integrations) you are acting as you need to prov
 </p>
 </div>
 
-### Unauthenticated Requests
+## Unauthenticated Requests
 
 API requests without valid authentication will fail with the HTTP response code `401`. If you are getting unexpected
 `401` responses, ensure that your URL is correct. API calls made over plain HTTP will be redirected with the response
@@ -136,13 +136,13 @@ code `301`, and API calls with incorrect placed `/` will be redirected with the 
 and most HTTP clients will automatically follow the redirects while stripping out the authorization headers, resulting
 in the `401` response. Disable automated redirects or be mindful of this.
 
-### IP-whitelisting
+## IP-whitelisting
 
 The Gigapay API Supports IP-whitelisting. When requesting API-keys, let us know if you want to only allow access from certain IP addresses.
 If IP-whitelisting is enabled, API requests made from a non-whitelisted IP will be rejected with HTTP
 response code `403`.
 
-### Language
+## Language
 
 ```python
 import requests
@@ -174,6 +174,337 @@ fetch("https://api.gigapay.se/v2/", {
 
 The default language of the API is English. This document is written assuming you have the language set to English.
 To change language set the `Accept-Language` header to your preferred language.
+
+# Get Started
+
+This section helps you get up and running quickly with the Gigapay API. We recommend starting with the demo environment where you can test without real money changing hands.
+
+<aside class="notice">
+To get demo API credentials, contact us at <a href="mailto:support@gigapay.se">support@gigapay.se</a>.
+</aside>
+
+## Create a Payout
+
+This guide walks you through creating your first payout. By the end, you will have:
+
+1. Made an authenticated API request
+2. Created a payout and employee in a single call
+3. Issued an invoice
+4. Simulated payment (demo only)
+
+### Prerequisites
+
+Before you begin, ensure you have:
+
+| Credential | Description |
+|------------|-------------|
+| **API Token** | Your authentication token for the demo environment |
+| **Integration ID** | The UUID identifying your integration |
+
+Both credentials are provided when you request demo access. These headers are required for all API requests.
+
+### Step 1: Authenticate
+
+```python
+import requests
+
+response = requests.get(
+    'https://api.demo.gigapay.se/v2/',
+    headers={
+        'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
+        'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
+    }
+)
+```
+
+```shell
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.demo.gigapay.se/v2/
+```
+
+```javascript
+fetch("https://api.demo.gigapay.se/v2/", {
+    headers: {
+        "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
+        "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
+    }
+})
+```
+
+> A successful response confirms your credentials are working:
+
+```json
+{
+    "employees": "https://api.demo.gigapay.se/v2/employees/",
+    "payouts": "https://api.demo.gigapay.se/v2/payouts/",
+    "payruns": "https://api.demo.gigapay.se/v2/payruns/",
+    "invoices": "https://api.demo.gigapay.se/v2/invoices/"
+}
+```
+
+Test your authentication by making a simple GET request to the API root. If successful, you'll receive a list of available endpoints.
+
+#### HTTP Request
+
+`GET https://api.demo.gigapay.se/v2/`
+
+#### Headers
+
+Parameter | Required | Description
+--------- | ------- | -----------
+`Authorization` | True | Your API token, prefixed with `Token `.
+`Integration-ID` | True | Your integration UUID.
+
+### Step 2: Create a Payout with Inline Employee
+
+```python
+import requests
+
+response = requests.post(
+    'https://api.demo.gigapay.se/v2/payouts/',
+    json={
+        'currency': 'SEK',
+        'description': 'Payment for completed work',
+        'employee': {
+            'name': 'Jane Doe',
+            'email': 'jane.doe@example.com',
+            'country': 'SWE'
+        },
+        'invoiced_amount': '1000.00'
+    },
+    headers={
+        'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
+        'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
+    },
+    params={'expand': ['employee', 'payrun']}
+)
+```
+
+```shell
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"currency": "SEK", "description": "Payment for completed work", "employee": {"name": "Jane Doe", "email": "jane.doe@example.com", "country": "SWE"}, "invoiced_amount": "1000.00"}' 'https://api.demo.gigapay.se/v2/payouts/?expand=employee&expand=payrun'
+```
+
+```javascript
+fetch("https://api.demo.gigapay.se/v2/payouts/?expand=employee&expand=payrun", {
+    method: "POST",
+    body: JSON.stringify({
+        currency: "SEK",
+        description: "Payment for completed work",
+        employee: {
+            name: "Jane Doe",
+            email: "jane.doe@example.com",
+            country: "SWE"
+        },
+        invoiced_amount: "1000.00"
+    }),
+    headers: {
+        "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
+        "Content-Type": "application/json",
+        "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
+    }
+})
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "9472",
+    "currency": "SEK",
+    "description": "Payment for completed work",
+    "employee": {
+        "id": "1847",
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com",
+        "country": "SWE",
+        "latest_status": "created",
+        "created_at": "2024-01-15T10:32:36.118753Z"
+    },
+    "invoiced_amount": "1000.00",
+    "payrun": {
+        "id": "c1554d88-b74f-4d6a-bfa6-049c14905dc7",
+        "invoice": "a0c72032-8e02-4d5d-be09-274dc67dbe2d",
+        "currency": "SEK",
+        "latest_status": "open"
+    },
+    "latest_status": "created",
+    "created_at": "2024-01-15T10:32:38.118753Z"
+}
+```
+
+This is the key step. Using `?expand=employee&expand=payrun`, you can create both the payout and employee in a single request, and get the invoice ID directly from the expanded payrun. If an employee with matching information already exists, that employee will be reused.
+
+<aside class="notice">
+The invoice ID is in <code>payrun.invoice</code> - you'll use this to issue and pay the invoice.
+</aside>
+
+#### HTTP Request
+
+`POST https://api.demo.gigapay.se/v2/payouts/?expand=employee&expand=payrun`
+
+#### Headers
+
+Parameter | Required | Description
+--------- | ------- | -----------
+`Authorization` | True | Your API token.
+`Integration-ID` | True | Your integration UUID.
+`Content-Type` | True | Must be `application/json`.
+
+#### Body Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+`currency` | String | True | ISO-4217 currency code (e.g., `SEK`, `EUR`).
+`description` | String | True | Description shown to the employee (max 255 chars).
+`employee` | Object | True | Employee details (see below).
+`invoiced_amount` | String | True | Amount to invoice as a decimal string.
+
+#### Employee Object
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+`name` | String | True | Full name of the employee.
+`email` | String | True | Email address.
+`country` | String | True | ISO-3166 country code (e.g., `SWE`, `DEU`).
+`cellphone_number` | String | False | Phone number with country code.
+
+### Step 3: Issue the Invoice
+
+```python
+import requests
+
+response = requests.post(
+    'https://api.demo.gigapay.se/v2/invoices/INVOICE_ID/issue/',
+    json={
+        'due_date': '2024-02-15'
+    },
+    headers={
+        'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
+        'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
+    }
+)
+```
+
+```shell
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -H 'Content-Type: application/json' -d '{"due_date":"2024-02-15"}' https://api.demo.gigapay.se/v2/invoices/INVOICE_ID/issue/
+```
+
+```javascript
+fetch("https://api.demo.gigapay.se/v2/invoices/INVOICE_ID/issue/", {
+    method: "POST",
+    body: JSON.stringify({
+        due_date: "2024-02-15"
+    }),
+    headers: {
+        "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
+        "Content-Type": "application/json",
+        "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
+    }
+})
+```
+
+> The above command returns the updated invoice:
+
+```json
+{
+    "id": "a0c72032-8e02-4d5d-be09-274dc67dbe2d",
+    "created_at": "2024-01-15T10:28:21.847474Z",
+    "issued_at": "2024-01-15T11:00:00.000000Z",
+    "paid_at": null,
+    "due_date": "2024-02-15",
+    "currency": "SEK",
+    "total": "1000.00",
+    "amount_due": "1000.00",
+    "amount_paid": "0.00",
+    "invoice_number": "986911160380",
+    "billing_type": "payrun"
+}
+```
+
+Each payrun has an associated invoice. Issue the invoice to convert it from a proforma to a payable invoice. This also finalizes the payrun, making the payouts visible to employees.
+
+#### HTTP Request
+
+`POST https://api.demo.gigapay.se/v2/invoices/:id/issue/`
+
+#### Body Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+`due_date` | String | False | Due date in ISO format (YYYY-MM-DD). Defaults to 14 days from now.
+
+### Step 4: Pay the Invoice
+
+```python
+import requests
+
+response = requests.post(
+    'https://api.demo.gigapay.se/v2/invoices/INVOICE_ID/pay/',
+    headers={
+        'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
+        'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
+    }
+)
+```
+
+```shell
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.demo.gigapay.se/v2/invoices/INVOICE_ID/pay/
+```
+
+```javascript
+fetch("https://api.demo.gigapay.se/v2/invoices/INVOICE_ID/pay/", {
+    method: "POST",
+    headers: {
+        "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
+        "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
+    }
+})
+```
+
+> The above command returns the updated invoice with `paid_at` set:
+
+```json
+{
+    "id": "a0c72032-8e02-4d5d-be09-274dc67dbe2d",
+    "created_at": "2024-01-15T10:28:21.847474Z",
+    "issued_at": "2024-01-15T11:00:00.000000Z",
+    "paid_at": "2024-01-15T11:30:00.000000Z",
+    "due_date": "2024-02-15",
+    "currency": "SEK",
+    "total": "1000.00",
+    "amount_due": "0.00",
+    "amount_paid": "1000.00",
+    "invoice_number": "986911160380",
+    "billing_type": "payrun"
+}
+```
+
+<aside class="warning">
+This endpoint is <strong>only available in demo environments</strong>. In production, you pay invoices via bank transfer using the OCR reference number on the invoice.
+</aside>
+
+In the demo environment, you can simulate payment using this endpoint to complete the payout flow.
+
+#### HTTP Request
+
+`POST https://api.demo.gigapay.se/v2/invoices/:id/pay/`
+
+#### Production Payment Options
+
+In production, there are two ways to pay:
+
+- **Bank Transfer**: Transfer the invoice amount to Gigapay's bank account using the OCR reference number provided on the invoice.
+- **Prepayment**: Pre-fund your account for instant payouts. See [Prepayments](#prepayments) for details.
+
+### What's Next?
+
+Congratulations! You've completed the full payout cycle. Here are some next steps to explore:
+
+- **[Webhooks](#webhooks)** - Subscribe to events like `Payout.notified` and `Employee.verified` to track progress in real-time
+- **[Multiple Payouts](#register-multiple-payouts)** - Create many payouts in a single request
+- **[Employees](#employees)** - Manage employees separately from payouts
+- **[Pricing](#pricing)** - Calculate costs before creating payouts
+
+For production credentials, contact [support@gigapay.se](mailto:support@gigapay.se).
 
 # Events
 
