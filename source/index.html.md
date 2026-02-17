@@ -243,6 +243,7 @@ on the following events:
 - `Payout.created`
 - `Payout.notified`
 - `Payout.accepted`
+- `Payout.canceled`
 - `Payrun.created`
 - `Payrun.paid`
 - `Registration.verified`
