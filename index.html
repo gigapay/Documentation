@@ -784,6 +784,8 @@ with <code>_at</code>.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://jobmatchr.se/webhooks/employees/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Gigapay-Signature</span><span class="p">:</span> <span class="s">t=1583327301,v1=ad583e2b2093c8d6fb3b65e04b99fc5988e98c0c312909acad334072da7e99ec</span>
+<span class="na">Gigapay-Event</span><span class="p">:</span> <span class="s">Employee.verified</span>
+<span class="na">Gigapay-Integration-Id</span><span class="p">:</span> <span class="s">123</span>
 <span class="s">...</span>
 
 <span class="p">{</span><span class="w">
@@ -819,7 +821,33 @@ on the following events:</p>
 <li><code>Registration.verified</code></li>
 </ul>
 
-<p>The notifications simply contain the object that triggered the event, as represented in the API. </p>
+<p>The notifications simply contain the object that triggered the event, as represented in the API.</p>
+<h3 id='webhook-headers'>Webhook Headers</h3>
+<p>Each webhook notification includes the following HTTP headers:</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Content-Type</code></td>
+<td>Always <code>application/json</code>.</td>
+</tr>
+<tr>
+<td><code>Gigapay-Signature</code></td>
+<td>HMAC-SHA256 signature for verifying the notification. See <a href="#gigapay-signature">Gigapay Signature</a>.</td>
+</tr>
+<tr>
+<td><code>Gigapay-Event</code></td>
+<td>The event type that triggered the webhook, e.g. <code>Employee.verified</code>.</td>
+</tr>
+<tr>
+<td><code>Gigapay-Integration-Id</code></td>
+<td>The integration&#39;s external id. Only included for integration-scoped webhooks.</td>
+</tr>
+</tbody></table>
 <h3 id='webhook-types'>Webhook Types</h3>
 <p><strong>Integration-Scoped Webhooks</strong>
 <br>
