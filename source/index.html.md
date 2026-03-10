@@ -214,6 +214,8 @@ with `_at`.
 POST https://jobmatchr.se/webhooks/employees/ HTTP/1.1
 Content-Type: application/json
 Gigapay-Signature: t=1583327301,v1=ad583e2b2093c8d6fb3b65e04b99fc5988e98c0c312909acad334072da7e99ec
+Gigapay-Event: Employee.verified
+Gigapay-Integration-Id: 123
 ...
 
 {
@@ -248,7 +250,18 @@ on the following events:
 - `Payrun.paid`
 - `Registration.verified`
 
-The notifications simply contain the object that triggered the event, as represented in the API. 
+The notifications simply contain the object that triggered the event, as represented in the API.
+
+### Webhook Headers
+
+Each webhook notification includes the following HTTP headers:
+
+| Header | Description |
+|--------|-------------|
+| `Content-Type` | Always `application/json`. |
+| `Gigapay-Signature` | HMAC-SHA256 signature for verifying the notification. See [Gigapay Signature](#gigapay-signature). |
+| `Gigapay-Event` | The event type that triggered the webhook, e.g. `Employee.verified`. |
+| `Gigapay-Integration-Id` | The integration's external id. Only included for integration-scoped webhooks. |
 
 ### Webhook Types
 
