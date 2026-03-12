@@ -28,6 +28,11 @@ You can always create and view registrations associated with your account. You c
     "email": "faktura@zerebra.com",
     "phone_number": "+46703000000",
     "country": "DNK",
+    "signatory_name": "John Doe",
+    "signatory_email": "john@zerebra.com",
+    "finance_email": "finance@zerebra.com",
+    "technical_email": "tech@zerebra.com",
+    "invoice_email": "invoices@zerebra.com"
 }
 ```
 
@@ -48,6 +53,11 @@ You can always create and view registrations associated with your account. You c
 | `address_line_2` | The secondary line of the company's address. |
 | `zip_code` | The postal or zip code for the company's address. |
 | `city` | The city for the company's address. |
+| `signatory_name` | The full name of the company's authorized signatory. |
+| `signatory_email` | The email address of the company's authorized signatory. |
+| `finance_email` | The email address for the company's finance department. |
+| `technical_email` | The email address for technical contacts at the company. |
+| `invoice_email` | The email address where invoices should be sent. |
 | `needs_review` | A read-only flag indicating if the registration is pending review by Gigapay. |
 
 
@@ -100,6 +110,11 @@ fetch("https://api.gigapay.se/v2/registrations/", {
             "email": "faktura@zerebra.com",
             "phone_number": "+46703000000",
             "country": "DNK",
+            "signatory_name": "John Doe",
+            "signatory_email": "john@zerebra.com",
+            "finance_email": "finance@zerebra.com",
+            "technical_email": "tech@zerebra.com",
+            "invoice_email": "invoices@zerebra.com"
         },
         {
             "id": "8347fdd5-688d-4267-ae42-864b34a4220b",
@@ -117,6 +132,11 @@ fetch("https://api.gigapay.se/v2/registrations/", {
             "email": "faktura@zebrebra.com",
             "phone_number": "+46703000001",
             "country": "DNK",
+            "signatory_name": "Jane Smith",
+            "signatory_email": "jane@zebrebra.com",
+            "finance_email": "finance@zebrebra.com",
+            "technical_email": "tech@zebrebra.com",
+            "invoice_email": "invoices@zebrebra.com"
         },
     ]
 }
@@ -160,6 +180,11 @@ response = requests.post(
         'zip_code': '2200',
         'city': 'Copenhagen',
         'country': 'DNK',
+        'signatory_name': 'Hans Jensen',
+        'signatory_email': 'hans@example.com',
+        'finance_email': 'finance@example.com',
+        'technical_email': 'tech@example.com',
+        'invoice_email': 'invoices@example.com',
     },
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -179,7 +204,12 @@ curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' 
     "address_line_1": "Nørrebrogade 20",
     "zip_code": "2200",
     "city": "Copenhagen",
-    "country": "DNK"
+    "country": "DNK",
+    "signatory_name": "Hans Jensen",
+    "signatory_email": "hans@example.com",
+    "finance_email": "finance@example.com",
+    "technical_email": "tech@example.com",
+    "invoice_email": "invoices@example.com"
 }' https://api.gigapay.se/v2/registrations/
 ```
 
@@ -198,6 +228,11 @@ fetch("https://api.gigapay.se/v2/registrations/", {
         zip_code: '2200',
         city: 'Copenhagen',
         country: 'DNK',
+        signatory_name: 'Hans Jensen',
+        signatory_email: 'hans@example.com',
+        finance_email: 'finance@example.com',
+        technical_email: 'tech@example.com',
+        invoice_email: 'invoices@example.com',
     }),
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -224,7 +259,12 @@ fetch("https://api.gigapay.se/v2/registrations/", {
     "city": "Copenhagen",
     "email": "contact@example.com",
     "phone_number": "+4570123456",
-    "country": "DNK"
+    "country": "DNK",
+    "signatory_name": "Hans Jensen",
+    "signatory_email": "hans@example.com",
+    "finance_email": "finance@example.com",
+    "technical_email": "tech@example.com",
+    "invoice_email": "invoices@example.com"
 }
 ```
 
@@ -257,6 +297,11 @@ Parameter | Type | Required | Default | Notes
 `address_line_2` | String | False | |
 `zip_code` | String | True | |
 `city` | String | True | |
+`signatory_name` | String | True | | The full name of the company's authorized signatory.
+`signatory_email` | String | True | | The email address of the company's authorized signatory.
+`finance_email` | String | True | | The email address for the company's finance department.
+`technical_email` | String | True | | The email address for technical contacts at the company.
+`invoice_email` | String | True | | The email address where invoices should be sent.
 
 
 
@@ -303,7 +348,12 @@ fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a42
     "city": "Segeltorps",
     "email": "faktura@zebrebra.com",
     "phone_number": "+46703000001",
-    "country": "DNK"
+    "country": "DNK",
+    "signatory_name": "Jane Smith",
+    "signatory_email": "jane@zebrebra.com",
+    "finance_email": "finance@zebrebra.com",
+    "technical_email": "tech@zebrebra.com",
+    "invoice_email": "invoices@zebrebra.com"
 }
 ```
 
@@ -375,7 +425,12 @@ fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a42
     "city": "Segeltorps",
     "email": "billing@zerebra.com",
     "phone_number": "+46703000001",
-    "country": "DNK"
+    "country": "DNK",
+    "signatory_name": "Jane Smith",
+    "signatory_email": "jane@zebrebra.com",
+    "finance_email": "finance@zebrebra.com",
+    "technical_email": "tech@zebrebra.com",
+    "invoice_email": "invoices@zebrebra.com"
 }
 ```
 
@@ -415,6 +470,11 @@ Parameter | Type | Required | Default | Notes
 `address_line_2` | String | False | |
 `zip_code` | String | True | |
 `city` | String | True | |
+`signatory_name` | String | True | | The full name of the company's authorized signatory.
+`signatory_email` | String | True | | The email address of the company's authorized signatory.
+`finance_email` | String | True | | The email address for the company's finance department.
+`technical_email` | String | True | | The email address for technical contacts at the company.
+`invoice_email` | String | True | | The email address where invoices should be sent.
 
 
 ## Replace a Registration
@@ -435,6 +495,11 @@ response = requests.put(
         'zip_code': '1620',
         'city': 'Copenhagen',
         'country': 'DNK',
+        'signatory_name': 'Hans Jensen',
+        'signatory_email': 'hans@example.com',
+        'finance_email': 'finance@example.com',
+        'technical_email': 'tech@example.com',
+        'invoice_email': 'invoices@example.com',
     },
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821'
@@ -454,7 +519,12 @@ curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -
     "address_line_1": "Vesterbrogade 40",
     "zip_code": "1620",
     "city": "Copenhagen",
-    "country": "DNK"
+    "country": "DNK",
+    "signatory_name": "Hans Jensen",
+    "signatory_email": "hans@example.com",
+    "finance_email": "finance@example.com",
+    "technical_email": "tech@example.com",
+    "invoice_email": "invoices@example.com"
 }' https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
 ```
 
@@ -473,6 +543,11 @@ fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a42
         zip_code: '1620',
         city: 'Copenhagen',
         country: 'DNK',
+        signatory_name: 'Hans Jensen',
+        signatory_email: 'hans@example.com',
+        finance_email: 'finance@example.com',
+        technical_email: 'tech@example.com',
+        invoice_email: 'invoices@example.com',
     }),
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -499,7 +574,12 @@ fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a42
     "city": "Copenhagen",
     "email": "billing@example.com",
     "phone_number": "+4570987654",
-    "country": "DNK"
+    "country": "DNK",
+    "signatory_name": "Hans Jensen",
+    "signatory_email": "hans@example.com",
+    "finance_email": "finance@example.com",
+    "technical_email": "tech@example.com",
+    "invoice_email": "invoices@example.com"
 }
 ```
 
@@ -539,6 +619,11 @@ A registration can only be replaced if the `needs_review` field is set to `true`
 | `address_line_2` | String | False | | |
 | `zip_code` | String | True | | |
 | `city` | String | True | | |
+| `signatory_name` | String | True | | The full name of the company's authorized signatory. |
+| `signatory_email` | String | True | | The email address of the company's authorized signatory. |
+| `finance_email` | String | True | | The email address for the company's finance department. |
+| `technical_email` | String | True | | The email address for technical contacts at the company. |
+| `invoice_email` | String | True | | The email address where invoices should be sent. |
 
 
 ## Delete a Registration
@@ -635,7 +720,12 @@ fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a42
     "city": "Segeltorps",
     "email": "faktura@zebrebra.com",
     "phone_number": "+46703000001",
-    "country": "DNK"
+    "country": "DNK",
+    "signatory_name": "Jane Smith",
+    "signatory_email": "jane@zebrebra.com",
+    "finance_email": "finance@zebrebra.com",
+    "technical_email": "tech@zebrebra.com",
+    "invoice_email": "invoices@zebrebra.com"
 }
 ```
 
