@@ -1470,6 +1470,11 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faktura@zerebra.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46703000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@zerebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finance_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance@zerebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"technical_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tech@zerebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoices@zerebra.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -1535,6 +1540,26 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
 <td>The city for the company&#39;s address.</td>
 </tr>
 <tr>
+<td><code>signatory_name</code></td>
+<td>The full name of the company&#39;s authorized signatory.</td>
+</tr>
+<tr>
+<td><code>signatory_email</code></td>
+<td>The email address of the company&#39;s authorized signatory.</td>
+</tr>
+<tr>
+<td><code>finance_email</code></td>
+<td>The email address for the company&#39;s finance department.</td>
+</tr>
+<tr>
+<td><code>technical_email</code></td>
+<td>The email address for technical contacts at the company.</td>
+</tr>
+<tr>
+<td><code>invoice_email</code></td>
+<td>The email address where invoices should be sent.</td>
+</tr>
+<tr>
 <td><code>needs_review</code></td>
 <td>A read-only flag indicating if the registration is pending review by Gigapay.</td>
 </tr>
@@ -1578,6 +1603,11 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
             </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faktura@zerebra.com"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46703000000"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"signatory_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"signatory_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@zerebra.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"finance_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance@zerebra.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"technical_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tech@zerebra.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"invoice_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoices@zerebra.com"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8347fdd5-688d-4267-ae42-864b34a4220b"</span><span class="p">,</span><span class="w">
@@ -1595,6 +1625,11 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
             </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faktura@zebrebra.com"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46703000001"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"signatory_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Smith"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"signatory_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@zebrebra.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"finance_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance@zebrebra.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"technical_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tech@zebrebra.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"invoice_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoices@zebrebra.com"</span><span class="w">
         </span><span class="p">},</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1650,6 +1685,11 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
         <span class="s">'zip_code'</span><span class="p">:</span> <span class="s">'2200'</span><span class="p">,</span>
         <span class="s">'city'</span><span class="p">:</span> <span class="s">'Copenhagen'</span><span class="p">,</span>
         <span class="s">'country'</span><span class="p">:</span> <span class="s">'DNK'</span><span class="p">,</span>
+        <span class="s">'signatory_name'</span><span class="p">:</span> <span class="s">'Hans Jensen'</span><span class="p">,</span>
+        <span class="s">'signatory_email'</span><span class="p">:</span> <span class="s">'hans@example.com'</span><span class="p">,</span>
+        <span class="s">'finance_email'</span><span class="p">:</span> <span class="s">'finance@example.com'</span><span class="p">,</span>
+        <span class="s">'technical_email'</span><span class="p">:</span> <span class="s">'tech@example.com'</span><span class="p">,</span>
+        <span class="s">'invoice_email'</span><span class="p">:</span> <span class="s">'invoices@example.com'</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
         <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span><span class="p">,</span>
@@ -1666,7 +1706,12 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
     "address_line_1": "Nørrebrogade 20",
     "zip_code": "2200",
     "city": "Copenhagen",
-    "country": "DNK"
+    "country": "DNK",
+    "signatory_name": "Hans Jensen",
+    "signatory_email": "hans@example.com",
+    "finance_email": "finance@example.com",
+    "technical_email": "tech@example.com",
+    "invoice_email": "invoices@example.com"
 }'</span> https://api.gigapay.se/v2/registrations/
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/registrations/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
@@ -1682,6 +1727,11 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
         <span class="na">zip_code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2200</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">city</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Copenhagen</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">country</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DNK</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">signatory_name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hans Jensen</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">signatory_email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hans@example.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">finance_email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">finance@example.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">technical_email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">tech@example.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">invoice_email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">invoices@example.com</span><span class="dl">'</span><span class="p">,</span>
     <span class="p">}),</span>
     <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
         <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
@@ -1707,7 +1757,12 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
     </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copenhagen"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+4570123456"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hans Jensen"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hans@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finance_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"technical_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tech@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoices@example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint creates a Registration.</p>
@@ -1828,6 +1883,41 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td><code>signatory_name</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The full name of the company&#39;s authorized signatory.</td>
+</tr>
+<tr>
+<td><code>signatory_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address of the company&#39;s authorized signatory.</td>
+</tr>
+<tr>
+<td><code>finance_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address for the company&#39;s finance department.</td>
+</tr>
+<tr>
+<td><code>technical_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address for technical contacts at the company.</td>
+</tr>
+<tr>
+<td><code>invoice_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address where invoices should be sent.</td>
+</tr>
 </tbody></table>
 <h2 id='retrieve-a-registration'>Retrieve a Registration</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
@@ -1862,7 +1952,12 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
     </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Segeltorps"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faktura@zebrebra.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46703000001"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@zebrebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finance_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance@zebrebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"technical_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tech@zebrebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoices@zebrebra.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a Registration.</p>
@@ -1936,7 +2031,12 @@ this Payout is being made. Unlike <code>metadata</code>, <code>description</code
     </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Segeltorps"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billing@zerebra.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46703000001"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@zebrebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finance_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance@zebrebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"technical_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tech@zebrebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoices@zebrebra.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint updates a Registration.
@@ -2072,6 +2172,41 @@ A registration can only be updated if the <code>needs_review</code> field is set
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td><code>signatory_name</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The full name of the company&#39;s authorized signatory.</td>
+</tr>
+<tr>
+<td><code>signatory_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address of the company&#39;s authorized signatory.</td>
+</tr>
+<tr>
+<td><code>finance_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address for the company&#39;s finance department.</td>
+</tr>
+<tr>
+<td><code>technical_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address for technical contacts at the company.</td>
+</tr>
+<tr>
+<td><code>invoice_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address where invoices should be sent.</td>
+</tr>
 </tbody></table>
 <h2 id='replace-a-registration'>Replace a Registration</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">put</span><span class="p">(</span>
@@ -2088,6 +2223,11 @@ A registration can only be updated if the <code>needs_review</code> field is set
         <span class="s">'zip_code'</span><span class="p">:</span> <span class="s">'1620'</span><span class="p">,</span>
         <span class="s">'city'</span><span class="p">:</span> <span class="s">'Copenhagen'</span><span class="p">,</span>
         <span class="s">'country'</span><span class="p">:</span> <span class="s">'DNK'</span><span class="p">,</span>
+        <span class="s">'signatory_name'</span><span class="p">:</span> <span class="s">'Hans Jensen'</span><span class="p">,</span>
+        <span class="s">'signatory_email'</span><span class="p">:</span> <span class="s">'hans@example.com'</span><span class="p">,</span>
+        <span class="s">'finance_email'</span><span class="p">:</span> <span class="s">'finance@example.com'</span><span class="p">,</span>
+        <span class="s">'technical_email'</span><span class="p">:</span> <span class="s">'tech@example.com'</span><span class="p">,</span>
+        <span class="s">'invoice_email'</span><span class="p">:</span> <span class="s">'invoices@example.com'</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
         <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token cd7a4537a231356d404b553f465b6af2fa035821'</span>
@@ -2104,7 +2244,12 @@ A registration can only be updated if the <code>needs_review</code> field is set
     "address_line_1": "Vesterbrogade 40",
     "zip_code": "1620",
     "city": "Copenhagen",
-    "country": "DNK"
+    "country": "DNK",
+    "signatory_name": "Hans Jensen",
+    "signatory_email": "hans@example.com",
+    "finance_email": "finance@example.com",
+    "technical_email": "tech@example.com",
+    "invoice_email": "invoices@example.com"
 }'</span> https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PUT</span><span class="dl">"</span><span class="p">,</span>
@@ -2120,6 +2265,11 @@ A registration can only be updated if the <code>needs_review</code> field is set
         <span class="na">zip_code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1620</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">city</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Copenhagen</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">country</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DNK</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">signatory_name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hans Jensen</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">signatory_email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hans@example.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">finance_email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">finance@example.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">technical_email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">tech@example.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">invoice_email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">invoices@example.com</span><span class="dl">'</span><span class="p">,</span>
     <span class="p">}),</span>
     <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
         <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token cd7a4537a231356d404b553f465b6af2fa035821</span><span class="dl">"</span><span class="p">,</span>
@@ -2145,7 +2295,12 @@ A registration can only be updated if the <code>needs_review</code> field is set
     </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copenhagen"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billing@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+4570987654"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hans Jensen"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hans@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finance_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"technical_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tech@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoices@example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint replaces a Registration completely.
@@ -2281,6 +2436,41 @@ A registration can only be replaced if the <code>needs_review</code> field is se
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td><code>signatory_name</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The full name of the company&#39;s authorized signatory.</td>
+</tr>
+<tr>
+<td><code>signatory_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address of the company&#39;s authorized signatory.</td>
+</tr>
+<tr>
+<td><code>finance_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address for the company&#39;s finance department.</td>
+</tr>
+<tr>
+<td><code>technical_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address for technical contacts at the company.</td>
+</tr>
+<tr>
+<td><code>invoice_email</code></td>
+<td>String</td>
+<td>True</td>
+<td></td>
+<td>The email address where invoices should be sent.</td>
+</tr>
 </tbody></table>
 <h2 id='delete-a-registration'>Delete a Registration</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
@@ -2368,7 +2558,12 @@ A registration can only be deleted if the <code>needs_review</code> field is set
     </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Segeltorps"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faktura@zebrebra.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46703000001"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signatory_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@zebrebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finance_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finance@zebrebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"technical_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tech@zebrebra.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoices@zebrebra.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint approves a Registration and is <strong>only available in demo environments</strong>. In production, registrations are reviewed and approved by the Gigapay team.</p>
