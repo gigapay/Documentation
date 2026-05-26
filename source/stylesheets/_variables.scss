@@ -23,29 +23,31 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: linear-gradient(45deg, #32425A, #394C6B) !default;
-$examples-bg: linear-gradient(45deg, #32425A, #394C6B) !default;
-$code-bg: linear-gradient(45deg, #32425A, #394C6B) !default;
-$code-annotation-bg: rgba(38, 76, 112, 0.3) !default;
-$nav-active-bg: #0F75D4 !default;
-$nav-active-parent-bg: #021C47 !default; // parent links of the current section
+// Brand tokens: Gigapay Purple (#6d4ebc), Dark Purple (#2d0f2e),
+// Black (#130e21), White (#FFFEF7). All fills are solid — no gradients.
+$nav-bg: #FFFEF7 !default;
+$examples-bg: #2d0f2e !default;
+$code-bg: #2d0f2e !default;
+$code-annotation-bg: rgba(109, 78, 188, 0.3) !default;
+$nav-active-bg: #6d4ebc !default;
+$nav-active-parent-bg: #E6DCFA !default; // parent links of the current section
 $lang-select-border: #000 !default;
-$lang-select-bg: #01173D !default;
-$lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
-$lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
-$main-bg: #F3F3F4 !default;
-$aside-notice-bg: #8fbcd4 !default;
-$aside-warning-bg: #c97a7e !default;
-$aside-success-bg: #6ac174 !default;
-$search-notice-bg: #c97a7e !default;
+$lang-select-bg: #2d0f2e !default;
+$lang-select-active-bg: $examples-bg !default;
+$lang-select-pressed-bg: #130e21 !default; // color of language tab bg when mouse is pressed
+$main-bg: #FFFEF7 !default;
+$aside-notice-bg: #E6DCFA !default;
+$aside-warning-bg: #fd6a21 !default;
+$aside-success-bg: #aadd82 !default;
+$search-notice-bg: #fd6a21 !default;
 
 
 // TEXT COLORS
 ////////////////////
-$main-text: #333 !default; // main content text color
-$nav-text: #fff !default;
-$nav-active-text: #fff !default;
-$nav-active-parent-text: #fff !default; // parent links of the current section
+$main-text: #130e21 !default; // main content text color
+$nav-text: #130e21 !default; // dark text on the white navbar
+$nav-active-text: #FFFEF7 !default; // white text on purple active bg
+$nav-active-parent-text: #130e21 !default; // dark text on light-purple parent bg
 $lang-select-text: #fff !default; // color of unselected language tab text
 $lang-select-active-text: #FFFBF1 !default; // color of selected language tab text
 $lang-select-pressed-text: #fff !default; // color of language tab text when mouse is pressed
@@ -87,8 +89,8 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 
 // OTHER
 ////////////////////
-$nav-footer-border-color: #666 !default;
-$search-box-border-color: #666 !default;
+$nav-footer-border-color: #C9CAB8 !default;
+$search-box-border-color: #C9CAB8 !default;
 
 
 ////////////////////////////////////////////////////////////////////////////////
