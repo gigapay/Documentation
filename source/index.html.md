@@ -27,11 +27,11 @@ search: true
 
 code_clipboard: true
 
+og_image: opengraph.webp
+
 meta:
   - name: description
     content: Find the all the information you need to implement the Gigapay API here. Simple and fast to integrate.
-  - name: og:image
-    content: "https://developer.gigapay.com/images/opengraph.webp"
 ---
 
 # API Reference
