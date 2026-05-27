@@ -40,6 +40,9 @@ under the License.
         >
       <% end %>
     <% end %>
+    <% if current_page.data.og_image %>
+      <meta property="og:image" content="https://developer.gigapay.com/<%= image_path(current_page.data.og_image).sub(/^\//, '') %>">
+    <% end %>
     <title><%= current_page.data.title || "API Documentation | Gigapay" %></title>
 
     <style media="screen">
