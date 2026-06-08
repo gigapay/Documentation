@@ -12,7 +12,7 @@ and working permits.
 {
     "id": "1847",
     "name": "Albin Lindskog",
-    "email": "albin@gigapay.co",
+    "email": "name@example.com",
     "cellphone_number": "+46703000000",
     "country": "SWE",
     "latest_status": "active",
@@ -81,7 +81,7 @@ fetch("https://api.gigapay.com/v2/employees/", {
         {
             "id": "1847",
             "name": "Albin Lindskog",
-            "email": "albin@gigapay.co",
+            "email": "name@example.com",
             "cellphone_number": "+46703000000",
             "country": "SWE",
             "latest_status": "active",
@@ -94,7 +94,7 @@ fetch("https://api.gigapay.com/v2/employees/", {
         }, {
             "id": "1848",
             "name": "Joakim Olovsson",
-            "email": "joakim@gigapay.co",
+            "email": "name@example.com",
             "cellphone_number": "+46703000001",
             "country": "SWE",
             "latest_status": "invited",
@@ -182,7 +182,7 @@ fetch("https://api.gigapay.com/v2/employees/", {
 {
     "id": "14585989-9a6c-4f05-b251-69e38e85d324",
     "name": "Albin Lindskog",
-    "email": "albin@gigapay.co",
+    "email": "name@example.com",
     "cellphone_number": "+46703000000",
     "country": "SWE",
     "latest_status": "created",
@@ -253,7 +253,7 @@ fetch("https://api.gigapay.com/v2/employees/1847/", {
 {
     "id": "1847",
     "name": "Albin Lindskog",
-    "email": "albin@gigapay.co",
+    "email": "name@example.com",
     "cellphone_number": "+46703000000",
     "country": "SWE",
     "latest_status": "active",
@@ -324,7 +324,7 @@ fetch("https://api.gigapay.com/v2/employees/1847/", {
 {
     "id": "8472",
     "name": "Albin Lindskog",
-    "email": "albin@gigapay.co",
+    "email": "name@example.com",
     "cellphone_number": "+46703000000",
     "country": "SWE",
     "latest_status": "active",
@@ -416,7 +416,7 @@ fetch("https://api.gigapay.com/v2/employees/8472/", {
 {
     "id": "1847",
     "name": "Albin Lindskog",
-    "email": "albin@gigapay.co",
+    "email": "name@example.com",
     "cellphone_number": "+46703000000",
     "country": "SWE",
     "latest_status": "not_invited",
