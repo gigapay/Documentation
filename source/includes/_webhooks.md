@@ -39,7 +39,7 @@ In the case where the receiving server is unavailable, we will retry the webhook
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/webhooks/',
+    'https://api.gigapay.com/v2/webhooks/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -48,11 +48,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/webhooks/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/webhooks/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/webhooks/", {
+fetch("https://api.gigapay.com/v2/webhooks/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
         "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
@@ -66,7 +66,7 @@ fetch("https://api.gigapay.se/v2/webhooks/", {
 {
     "count": 4,
     "next": null,
-    "previous": "https://api.gigapay.se/v2/webhooks/?page=2",
+    "previous": "https://api.gigapay.com/v2/webhooks/?page=2",
     "results": [
         {
             "id": "38a93e19-886a-4246-9cfe-471214ff6739",
@@ -89,7 +89,7 @@ This endpoint retrieves all webhooks.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/webhooks/`
+`GET https://api.gigapay.com/v2/webhooks/`
 
 ### Headers
 
@@ -115,7 +115,7 @@ Parameter | Default | Description
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/webhooks/',
+    'https://api.gigapay.com/v2/webhooks/',
     json={
         'url': 'https://jobmatchr.se/webhooks/payouts/', 
         'events': ['Payout.created']
@@ -132,7 +132,7 @@ curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' 
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/webhooks/", {
+fetch("https://api.gigapay.com/v2/webhooks/", {
     method: "POST",
     body: JSON.stringify({url: "https://jobmatchr.se/webhooks/payouts/", events: ["Payout.created"]}),
     headers: {
@@ -158,7 +158,7 @@ This endpoint creates a webhook.
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/webhooks/`
+`POST https://api.gigapay.com/v2/webhooks/`
 
 ### Headers
 
@@ -188,7 +188,7 @@ Parameter | Type | Required | Default | Notes
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/webhooks/481272/',
+    'https://api.gigapay.com/v2/webhooks/481272/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -197,11 +197,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/webhooks/481272/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/webhooks/481272/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/webhooks/481272/", {
+fetch("https://api.gigapay.com/v2/webhooks/481272/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
         "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
@@ -225,7 +225,7 @@ This endpoint retrieves a webhook.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/webhooks/:id/`
+`GET https://api.gigapay.com/v2/webhooks/:id/`
 
 ### Headers
 
@@ -251,7 +251,7 @@ Parameter | Required | Description
 import requests
 
 response = requests.patch(
-    'https://api.gigapay.se/v2/webhooks/481272/',
+    'https://api.gigapay.com/v2/webhooks/481272/',
     json={
         'events': ['Payout.created', 'Payout.notified']
     },
@@ -263,11 +263,11 @@ response = requests.patch(
 ```
 
 ```shell
-curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"events": ["Payout.created", "Payout.notified"]}' https://api.gigapay.se/v2/webhooks/481272/
+curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"events": ["Payout.created", "Payout.notified"]}' https://api.gigapay.com/v2/webhooks/481272/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/webhooks/481272/", {
+fetch("https://api.gigapay.com/v2/webhooks/481272/", {
     method: "PATCH",
     body: JSON.stringify({events: ["Payout.created", "Payout.notified"]}),
     headers: {
@@ -294,7 +294,7 @@ This endpoint updates a webhook.
 
 ### HTTP Request
 
-`PATCH https://api.gigapay.se/v2/webhooks/:id/`
+`PATCH https://api.gigapay.com/v2/webhooks/:id/`
 
 ### Headers
 
@@ -328,7 +328,7 @@ Parameter | Type | Required | Default | Notes
 import requests
 
 response = requests.put(
-    'https://api.gigapay.se/v2/webhooks/481272/',
+    'https://api.gigapay.com/v2/webhooks/481272/',
     json={
         'url': 'https://jobmatchr.se/webhooks/payruns/', 
         'events': ['Payrun.created']
@@ -341,11 +341,11 @@ response = requests.put(
 ```
 
 ```shell
-curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"url": "https://jobmatchr.se/webhooks/payruns/", "events": ["Payrun.created"]}' https://api.gigapay.se/v2/webhooks/481272/
+curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"url": "https://jobmatchr.se/webhooks/payruns/", "events": ["Payrun.created"]}' https://api.gigapay.com/v2/webhooks/481272/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/webhooks/481272/", {
+fetch("https://api.gigapay.com/v2/webhooks/481272/", {
     method: "PUT",
     body: JSON.stringify({url: "https://jobmatchr.se/webhooks/payruns/", events: ["Payrun.created"]}),
     headers: {
@@ -382,7 +382,7 @@ This endpoint replaces a webhook.
 
 ### HTTP Request
 
-`PUT https://api.gigapay.se/v2/webhooks/:id/`
+`PUT https://api.gigapay.com/v2/webhooks/:id/`
 
 ### Headers
 
@@ -417,7 +417,7 @@ Parameter | Type | Required | Default | Description
 import requests
 
 response = requests.delete(
-    'https://api.gigapay.se/v2/webhooks/481272/',
+    'https://api.gigapay.com/v2/webhooks/481272/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -426,11 +426,11 @@ response = requests.delete(
 ```
 
 ```shell
-curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/webhooks/481272/
+curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/webhooks/481272/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/webhooks/481272/", {
+fetch("https://api.gigapay.com/v2/webhooks/481272/", {
     method: "DELETE",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -445,7 +445,7 @@ This endpoint deletes a webhook.
 
 ### HTTP Request
 
-`DELETE https://api.gigapay.se/v2/webhooks/:id/`
+`DELETE https://api.gigapay.com/v2/webhooks/:id/`
 
 ### Headers
 

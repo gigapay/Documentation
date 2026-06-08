@@ -13,7 +13,7 @@ the prod and demo server in the documentation.
  */
 function dynamicServerNames() {
   var input = $('input[type=radio]');
-  var placeholder = 'https://api.gigapay.se/v2/';
+  var placeholder = 'https://api.gigapay.com/v2/';
   var value = $('input[type=radio]:checked')[0].value.replace('///', '//');  // remove escaping necessary in .md file
 
   var span = document.createElement('span');

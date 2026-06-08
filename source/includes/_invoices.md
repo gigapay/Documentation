@@ -47,7 +47,7 @@ subscription, credit).
 import requests
 
 response = requests.get(
-  'https://api.gigapay.se/v2/invoices/',
+  'https://api.gigapay.com/v2/invoices/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -56,11 +56,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/invoices/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/invoices/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/invoices/", {
+fetch("https://api.gigapay.com/v2/invoices/", {
   headers: {
     "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
     "Integration-ID": "79606358-97af-4196-b64c-5f719433d56b"
@@ -91,7 +91,7 @@ This endpoint retrieves all invoices across all invoice types.
       "invoice_number": "986911160380",
       "customer_reference": "PO-2024-001",
       "billing_type": "payrun",
-      "pdf_url": "https://api.gigapay.se/invoice/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?token=some-token&language=en"
+      "pdf_url": "https://api.gigapay.com/invoice/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?token=some-token&language=en"
     }
   ]
 }
@@ -99,7 +99,7 @@ This endpoint retrieves all invoices across all invoice types.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/invoices/`
+`GET https://api.gigapay.com/v2/invoices/`
 
 ### Query Parameters
 
@@ -117,7 +117,7 @@ This endpoint retrieves all invoices across all invoice types.
 import requests
 
 response = requests.get(
-  'https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
+  'https://api.gigapay.com/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -126,11 +126,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/", {
+fetch("https://api.gigapay.com/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/", {
   headers: {
     "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
     "Integration-ID": "79606358-97af-4196-b64c-5f719433d56b"
@@ -156,13 +156,13 @@ This endpoint retrieves a specific invoice.
   "invoice_number": "986911160380",
   "customer_reference": "PO-2024-001",
   "billing_type": "payrun",
-  "pdf_url": "https://api.gigapay.se/invoice/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?token=some-token&language=en"
+  "pdf_url": "https://api.gigapay.com/invoice/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?token=some-token&language=en"
 }
 ```
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/invoices/:id/`
+`GET https://api.gigapay.com/v2/invoices/:id/`
 
 ### URL Parameters
 
@@ -176,7 +176,7 @@ This endpoint retrieves a specific invoice.
 import requests
 
 response = requests.post(
-  'https://api.gigapay.se/v2/invoices/a9d59fad-4e74-4471-a081-1d8a8a107ab5/issue/',
+  'https://api.gigapay.com/v2/invoices/a9d59fad-4e74-4471-a081-1d8a8a107ab5/issue/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -192,11 +192,11 @@ curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' 
      -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
      -H 'Content-Type: application/json' \
      -d '{"due_date":"2024-02-15"}' \
-     https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/issue/
+     https://api.gigapay.com/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/issue/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/issue/", {
+fetch("https://api.gigapay.com/v2/invoices/a0c72032-8e02-4d5d-be09-274dc67dbe2d/issue/", {
   method: "POST",
   headers: {
     "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -213,7 +213,7 @@ This action issues any invoice type (including prepayment proformas) as a payabl
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/invoices/:id/issue/`
+`POST https://api.gigapay.com/v2/invoices/:id/issue/`
 
 ### Parameters
 
@@ -239,7 +239,7 @@ This action issues any invoice type (including prepayment proformas) as a payabl
   "invoice_number": "986911160380",
   "customer_reference": "PO-2024-001",
   "billing_type": "payrun",
-  "pdf_url": "https://api.gigapay.se/invoice/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?token=hej&language=en"
+  "pdf_url": "https://api.gigapay.com/invoice/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?token=hej&language=en"
 }
 ```
 

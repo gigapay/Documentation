@@ -44,16 +44,16 @@ The `invoice` field can be expanded to show full invoice details by using the `e
 
 ```shell
 # Collapsed (default) - returns invoice ID only
-curl -X GET https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+curl -X GET https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
 
 # Expanded - returns full invoice object
-curl -X GET https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?expand=invoice
+curl -X GET https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/?expand=invoice
 ```
 
 ## List Prepayments
 
 ```javascript
-const response = await fetch('https://api.gigapay.se/v2/prepayments/', {
+const response = await fetch('https://api.gigapay.com/v2/prepayments/', {
   method: 'GET',
   headers: {
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -66,7 +66,7 @@ const response = await fetch('https://api.gigapay.se/v2/prepayments/', {
 import requests
 
 response = requests.get(
-  'https://api.gigapay.se/v2/prepayments/',
+  'https://api.gigapay.com/v2/prepayments/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -77,7 +77,7 @@ response = requests.get(
 ```shell
 curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' \
      -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
-     https://api.gigapay.se/v2/prepayments/
+     https://api.gigapay.com/v2/prepayments/
 ```
 
 > The above command returns JSON structured like this:
@@ -86,7 +86,7 @@ curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' \
 {
   "count": 4,
   "next": null,
-  "previous": "https://api.gigapay.se/v2/prepayments/?page=1&page_size=2",
+  "previous": "https://api.gigapay.com/v2/prepayments/?page=1&page_size=2",
   "results": [
     {
       "id": "a0c72032-8e02-4d5d-be09-274dc67dbe2d",
@@ -125,12 +125,12 @@ curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' \
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/prepayments/`
+`GET https://api.gigapay.com/v2/prepayments/`
 
 ## Create a Prepayment
 
 ```javascript
-const response = await fetch('https://api.gigapay.se/v2/prepayments/', {
+const response = await fetch('https://api.gigapay.com/v2/prepayments/', {
   method: 'POST',
   headers: {
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -151,7 +151,7 @@ const response = await fetch('https://api.gigapay.se/v2/prepayments/', {
 import requests
 
 response = requests.post(
-  'https://api.gigapay.se/v2/prepayments/',
+  'https://api.gigapay.com/v2/prepayments/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -171,7 +171,7 @@ curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' 
      -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
      -H 'Content-Type: application/json' \
      -d '{"description":"Q1 2024 Influencer Campaign Budget","net_amount":"10000.00","currency":"EUR","invoice_marking":"PO-2024-001","metadata":{}}' \
-     https://api.gigapay.se/v2/prepayments/
+     https://api.gigapay.com/v2/prepayments/
 ```
 
 > The above command returns JSON structured like this:
@@ -195,7 +195,7 @@ curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' 
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/prepayments/`
+`POST https://api.gigapay.com/v2/prepayments/`
 
 ### Parameters
 
@@ -210,7 +210,7 @@ curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' 
 ## Retrieve a Prepayment
 
 ```javascript
-const response = await fetch('https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/', {
+const response = await fetch('https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/', {
   method: 'GET',
   headers: {
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -223,7 +223,7 @@ const response = await fetch('https://api.gigapay.se/v2/prepayments/a0c72032-8e0
 import requests
 
 response = requests.get(
-  'https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
+  'https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -234,7 +234,7 @@ response = requests.get(
 ```shell
 curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' \
      -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
-     https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+     https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
 ```
 
 > The above command returns JSON structured like this:
@@ -258,12 +258,12 @@ curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' \
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/prepayments/:id/`
+`GET https://api.gigapay.com/v2/prepayments/:id/`
 
 ## Update a Prepayment
 
 ```javascript
-const response = await fetch('https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/', {
+const response = await fetch('https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/', {
   method: 'PATCH',
   headers: {
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -282,7 +282,7 @@ const response = await fetch('https://api.gigapay.se/v2/prepayments/a0c72032-8e0
 import requests
 
 response = requests.patch(
-  'https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
+  'https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -300,7 +300,7 @@ curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'
      -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
      -H 'Content-Type: application/json' \
      -d '{"description":"Updated Q1 2024 Influencer Campaign Budget","invoice_marking":"PO-2024-001-UPDATED","metadata":{"campaign_type":"influencer"}}' \
-     https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+     https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
 ```
 
 **Note**: Prepayments can only be updated while in `DRAFT` status. Once invoiced or paid, they become read-only.
@@ -328,7 +328,7 @@ curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'
 
 ### HTTP Request
 
-`PATCH https://api.gigapay.se/v2/prepayments/:id/`
+`PATCH https://api.gigapay.com/v2/prepayments/:id/`
 
 ### Parameters
 
@@ -343,7 +343,7 @@ curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'
 ## Delete a Prepayment
 
 ```javascript
-const response = await fetch('https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/', {
+const response = await fetch('https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/', {
   method: 'DELETE',
   headers: {
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -356,7 +356,7 @@ const response = await fetch('https://api.gigapay.se/v2/prepayments/a0c72032-8e0
 import requests
 
 response = requests.delete(
-  'https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
+  'https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/',
   headers={
     'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -367,13 +367,13 @@ response = requests.delete(
 ```shell
 curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' \
      -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
-     https://api.gigapay.se/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
+     https://api.gigapay.com/v2/prepayments/a0c72032-8e02-4d5d-be09-274dc67dbe2d/
 ```
 
 **Note**: Prepayments can only be deleted while in `DRAFT` status. Once invoiced or paid, deletion is not permitted.
 
 ### HTTP Request
 
-`DELETE https://api.gigapay.se/v2/prepayments/:id/`
+`DELETE https://api.gigapay.com/v2/prepayments/:id/`
 
 

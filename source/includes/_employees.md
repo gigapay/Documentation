@@ -49,7 +49,7 @@ and working permits.
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/employees/',
+    'https://api.gigapay.com/v2/employees/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -58,11 +58,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/employees/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/employees/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/", {
+fetch("https://api.gigapay.com/v2/employees/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
         "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
@@ -76,7 +76,7 @@ fetch("https://api.gigapay.se/v2/employees/", {
 {
     "count": 4,
     "next": null,
-    "previous": "https://api.gigapay.se/v2/employees/?page=2",
+    "previous": "https://api.gigapay.com/v2/employees/?page=2",
     "results": [
         {
             "id": "1847",
@@ -113,7 +113,7 @@ This endpoint retrieves all Employees.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/employees/`
+`GET https://api.gigapay.com/v2/employees/`
 
 ### Headers
 
@@ -140,7 +140,7 @@ This endpoint retrieves all Employees.
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/employees/',
+    'https://api.gigapay.com/v2/employees/',
     json={
         'id': 1847,
         'name': 'Albin Lindskog',
@@ -156,11 +156,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}' https://api.gigapay.se/v2/employees/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}' https://api.gigapay.com/v2/employees/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/", {
+fetch("https://api.gigapay.com/v2/employees/", {
     method: "POST",
     body: JSON.stringify({
         name: "Albin Lindskog",
@@ -199,7 +199,7 @@ This endpoint registers an Employee. The Employee will be notified with the `inv
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/employees/`
+`POST https://api.gigapay.com/v2/employees/`
 
 ### Headers
 
@@ -226,7 +226,7 @@ This endpoint registers an Employee. The Employee will be notified with the `inv
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/employees/1847/',
+    'https://api.gigapay.com/v2/employees/1847/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -235,11 +235,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/employees/1847/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/employees/1847/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/1847/", {
+fetch("https://api.gigapay.com/v2/employees/1847/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
         "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
@@ -270,7 +270,7 @@ This endpoint retrieves an employee.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/employees/:id/`
+`GET https://api.gigapay.com/v2/employees/:id/`
 
 ### Headers
 
@@ -291,7 +291,7 @@ This endpoint retrieves an employee.
 import requests
 
 response = requests.patch(
-    'https://api.gigapay.se/v2/employees/1847/',
+    'https://api.gigapay.com/v2/employees/1847/',
     json={
         'id': 8472,
     },
@@ -303,11 +303,11 @@ response = requests.patch(
 ```
 
 ```shell
-curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 8472}' https://api.gigapay.se/v2/employees/1847/
+curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 8472}' https://api.gigapay.com/v2/employees/1847/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/1847/", {
+fetch("https://api.gigapay.com/v2/employees/1847/", {
     method: "PATCH",
     body: JSON.stringify({id: 8472}),
     headers: {
@@ -341,7 +341,7 @@ This endpoint updates an Employee.
 
 ### HTTP Request
 
-`PATCH https://api.gigapay.se/v2/employees/:id/`
+`PATCH https://api.gigapay.com/v2/employees/:id/`
 
 ### Headers
 
@@ -373,7 +373,7 @@ This endpoint updates an Employee.
 import requests
 
 response = requests.put(
-    'https://api.gigapay.se/v2/employees/8472/',
+    'https://api.gigapay.com/v2/employees/8472/',
     json={
         'id': 1847,
         'name': 'Albin Lindskog',
@@ -389,11 +389,11 @@ response = requests.put(
 ```
 
 ```shell
-curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}' https://api.gigapay.se/v2/employees/8472/
+curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}' https://api.gigapay.com/v2/employees/8472/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/8472/", {
+fetch("https://api.gigapay.com/v2/employees/8472/", {
     method: "PUT",
     body: JSON.stringify({
         id: 1847,
@@ -433,7 +433,7 @@ This endpoint replaces an Employee.
 
 ### HTTP Request
 
-`PUT https://api.gigapay.se/v2/employees/:id/`
+`PUT https://api.gigapay.com/v2/employees/:id/`
 
 ### Headers
 
@@ -465,7 +465,7 @@ This endpoint replaces an Employee.
 import requests
 
 response = requests.delete(
-    'https://api.gigapay.se/v2/employees/1847/',
+    'https://api.gigapay.com/v2/employees/1847/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -474,11 +474,11 @@ response = requests.delete(
 ```
 
 ```shell
-curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/employees/1847/
+curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/employees/1847/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/1847/", {
+fetch("https://api.gigapay.com/v2/employees/1847/", {
     method: "DELETE",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -494,7 +494,7 @@ This endpoint deletes an Employee. You can not delete an Employee after a Payout
 
 ### HTTP Request
 
-`DELETE https://api.gigapay.se/v2/employees/:id/`
+`DELETE https://api.gigapay.com/v2/employees/:id/`
 
 ### Headers
 
@@ -515,7 +515,7 @@ This endpoint deletes an Employee. You can not delete an Employee after a Payout
 import requests
 
 response = requests.patch(
-    'https://api.gigapay.se/v2/employees/1847/resend/',
+    'https://api.gigapay.com/v2/employees/1847/resend/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b',
@@ -525,11 +525,11 @@ response = requests.patch(
 ```
 
 ```shell
-curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -H 'Idempotency-key: ac4beffd-79b0-4561-b16c-846a9600b168' https://api.gigapay.se/v2/employees/1847/resend/
+curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -H 'Idempotency-key: ac4beffd-79b0-4561-b16c-846a9600b168' https://api.gigapay.com/v2/employees/1847/resend/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/1847/resend/", {
+fetch("https://api.gigapay.com/v2/employees/1847/resend/", {
     method: "PATCH",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -546,7 +546,7 @@ This endpoint resends a notification with an invitation code. After resending, y
 
 ### HTTP Request
 
-`PATCH https://api.gigapay.se/v2/employees/:id/resend/`
+`PATCH https://api.gigapay.com/v2/employees/:id/resend/`
 
 ### Headers
 

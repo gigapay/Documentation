@@ -47,7 +47,7 @@ the `Integration-ID` header.
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/integrations/',
+    'https://api.gigapay.com/v2/integrations/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     }
@@ -55,11 +55,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'  https://api.gigapay.se/v2/integrations/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'  https://api.gigapay.com/v2/integrations/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/integrations/", {
+fetch("https://api.gigapay.com/v2/integrations/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
     }
@@ -72,7 +72,7 @@ fetch("https://api.gigapay.se/v2/integrations/", {
 {
     "count": 4,
     "next": null,
-    "previous": "https://api.gigapay.se/v2/integrations/?page=2",
+    "previous": "https://api.gigapay.com/v2/integrations/?page=2",
     "results": [
         {
             "id": "1",
@@ -105,7 +105,7 @@ This endpoint retrieves all integrations.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/integrations/`
+`GET https://api.gigapay.com/v2/integrations/`
 
 ### Headers
 
@@ -133,7 +133,7 @@ Parameter | Default | Description
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/integrations/846291712/',
+    'https://api.gigapay.com/v2/integrations/846291712/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     }
@@ -141,11 +141,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'  https://api.gigapay.se/v2/integrations/846291712/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821'  https://api.gigapay.com/v2/integrations/846291712/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/integrations/846291712/", {
+fetch("https://api.gigapay.com/v2/integrations/846291712/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
     }
@@ -174,7 +174,7 @@ This endpoint retrieves an Integration.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/integrations/:id/`
+`GET https://api.gigapay.com/v2/integrations/:id/`
 
 ### Headers
 
@@ -199,7 +199,7 @@ Parameter | Required | Description
 import requests
 
 response = requests.patch(
-    'https://api.gigapay.se/v2/integrations/846291712/',
+    'https://api.gigapay.com/v2/integrations/846291712/',
     json={
         'email': 'invoice@pinestreet.tech'
     },
@@ -210,11 +210,11 @@ response = requests.patch(
 ```
 
 ```shell
-curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -d '{"email": "invoice@pinestreet.tech"} https://api.gigapay.se/v2/integrations/846291712/
+curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -d '{"email": "invoice@pinestreet.tech"} https://api.gigapay.com/v2/integrations/846291712/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/integrations/846291712/", {
+fetch("https://api.gigapay.com/v2/integrations/846291712/", {
     method: "PATCH",
     body: JSON.stringify({'email': 'invoice@pinestreet.tech'}),
     headers: {
@@ -246,7 +246,7 @@ This endpoint updates an integration. You may not update Integrations of type 2.
 
 ### HTTP Request
 
-`PATCH https://api.gigapay.se/v2/integrations/:id/`
+`PATCH https://api.gigapay.com/v2/integrations/:id/`
 
 This endpoints supports both JSON and multipart/form-data encoded requests, to facilitate uploading a logo file.
 
@@ -288,7 +288,7 @@ Parameter | Type | Required | Default | Notes
 import requests
 
 response = requests.put(
-    'https://api.gigapay.se/v2/integrations/846291712/',
+    'https://api.gigapay.com/v2/integrations/846291712/',
     json={
         "address_line_1": "Malmvägen 8",
         "city": "Segeltorp",
@@ -306,11 +306,11 @@ response = requests.put(
 ```
 
 ```shell
-curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -d '{"address_line_1": "Malmv\u00e4gen 8", "city": "Segeltorp", "email": "albin@pinestreet.tech", "id": "846291712", "logo": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=", "name": "Pinestreet Tech", "recipient": "Pinestreet Technology AB", "zip_code": "14171"}' https://api.gigapay.se/v2/integrations/846291712/```
+curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -d '{"address_line_1": "Malmv\u00e4gen 8", "city": "Segeltorp", "email": "albin@pinestreet.tech", "id": "846291712", "logo": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=", "name": "Pinestreet Tech", "recipient": "Pinestreet Technology AB", "zip_code": "14171"}' https://api.gigapay.com/v2/integrations/846291712/```
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/integrations/846291712/", {
+fetch("https://api.gigapay.com/v2/integrations/846291712/", {
     method: "PUT",
     body: JSON.stringify({
         address_line_1: "Malmvägen 8",
@@ -350,7 +350,7 @@ This endpoint replaces an Integration. You may not replace Integrations of type 
 
 ### HTTP Request
 
-`PUT https://api.gigapay.se/v2/integrations/:id/`
+`PUT https://api.gigapay.com/v2/integrations/:id/`
 
 This endpoints supports both JSON and multipart/form-data encoded requests, to facilitate uploading a logo file.
 
@@ -392,7 +392,7 @@ Parameter | Type | Required | Default | Notes
 import requests
 
 response = requests.delete(
-    'https://api.gigapay.se/v2/integrations/846291712/',
+    'https://api.gigapay.com/v2/integrations/846291712/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     }
@@ -400,11 +400,11 @@ response = requests.delete(
 ```
 
 ```shell
-curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.se/v2/integrations/846291712/
+curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.com/v2/integrations/846291712/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/integrations/846291712/", {
+fetch("https://api.gigapay.com/v2/integrations/846291712/", {
     method: "DELETE",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -420,7 +420,7 @@ that have objects associated with them.
 
 ### HTTP Request
 
-`DELETE https://api.gigapay.se/v2/integrations/:id/`
+`DELETE https://api.gigapay.com/v2/integrations/:id/`
 
 ### Headers
 

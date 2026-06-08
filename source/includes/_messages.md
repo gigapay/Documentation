@@ -36,7 +36,7 @@ Once the Message object is created, the relevant Employees will see it in the gi
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/messages/',
+    'https://api.gigapay.com/v2/messages/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -45,11 +45,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/messages/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/messages/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/messages/", {
+fetch("https://api.gigapay.com/v2/messages/", {
   headers: {
     Authorization: "Token cd7a4537a231356d404b553f465b6af2fa035821",
     "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b",
@@ -63,7 +63,7 @@ fetch("https://api.gigapay.se/v2/messages/", {
 {
   "count": 4,
   "next": null,
-  "previous": "https://api.gigapay.se/v2/messages/?page=2",
+  "previous": "https://api.gigapay.com/v2/messages/?page=2",
   "results": [
     {
       "id": "2a241017-80af-467a-a3e1-50a6321a2adc",
@@ -93,7 +93,7 @@ This endpoint retrieves all Messages.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/messages/`
+`GET https://api.gigapay.com/v2/messages/`
 
 ### Headers
 
@@ -115,7 +115,7 @@ This endpoint retrieves all Messages.
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/messages/',
+    'https://api.gigapay.com/v2/messages/',
     json={
         'employees': ['74fb03a0-d890-45fc-972b-8562b8d9acbe'],
         'content': 'Payment in progress',
@@ -128,11 +128,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"employees": ["74fb03a0-d890-45fc-972b-8562b8d9acbe"], "content": "Payment in progress"}' https://api.gigapay.se/v2/messages/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"employees": ["74fb03a0-d890-45fc-972b-8562b8d9acbe"], "content": "Payment in progress"}' https://api.gigapay.com/v2/messages/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/messages/", {
+fetch("https://api.gigapay.com/v2/messages/", {
   method: "POST",
   body: JSON.stringify({
     employees: ["74fb03a0-d890-45fc-972b-8562b8d9acbe"],
@@ -161,7 +161,7 @@ This endpoint creates a Message.
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/messages/`
+`POST https://api.gigapay.com/v2/messages/`
 
 ### Headers
 
@@ -184,7 +184,7 @@ This endpoint creates a Message.
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/',
+    'https://api.gigapay.com/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -193,12 +193,12 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/
 ```
 
 ```javascript
 fetch(
-  "https://api.gigapay.se/v2/message/e9e3c146-83d9-4080-b719-091719d90629/",
+  "https://api.gigapay.com/v2/message/e9e3c146-83d9-4080-b719-091719d90629/",
   {
     headers: {
       Authorization: "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -223,7 +223,7 @@ This endpoint retrieves a Message.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/messages/:id/`
+`GET https://api.gigapay.com/v2/messages/:id/`
 
 ### Headers
 
@@ -244,7 +244,7 @@ This endpoint retrieves a Message.
 import requests
 
 response = requests.patch(
-    'https://api.gigapay.se/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/',
+    'https://api.gigapay.com/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/',
     json={
         'content': 'Correction: payment is delayed by 1 day',
     },
@@ -256,12 +256,12 @@ response = requests.patch(
 ```
 
 ```shell
-curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"content": "Correction: payment is delayed by 1 day"}' https://api.gigapay.se/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/
+curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"content": "Correction: payment is delayed by 1 day"}' https://api.gigapay.com/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/
 ```
 
 ```javascript
 fetch(
-  "https://api.gigapay.se/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/",
+  "https://api.gigapay.com/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/",
   {
     method: "PATCH",
     body: JSON.stringify({
@@ -291,7 +291,7 @@ This endpoint updates a Message.
 
 ### HTTP Request
 
-`PATCH https://api.gigapay.se/v2/messages/:id/`
+`PATCH https://api.gigapay.com/v2/messages/:id/`
 
 ### Headers
 
@@ -319,7 +319,7 @@ This endpoint updates a Message.
 import requests
 
 response = requests.put(
-    'https://api.gigapay.se/v2/messages/8472/',
+    'https://api.gigapay.com/v2/messages/8472/',
     json={
       'employees': ['74fb03a0-d890-45fc-972b-8562b8d9acbe', '696f4143-1579-4352-9e9c-a0cf09df7b3f'],
       'content': 'Payment 664 and 566 in progress',
@@ -332,11 +332,11 @@ response = requests.put(
 ```
 
 ```shell
-curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"employees": ["74fb03a0-d890-45fc-972b-8562b8d9acbe", "696f4143-1579-4352-9e9c-a0cf09df7b3f"],"content": "Payment 664 and 566 in progress"}' https://api.gigapay.se/v2/messages/8472/
+curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"employees": ["74fb03a0-d890-45fc-972b-8562b8d9acbe", "696f4143-1579-4352-9e9c-a0cf09df7b3f"],"content": "Payment 664 and 566 in progress"}' https://api.gigapay.com/v2/messages/8472/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/messages/8472/", {
+fetch("https://api.gigapay.com/v2/messages/8472/", {
   method: "PUT",
   body: JSON.stringify({
     employees: [
@@ -371,7 +371,7 @@ This endpoint replaces a Message.
 
 ### HTTP Request
 
-`PUT https://api.gigapay.se/v2/messages/:id/`
+`PUT https://api.gigapay.com/v2/messages/:id/`
 
 ### Headers
 
@@ -399,7 +399,7 @@ This endpoint replaces a Message.
 import requests
 
 response = requests.delete(
-    'https://api.gigapay.se/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/',
+    'https://api.gigapay.com/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -408,12 +408,12 @@ response = requests.delete(
 ```
 
 ```shell
-curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/
+curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/
 ```
 
 ```javascript
 fetch(
-  "https://api.gigapay.se/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/",
+  "https://api.gigapay.com/v2/messages/e9e3c146-83d9-4080-b719-091719d90629/",
   {
     method: "DELETE",
     headers: {
@@ -430,7 +430,7 @@ This endpoint deletes a Message.
 
 ### HTTP Request
 
-`DELETE https://api.gigapay.se/v2/messages/:id/`
+`DELETE https://api.gigapay.com/v2/messages/:id/`
 
 ### Headers
 
