@@ -44,7 +44,7 @@ Prepayments affect your credit limit dynamically: when a prepayment is paid, you
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/payment_term/',
+    'https://api.gigapay.com/v2/payment_term/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -53,11 +53,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/payment_term/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/payment_term/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payment_term/", {
+fetch("https://api.gigapay.com/v2/payment_term/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
         "Integration-ID": "79606358-97af-4196-b64c-5f719433d56b"
@@ -91,7 +91,7 @@ This endpoint retrieves your payment term configuration, including credit limits
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/payment_term/`
+`GET https://api.gigapay.com/v2/payment_term/`
 
 ### Headers
 
@@ -101,7 +101,7 @@ This endpoint retrieves your payment term configuration, including credit limits
 | `Integration-ID` | True     | Integration id.           |
 
 <aside class="notice">
-Payment term is read-only via the API. To modify your payment term, please contact our support team at <a href="mailto:support@gigapay.se">support@gigapay.se</a>.
+Payment term is read-only via the API. To modify your payment term, please contact our support team at <a href="mailto:support@gigapay.com">support@gigapay.com</a>.
 </aside>
 
 <aside class="notice">

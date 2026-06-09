@@ -64,7 +64,7 @@ The `invoiced_amount` is used as a basis for the Payout. For its definition see 
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/payouts/',
+    'https://api.gigapay.com/v2/payouts/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -73,11 +73,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/payouts/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/payouts/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/", {
+fetch("https://api.gigapay.com/v2/payouts/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
         "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
@@ -91,7 +91,7 @@ fetch("https://api.gigapay.se/v2/payouts/", {
 {
     "count": 4,
     "next": null,
-    "previous": "https://api.gigapay.se/v2/payouts/?page=1",
+    "previous": "https://api.gigapay.com/v2/payouts/?page=1",
     "results": [
         {
             "id": "0177270d-f94b-4ab9-88ba-ac1fa2f791aa",
@@ -140,7 +140,7 @@ This endpoint retrieves all Payouts.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/payouts/`
+`GET https://api.gigapay.com/v2/payouts/`
 
 ### Headers
 
@@ -172,7 +172,7 @@ This endpoint retrieves all Payouts.
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/payouts/',
+    'https://api.gigapay.com/v2/payouts/',
     json={
         'id': 9472,
         'currency': 'SEK',
@@ -188,11 +188,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'  -d '{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1847, "invoiced_amount": "1000.00"}' https://api.gigapay.se/v2/payouts/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b'  -d '{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1847, "invoiced_amount": "1000.00"}' https://api.gigapay.com/v2/payouts/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/", {
+fetch("https://api.gigapay.com/v2/payouts/", {
     method: "POST",
     body: JSON.stringify({
         id: 9472,
@@ -237,7 +237,7 @@ This endpoint registers a payout.
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/payouts/`
+`POST https://api.gigapay.com/v2/payouts/`
 
 ### Headers
 
@@ -271,7 +271,7 @@ Parameter | Type | Required | Default | Notes
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/payouts/',
+    'https://api.gigapay.com/v2/payouts/',
     json=[
         {
             'id': 9472,
@@ -297,11 +297,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '[{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1847, "invoiced_amount": "1000.00"}, {"id": 9473, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1736, "invoiced_amount": "2500.00"}]' https://api.gigapay.se/v2/payouts/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '[{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1847, "invoiced_amount": "1000.00"}, {"id": 9473, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": 1736, "invoiced_amount": "2500.00"}]' https://api.gigapay.com/v2/payouts/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/", {
+fetch("https://api.gigapay.com/v2/payouts/", {
     method: "POST",
     body: JSON.stringify([
         {
@@ -378,7 +378,7 @@ This endpoint registers multiple Payouts at once. All payouts will be added to t
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/payouts/`
+`POST https://api.gigapay.com/v2/payouts/`
 
 ### Headers
 
@@ -405,7 +405,7 @@ Parameter | Required | Description
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/payouts/?expand=employee',
+    'https://api.gigapay.com/v2/payouts/?expand=employee',
     json={
         'id': 9472,
         'currency': 'SEK',
@@ -427,11 +427,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": {"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}, "invoiced_amount": "1000.00"}' 'https://api.gigapay.se/v2/payouts/?expand=employee'
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 9472, "currency": "SEK", "description": "Instagram samarbete 2021-11-13.", "employee": {"id": 1847, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "email": "albin@mail.com", "country": "SWE"}, "invoiced_amount": "1000.00"}' 'https://api.gigapay.com/v2/payouts/?expand=employee'
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/?expand=employee", {
+fetch("https://api.gigapay.com/v2/payouts/?expand=employee", {
     method: "POST",
     body: JSON.stringify({
         id: 9472,
@@ -499,7 +499,7 @@ registered that object will be reused.
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/payouts/?expand=employee`
+`POST https://api.gigapay.com/v2/payouts/?expand=employee`
 
 ### Headers
 
@@ -534,7 +534,7 @@ Parameter | Type | Required | Default | Notes
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/payouts/9472/',
+    'https://api.gigapay.com/v2/payouts/9472/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -543,11 +543,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/payouts/9472/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/payouts/9472/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/9472/", {
+fetch("https://api.gigapay.com/v2/payouts/9472/", {
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
         "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b"
@@ -586,7 +586,7 @@ This endpoint retrieves a payout.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/payouts/:id/`
+`GET https://api.gigapay.com/v2/payouts/:id/`
 
 ### Headers
 
@@ -611,7 +611,7 @@ Parameter | Required | Description
 import requests
 
 response = requests.delete(
-    'https://api.gigapay.se/v2/payouts/9472/',
+    'https://api.gigapay.com/v2/payouts/9472/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -620,11 +620,11 @@ response = requests.delete(
 ```
 
 ```shell
-curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/payouts/9472/
+curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/payouts/9472/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/9472/", {
+fetch("https://api.gigapay.com/v2/payouts/9472/", {
     method: "DELETE",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -641,7 +641,7 @@ on credit.
 
 ### HTTP Request
 
-`DELETE https://api.gigapay.se/v2/payouts/:id/`
+`DELETE https://api.gigapay.com/v2/payouts/:id/`
 
 ### Headers
 
@@ -666,7 +666,7 @@ Parameter | Required | Description
 import requests
 
 response = requests.put(
-    'https://api.gigapay.se/v2/payouts/9472/resend/',
+    'https://api.gigapay.com/v2/payouts/9472/resend/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b',
@@ -676,11 +676,11 @@ response = requests.put(
 ```
 
 ```shell
-curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -H 'Idempotency-key: ac4beffd-79b0-4561-b16c-846a9600b168' https://api.gigapay.se/v2/payouts/9472/resend/
+curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -H 'Idempotency-key: ac4beffd-79b0-4561-b16c-846a9600b168' https://api.gigapay.com/v2/payouts/9472/resend/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/9472/resend/", {
+fetch("https://api.gigapay.com/v2/payouts/9472/resend/", {
     method: "PUT",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -697,7 +697,7 @@ This endpoint resends a notification. After resending, you need to wait at least
 
 ### HTTP Request
 
-`PATCH https://api.gigapay.se/v2/payouts/:id/resend/`
+`PATCH https://api.gigapay.com/v2/payouts/:id/resend/`
 
 ### Headers
 

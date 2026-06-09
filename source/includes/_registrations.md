@@ -67,7 +67,7 @@ You can always create and view registrations associated with your account. You c
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/registrations/',
+    'https://api.gigapay.com/v2/registrations/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
     }
@@ -75,11 +75,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.se/v2/registrations/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.com/v2/registrations/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/registrations/", {
+fetch("https://api.gigapay.com/v2/registrations/", {
   headers: {
     "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
   }
@@ -92,7 +92,7 @@ fetch("https://api.gigapay.se/v2/registrations/", {
 {
     "count": 2,
     "next": null,
-    "previous": "https://api.gigapay.se/v2/registrations/?page=1",
+    "previous": "https://api.gigapay.com/v2/registrations/?page=1",
     "results": [
         {
             "id": "1f2c22ed-88e5-457d-b9a8-2ab511d5a8d9",
@@ -146,7 +146,7 @@ This endpoint retrieves all Registrations.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/registrations/`
+`GET https://api.gigapay.com/v2/registrations/`
 
 ### Headers
 
@@ -167,7 +167,7 @@ Parameter | Default | Description
 ```python
 import requests
 response = requests.post(
-    'https://api.gigapay.se/v2/registrations/',
+    'https://api.gigapay.com/v2/registrations/',
     json={
         'integration_id': "e50d4871-a3e0-4a41-b99a-6c7d4acd07c6",
         'email': 'contact@example.com',
@@ -210,11 +210,11 @@ curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' 
     "finance_email": "finance@example.com",
     "technical_email": "tech@example.com",
     "invoice_email": "invoices@example.com"
-}' https://api.gigapay.se/v2/registrations/
+}' https://api.gigapay.com/v2/registrations/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/registrations/", {
+fetch("https://api.gigapay.com/v2/registrations/", {
     method: "POST",
     body: JSON.stringify({
         integration_id: "e50d4871-a3e0-4a41-b99a-6c7d4acd07c6",
@@ -272,7 +272,7 @@ This endpoint creates a Registration.
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/registrations/`
+`POST https://api.gigapay.com/v2/registrations/`
 
 ### Headers
 
@@ -311,7 +311,7 @@ Parameter | Type | Required | Default | Notes
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/',
+    'https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821'
     }
@@ -319,11 +319,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/", {
+fetch("https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/", {
   headers: {
     "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821"
   }
@@ -361,7 +361,7 @@ This endpoint retrieves a Registration.
 
 ### HTTP Request
 
-`GET https://api.gigapay.se/v2/registrations/:id/`
+`GET https://api.gigapay.com/v2/registrations/:id/`
 
 ### Headers
 
@@ -381,7 +381,7 @@ This endpoint retrieves a Registration.
 import requests
 
 response = requests.patch(
-    'https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/',
+    'https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/',
     json={
       'friendly_name': 'Zerebra Inc.',
       'email': 'billing@zerebra.com'
@@ -393,11 +393,11 @@ response = requests.patch(
 ```
 
 ```shell
-curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -d '{"friendly_name": "Zerebra Inc.", "email": "billing@zerebra.com"}' https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
+curl -X PATCH -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -d '{"friendly_name": "Zerebra Inc.", "email": "billing@zerebra.com"}' https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/", {
+fetch("https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/", {
     method: "PATCH",
     body: JSON.stringify({'friendly_name': 'Zerebra Inc.', 'email': 'billing@zerebra.com'}),
     headers: {
@@ -439,7 +439,7 @@ A registration can only be updated if the `needs_review` field is set to `true`,
 
 ### HTTP Request
 
-`PATCH https://api.gigapay.se/v2/registrations/:id/`
+`PATCH https://api.gigapay.com/v2/registrations/:id/`
 
 ### Headers
 
@@ -482,7 +482,7 @@ Parameter | Type | Required | Default | Notes
 ```python
 import requests
 response = requests.put(
-    'https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/',
+    'https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/',
     json={
         'integration_id': "cc7e24d0-5e43-4bd5-806a-27b0df5f419a",
         'email': 'billing@example.com',
@@ -525,11 +525,11 @@ curl -X PUT -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -
     "finance_email": "finance@example.com",
     "technical_email": "tech@example.com",
     "invoice_email": "invoices@example.com"
-}' https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
+}' https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/", {
+fetch("https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/", {
     method: "PUT",
     body: JSON.stringify({
         integration_id: "cc7e24d0-5e43-4bd5-806a-27b0df5f419a",
@@ -588,7 +588,7 @@ A registration can only be replaced if the `needs_review` field is set to `true`
 
 ### HTTP Request
 
-`PUT https://api.gigapay.se/v2/registrations/:id/`
+`PUT https://api.gigapay.com/v2/registrations/:id/`
 
 ### Headers
 
@@ -632,7 +632,7 @@ A registration can only be replaced if the `needs_review` field is set to `true`
 import requests
 
 response = requests.delete(
-    'https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/',
+    'https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821'
     }
@@ -640,11 +640,11 @@ response = requests.delete(
 ```
 
 ```shell
-curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
+curl -X DELETE -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/", {
+fetch("https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/", {
     method: "DELETE",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821"
@@ -660,7 +660,7 @@ A registration can only be deleted if the `needs_review` field is set to `true`,
 
 ### HTTP Request
 
-`DELETE https://api.gigapay.se/v2/registrations/:id/`
+`DELETE https://api.gigapay.com/v2/registrations/:id/`
 
 ### Headers
 
@@ -682,7 +682,7 @@ Parameter | Required | Description
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/approve/',
+    'https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/approve/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821'
     }
@@ -690,11 +690,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/approve/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/approve/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/approve/", {
+fetch("https://api.gigapay.com/v2/registrations/8347fdd5-688d-4267-ae42-864b34a4220b/approve/", {
     method: "POST",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821"
@@ -735,7 +735,7 @@ When a registration is approved using this endpoint, the `needs_review` field is
 
 ### HTTP Request
 
-`POST https://api.gigapay.se/v2/registrations/:id/approve/`
+`POST https://api.gigapay.com/v2/registrations/:id/approve/`
 
 ### Headers
 

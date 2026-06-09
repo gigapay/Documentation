@@ -8,7 +8,7 @@ language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of
 
 toc_footers:
   - Questions? Ask us!
-  - <a href='mailto:support@gigapay.se'>support@gigapay.se</a>
+  - <a href='mailto:support@gigapay.com'>support@gigapay.com</a>
 
 includes:
   - registrations
@@ -43,17 +43,17 @@ returns JSON-encoded responses, and uses standard HTTP response codes, authentic
 
 <div class="serverSelect">
   <div>
-    <input type="radio" id="prod" name="server" value="https:///api.gigapay.se/v2/"
+    <input type="radio" id="prod" name="server" value="https:///api.gigapay.com/v2/"
            checked>
     <label for="prod">
-      <a href="https:///api.gigapay.se/v2/" >https://api.gigapay.se/v2/</a> <span class="serverSelectExplanation">- Production server</span>
+      <a href="https:///api.gigapay.com/v2/" >https://api.gigapay.com/v2/</a> <span class="serverSelectExplanation">- Production server</span>
     </label>
   </div>
   
   <div>
-    <input type="radio" id="demo" name="server" value="https:///api.demo.gigapay.se/v2/">
+    <input type="radio" id="demo" name="server" value="https:///api.demo.gigapay.com/v2/">
     <label for="demo">
-      <a href="https:///api.demo.gigapay.se/v2/">https://api.demo.gigapay.se/v2/</a> <span class="serverSelectExplanation">- Demo server</span>
+      <a href="https:///api.demo.gigapay.com/v2/">https://api.demo.gigapay.com/v2/</a> <span class="serverSelectExplanation">- Demo server</span>
     </label>
   </div>
 </div>
@@ -74,7 +74,7 @@ intuitive understanding of the API compared to reading this documentation.
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/',
+    'https://api.gigapay.com/v2/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -83,12 +83,12 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.se/v2/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' https://api.gigapay.com/v2/
 
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/", {
+fetch("https://api.gigapay.com/v2/", {
   headers: {
     Authorization: "Token cd7a4537a231356d404b553f465b6af2fa035821",
     "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b",
@@ -97,7 +97,7 @@ fetch("https://api.gigapay.se/v2/", {
 ```
 
 The Gigapay API uses API keys to identify and authenticate requests. You can request a key by contacting us at
-[support@gigapay.se](mailto:support@gigapay.se). Note that you will receive separate keys for the live and demo environment.
+[support@gigapay.com](mailto:support@gigapay.com). Note that you will receive separate keys for the live and demo environment.
 
 Your API keys carry many privileges, so make sure you keep them secure. Do not share your API keys in
 publicly accessible areas such as GitHub, client-side code, etc.
@@ -148,7 +148,7 @@ response code `403`.
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/',
+    'https://api.gigapay.com/v2/',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b',
@@ -158,12 +158,12 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -H "Accept-Language: en" https://api.gigapay.se/v2/
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -H "Accept-Language: en" https://api.gigapay.com/v2/
 
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/", {
+fetch("https://api.gigapay.com/v2/", {
   headers: {
     Authorization: "Token cd7a4537a231356d404b553f465b6af2fa035821",
     "Integration-Id": "79606358-97af-4196-b64c-5f719433d56b",
@@ -383,7 +383,7 @@ to a particular field then the `non_field_errors` key will be used.
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/payouts/9472/?expand=employee',
+    'https://api.gigapay.com/v2/payouts/9472/?expand=employee',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -392,11 +392,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.se/v2/payouts/9472/?expand=employee'
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.com/v2/payouts/9472/?expand=employee'
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/9472/?expand=employee", {
+fetch("https://api.gigapay.com/v2/payouts/9472/?expand=employee", {
   method: "GET",
   headers: {
     Authorization: "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -454,7 +454,7 @@ You can expand multiple objects at once by repeating the `expand` request parame
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/employees/?page_size=2&page=2',
+    'https://api.gigapay.com/v2/employees/?page_size=2&page=2',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -463,11 +463,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.se/v2/employees/?page_size=2&page=2'
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.com/v2/employees/?page_size=2&page=2'
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/?page_size=2&page=2", {
+fetch("https://api.gigapay.com/v2/employees/?page_size=2&page=2", {
   method: "GET",
   headers: {
     Authorization: "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -481,8 +481,8 @@ fetch("https://api.gigapay.se/v2/employees/?page_size=2&page=2", {
 ```json
 {
   "count": 17,
-  "next": "https://api.gigapay.se/v2/employees/?page=3",
-  "previous": "https://api.gigapay.se/v2/employees/?page=1",
+  "next": "https://api.gigapay.com/v2/employees/?page=3",
+  "previous": "https://api.gigapay.com/v2/employees/?page=1",
   "results": [
     {
       "id": "1f1d1263-0e79-4787-b573-6df81b44bfc2",
@@ -528,7 +528,7 @@ of objects per page. The objects returned are contained within the `result` fiel
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/payouts/?employee=12&accepted_at_null=True',
+    'https://api.gigapay.com/v2/payouts/?employee=12&accepted_at_null=True',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -537,11 +537,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.se/v2/payouts/?employee=12&accepted_at_null=True'
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.com/v2/payouts/?employee=12&accepted_at_null=True'
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/?employee=12&accepted_at_null=True", {
+fetch("https://api.gigapay.com/v2/payouts/?employee=12&accepted_at_null=True", {
   method: "GET",
   headers: {
     Authorization: "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -583,7 +583,7 @@ fetch("https://api.gigapay.se/v2/payouts/?employee=12&accepted_at_null=True", {
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/employees/?search=skoog',
+    'https://api.gigapay.com/v2/employees/?search=skoog',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -592,11 +592,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.se/v2/employees/?search=skoog'
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.com/v2/employees/?search=skoog'
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/?search=skoog", {
+fetch("https://api.gigapay.com/v2/employees/?search=skoog", {
   method: "GET",
   headers: {
     Authorization: "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -617,7 +617,7 @@ fetch("https://api.gigapay.se/v2/employees/?search=skoog", {
       "id": "59cc997d-b4bc-4b2d-ac2d-0101ea9ba241",
       "name": "Joakim Karlsson",
       "cellphone_number": "+46703100002",
-      "email": "skoog@gigapay.co",
+      "email": "name@example.com",
       "country": "SWE",
       "metadata": {},
       "created_at": "2022-04-11T13:05:27.565954Z",
@@ -630,7 +630,7 @@ fetch("https://api.gigapay.se/v2/employees/?search=skoog", {
       "id": "481c3138-5710-4086-9237-a082e87d624f",
       "name": "Joakim Skoog",
       "cellphone_number": "+46703100001",
-      "email": "joakims@gigapay.co",
+      "email": "name@example.com",
       "country": "SWE",
       "metadata": {},
       "created_at": "2022-04-11T13:05:27.543935Z",
@@ -649,7 +649,7 @@ fetch("https://api.gigapay.se/v2/employees/?search=skoog", {
 import requests
 
 response = requests.get(
-    'https://api.gigapay.se/v2/payouts/?search=skoog',
+    'https://api.gigapay.com/v2/payouts/?search=skoog',
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
         'Integration-ID': '79606358-97af-4196-b64c-5f719433d56b'
@@ -658,11 +658,11 @@ response = requests.get(
 ```
 
 ```shell
-curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.se/v2/payouts/?search=skoog'
+curl -X GET -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' 'https://api.gigapay.com/v2/payouts/?search=skoog'
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/payouts/?search=skoog", {
+fetch("https://api.gigapay.com/v2/payouts/?search=skoog", {
     method: "GET",
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
@@ -696,7 +696,7 @@ fetch("https://api.gigapay.se/v2/payouts/?search=skoog", {
         "id": "411246da-0b59-41c6-8b87-1e5abb73af30",
         "name": "Kalle Karlsson",
         "cellphone_number": "+46703100003",
-        "email": "skoog@gigapay.co",
+        "email": "name@example.com",
         "country": "SWE",
         "metadata": {},
         "created_at": "2022-04-14T08:31:11.741713Z",
@@ -725,7 +725,7 @@ fetch("https://api.gigapay.se/v2/payouts/?search=skoog", {
         "id": "411246da-0b59-41c6-8b87-1e5abb73af30",
         "name": "Kalle Karlsson",
         "cellphone_number": "+46703100003",
-        "email": "skoog@gigapay.co",
+        "email": "name@example.com",
         "country": "SWE",
         "metadata": {},
         "created_at": "2022-04-14T08:31:11.741713Z",
@@ -754,7 +754,7 @@ fetch("https://api.gigapay.se/v2/payouts/?search=skoog", {
         "id": "1fa40cc7-a2c9-43ab-972f-eb322bded992",
         "name": "Joakim Skoog",
         "cellphone_number": "+46703100002",
-        "email": "joakim@gigapay.co",
+        "email": "name@example.com",
         "country": "SWE",
         "metadata": {},
         "created_at": "2022-04-14T08:31:11.707438Z",
@@ -788,7 +788,7 @@ filter on whether an event has occurred with the `null` suffix, e.g. `{field_nam
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/employees/',
+    'https://api.gigapay.com/v2/employees/',
     json={
         'name': 'Albin Lindskog',
         'cellphone_number': '+4670000000',
@@ -803,11 +803,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Idempotency-Key': 'afjkakkknbkasaskkaksdakjdnsakja' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"name": "Albin Lindskog", "cellphone_number": "+4670000001", "country": "SWE"}' https://api.gigapay.se/v2/employees/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Idempotency-Key': 'afjkakkknbkasaskkaksdakjdnsakja' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"name": "Albin Lindskog", "cellphone_number": "+4670000001", "country": "SWE"}' https://api.gigapay.com/v2/employees/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/", {
+fetch("https://api.gigapay.com/v2/employees/", {
   method: "POST",
   body: JSON.stringify({
     name: "Albin Lindskog",
@@ -837,7 +837,7 @@ response is generated if a key is reused outside that timeframe.
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/employees/',
+    'https://api.gigapay.com/v2/employees/',
     json={
         'id': 19472,
         'name': 'Albin Lindskog',
@@ -852,11 +852,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Idempotency-Key': 'afjkakkknbkasaskkaksdakjdnsakja' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 19472, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "country": "SWE"}' https://api.gigapay.se/v2/employees/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Idempotency-Key': 'afjkakkknbkasaskkaksdakjdnsakja' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"id": 19472, "name": "Albin Lindskog", "cellphone_number": "+4670000001", "country": "SWE"}' https://api.gigapay.com/v2/employees/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/", {
+fetch("https://api.gigapay.com/v2/employees/", {
   method: "POST",
   body: JSON.stringify({
     id: 19472,
@@ -884,7 +884,7 @@ an error. The uniqueness of an id is guaranteed for the lifetime of the object.
 import requests
 
 response = requests.post(
-    'https://api.gigapay.se/v2/employees/',
+    'https://api.gigapay.com/v2/employees/',
     json={
         'name': 'Albin Lindskog',
         'cellphone_number': '+4670000000',
@@ -901,11 +901,11 @@ response = requests.post(
 ```
 
 ```shell
-curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"name": "Albin Lindskog", "cellphone_number": "+4670000001", "country": "SWE", "metadata": {"user_id": 1847}}' https://api.gigapay.se/v2/employees/
+curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' -d '{"name": "Albin Lindskog", "cellphone_number": "+4670000001", "country": "SWE", "metadata": {"user_id": 1847}}' https://api.gigapay.com/v2/employees/
 ```
 
 ```javascript
-fetch("https://api.gigapay.se/v2/employees/", {
+fetch("https://api.gigapay.com/v2/employees/", {
   method: "POST",
   body: JSON.stringify({
     name: "Albin Lindskog",
