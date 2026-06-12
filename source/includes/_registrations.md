@@ -47,7 +47,7 @@ You can always create and view registrations associated with your account. You c
 | `registered_name` | The legally registered name of the company. |
 | `tin_number` | The company's Tax Identification Number. |
 | `vat_number` | The company's Value Added Tax number, if applicable. |
-| `country` | The 3-letter ISO code for the country where the company is registered. Cannot be 'SWE'. |
+| `country` | The 3-letter ISO code for the country where the company is registered. |
 | `state` | The state, province, or territory, where applicable (e.g., for US, CA, AU). |
 | `address_line_1` | The primary line of the company's address. |
 | `address_line_2` | The secondary line of the company's address. |
@@ -291,7 +291,7 @@ Parameter | Type | Required | Default | Notes
 `registered_name` | String | True | |
 `tin_number` | String | True | | Must be a valid number for the country.
 `vat_number` | String | False | | Must be a valid number for the country. Will return an error if required for the supplied country.
-`country` | String | True | | Cannot be 'SWE'.
+`country` | String | True | |
 `state` | String | False | | Only required for countries that have states, provinces, or territories (e.g., for US, CA, AU).
 `address_line_1` | String | True | |
 `address_line_2` | String | False | |
@@ -464,7 +464,7 @@ Parameter | Type | Required | Default | Notes
 `registered_name` | String | True | |
 `tin_number` | String | True | | Must be a valid number for the country.
 `vat_number` | String | False | | Must be a valid number for the country. Will return an error if required for the supplied country.
-`country` | String | True | | Cannot be 'SWE'.
+`country` | String | True | |
 `state` | String | False | | Only required for countries that have states, provinces, or territories (e.g., for US, CA, AU).
 `address_line_1` | String | True | |
 `address_line_2` | String | False | |
@@ -613,7 +613,7 @@ A registration can only be replaced if the `needs_review` field is set to `true`
 | `registered_name` | String | True | | |
 | `tin_number` | String | True | | Must be a valid number for the country. |
 | `vat_number` | String | False | | Must be a valid number for the country. Will return an error if required for the supplied country. |
-| `country` | String | True | | Cannot be 'SWE'. |
+| `country` | String | True | | |
 | `state` | String | False | | Only required for countries that have states, provinces, or territories (e.g., for US, CA, AU). |
 | `address_line_1` | String | True | | |
 | `address_line_2` | String | False | | |
