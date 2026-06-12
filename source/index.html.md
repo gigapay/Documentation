@@ -248,6 +248,8 @@ on the following events:
 - `Payout.canceled`
 - `Payrun.created`
 - `Payrun.paid`
+- `Invoice.issued`
+- `Invoice.paid`
 - `Registration.verified`
 
 The notifications simply contain the object that triggered the event, as represented in the API.
@@ -268,7 +270,7 @@ Each webhook notification includes the following HTTP headers:
 **Integration-Scoped Webhooks**
 <br>
 These webhooks are tied to a specific integration and require an `Integration-ID` header for all operations.
-This includes events that start with `Employee`, `Payout`, or `Payrun`.
+This includes events that start with `Employee`, `Payout`, `Payrun`, or `Invoice`.
 
 **User-Scoped Webhooks**
 <br>
