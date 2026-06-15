@@ -816,6 +816,8 @@ on the following events:</p>
 <li><code>Payout.canceled</code></li>
 <li><code>Payrun.created</code></li>
 <li><code>Payrun.paid</code></li>
+<li><code>Invoice.issued</code></li>
+<li><code>Invoice.paid</code></li>
 <li><code>Registration.verified</code></li>
 </ul>
 
@@ -850,7 +852,7 @@ on the following events:</p>
 <p><strong>Integration-Scoped Webhooks</strong>
 <br>
 These webhooks are tied to a specific integration and require an <code>Integration-ID</code> header for all operations.
-This includes events that start with <code>Employee</code>, <code>Payout</code>, or <code>Payrun</code>.</p>
+This includes events that start with <code>Employee</code>, <code>Payout</code>, <code>Payrun</code>, or <code>Invoice</code>.</p>
 
 <p><strong>User-Scoped Webhooks</strong>
 <br>
