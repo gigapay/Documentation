@@ -9,6 +9,7 @@ language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of
 toc_footers:
   - Questions? Ask us!
   - <a href='mailto:support@gigapay.com'>support@gigapay.com</a>
+  - <a href='https://status.gigapay.net' target='_blank' rel='noopener'>System status</a>
 
 includes:
   - registrations
