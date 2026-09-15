@@ -67,9 +67,12 @@ How a Payrun closes depends on whether it was created automatically or explicitl
 
 * Payouts are only added to them when they name the Payrun, so a campaign never collects unrelated Payouts.
 * They are not closed by the batching schedule, so a campaign is not split across several invoices when a batching period ends.
-* They close when you [finalize](#finalize-a-payrun) them, or automatically once no Payout has been added for a period of inactivity, 30 days by default. Contact [support@gigapay.com](mailto:support@gigapay.com) if you need a different period.
+* They close when you [finalize](#finalize-a-payrun) them, or automatically once no Payout has been added for a period of inactivity, 30 days by default.
+* They close at the latest 90 days after they were created, however recently a Payout was added. A Payrun that is still open holds Payouts that have not been invoiced yet, so its lifetime is bounded.
 
-`expected_close_at` tells you when a Payrun is currently expected to close. For an explicitly created Payrun it is recalculated from the most recent Payout, so it moves forward each time you add one.
+Contact [support@gigapay.com](mailto:support@gigapay.com) if you need different periods for your organization.
+
+`expected_close_at` tells you when a Payrun is currently expected to close. For an explicitly created Payrun it is recalculated from the most recent Payout, so it moves forward each time you add one, up to the point where the 90-day limit applies. Read it if you run campaigns long enough for that limit to matter: once a Payrun closes, further Payouts naming it are rejected, and you need to create a new one.
 
 An explicitly created Payrun that never received a Payout is removed rather than invoiced when it reaches the end of that inactivity period. You can also [delete](#delete-a-payrun) an empty one yourself.
 
@@ -272,6 +275,8 @@ Parameter | Default | Description
 `created_at` | | Timestamp filter.
 `paid_at` | | Timestamp filter.
 `open` | | Boolean filter to get only open payruns (`true`) or closed payruns (`false`). Omit to get all payruns.
+`currency` | | Filter by ISO-4217 currency code.
+`manually_managed` | | Boolean filter to get only the payruns you created (`true`) or only the automatic ones (`false`). Omit to get both. Combine with `open=true` to list your active campaigns.
 
 
 
