@@ -235,7 +235,7 @@ fetch("https://api.gigapay.com/v2/payouts/", {
 
 This endpoint registers a payout.
 
-By default, the payout is added to the currently active payrun, or a new payrun is created if none exists. You can optionally specify a `payrun` parameter to add the payout to a specific payrun instead.
+By default, the payout is added to the currently active payrun, or a new payrun is created if none exists. If explicit payrun management is enabled for your integration you can specify a `payrun` instead, to add the payout to a payrun you created yourself.
 
 ### HTTP Request
 
@@ -260,13 +260,13 @@ Parameter | Type | Required | Default | Notes
 `description` | String | True | |
 `employee` | String | True | |
 `invoiced_amount` | String | True | | The invoiced amount for this payout.
-`payrun` | String | False | Active payrun | Unique identifier for the Payrun to add this payout to. If not specified, the payout is added to the currently active payrun. The payrun must be open and belong to your organization.
+`payrun` | String | False | Active payrun | Unique identifier for the Payrun to add this payout to. If not specified, the payout is added to the currently active payrun. The Payrun must be open, belong to your organization, and have the same `currency` as the payout. Requires explicit payrun management, and is required on every payout when your integration is set to `explicit`. See [payrun_management](#integrations).
 `metadata` | Object | False | |
 `start_at` | String | False | |
 `end_at` | String | False | null |
 
 <aside class="notice">
-<strong>Campaign-based organization:</strong> You can organize payouts by campaign or project by creating payruns explicitly and then specifying the payrun ID when creating payouts. See the <a href="#create-a-payrun">Create a Payrun</a> section for more details.
+<strong>Campaign-based organization:</strong> You can organize payouts by campaign or project by creating payruns explicitly and then specifying the payrun ID when creating payouts. See <a href="#create-a-payrun">Create a Payrun</a> and <a href="#payrun-lifecycle">Payrun lifecycle</a> for more details.
 </aside>
 
 ### Example: Adding a Payout to a Specific Payrun
@@ -279,7 +279,7 @@ payrun_response = requests.post(
     'https://api.gigapay.se/v2/payruns/',
     json={
         'currency': 'SEK',
-        'invoice_marking': 'Summer-Campaign-2025'
+        'name': 'Summer Campaign 2025'
     },
     headers={
         'Authorization': 'Token cd7a4537a231356d404b553f465b6af2fa035821',
@@ -309,7 +309,7 @@ response = requests.post(
 # First, create a campaign-specific payrun
 curl -X POST -H 'Authorization: Token cd7a4537a231356d404b553f465b6af2fa035821' \
   -H 'Content-Type: application/json' -H 'Integration-ID: 79606358-97af-4196-b64c-5f719433d56b' \
-  -d '{"currency": "SEK", "invoice_marking": "Summer-Campaign-2025"}' \
+  -d '{"currency": "SEK", "name": "Summer Campaign 2025"}' \
   https://api.gigapay.se/v2/payruns/
 
 # Then, add a payout to this specific payrun (replace PAYRUN_ID with the id from above)
@@ -325,7 +325,7 @@ const payrunResponse = await fetch("https://api.gigapay.se/v2/payruns/", {
     method: "POST",
     body: JSON.stringify({
         currency: 'SEK',
-        invoice_marking: 'Summer-Campaign-2025'
+        name: 'Summer Campaign 2025'
     }),
     headers: {
         "Authorization": "Token cd7a4537a231356d404b553f465b6af2fa035821",
