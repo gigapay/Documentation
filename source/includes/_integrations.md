@@ -22,7 +22,8 @@ the `Integration-ID` header.
     "recipient": "Zerebra AB",
     "address_line_1": "Svartmangatan 18",
     "address_line_2": null,
-    "zip_code": "11129"
+    "zip_code": "11129",
+    "payrun_management": "automatic"
 }
 ```
 
@@ -39,6 +40,7 @@ the `Integration-ID` header.
 | `address_line_2`  | Address line 2 written on invoices.                |
 | `zip_code`        | Zip code written on invoices                       |
 | `city`            | City written on invoices.                          |
+| `payrun_management` | Read-only. How [Payruns](#payruns) are managed for this Integration.<br>`automatic` - Payruns are created and closed automatically. Creating a Payrun, or naming one on a Payout, is not permitted.<br>`mixed` - You may create Payruns explicitly and name one on a Payout. Payouts without a `payrun` still use the automatic Payrun.<br>`explicit` - As `mixed`, but every Payout must name a `payrun`.<br>Contact [support@gigapay.com](mailto:support@gigapay.com) to change this. |
 
 
 ## List All Integrations
